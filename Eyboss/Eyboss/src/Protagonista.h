@@ -7,6 +7,7 @@ private:
 	float ancho;
 	float salto; //Potencia de salto
 	bool on; //Marca de salto: true-> se puede saltar, false-> no se puede saltar
+	bool orientacion; //true-> derecha, false-> izquierda
 	Vector2D posicion;
 	Vector2D velocidad;
 	Vector2D aceleracion;
@@ -21,12 +22,14 @@ public:
 	float GetAltura();	
 	float GetSalto();
 	bool GetOn();
+	bool GetOrientacion();
 
 	void SetPos(float px, float py);
 	void SetVel(float vx, float vy);
 	void SetAcel(float ax, float ay);
 	void SetSalto(float sy);
 	void SetOn(bool on);
+	void SetOrientacion(bool ori);
 
 	void Dibuja();
 	void Mueve(float t);

@@ -73,18 +73,20 @@ void Mundo::TeclaEspecial(unsigned char key) {
 	switch (key) {
 	case GLUT_KEY_LEFT:	
 		protagonista.SetVel(-5.0f, protagonista.GetVel().y);
+		protagonista.SetOrientacion(false);
 		break;
 	case GLUT_KEY_RIGHT:		
 		protagonista.SetVel(5.0f,protagonista.GetVel().y);		
+		protagonista.SetOrientacion(true);
 		break;
 	case GLUT_KEY_UP:
 		Disparo* d = new Disparo();
 		Vector2D pos = protagonista.GetPos();
 		Vector2D vel = protagonista.GetVel();
 		d->SetPos(pos.x, pos.y);
-		if (vel.x > 0)
+		if (protagonista.GetOrientacion())
 			d->SetVel(7.0f, 0.0f);
-		else if (vel.x < 0)
+		else
 			d->SetVel(-7.0f, 0.0f);		
 		disparos.Agregar(d);
 		ETSIDI::play("sonidos/shoot.wav");
