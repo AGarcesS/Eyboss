@@ -10,7 +10,7 @@ Mundo::~Mundo() {
 
 void Mundo::Dibuja()
 {
-	gluLookAt(protagonista.GetPos().x, protagonista.GetPos().y, 30,  // posicion del ojo
+	gluLookAt(protagonista.GetPos().x, protagonista.GetPos().y, 30,	// posicion del ojo
 			protagonista.GetPos().x, protagonista.GetPos().y, 0.0,      // hacia que punto mira  (0,0,0) 
 			0.0, protagonista.GetPos().y, 0.0);     // definimos hacia arriba (eje Y)    
 
@@ -60,7 +60,7 @@ void Mundo::Tecla(unsigned char key)
 			protagonista.SetVel(protagonista.GetVel().x, protagonista.GetSalto());
 			protagonista.SetAcel(protagonista.GetAcel().x, -9.8f);
 			protagonista.SetOn(false);
-			//ETSIDI::play("sonidos/jump.wav");
+			ETSIDI::play("sonidos/jump.wav");
 		}
 		break;		
 	case 'q': //Cierra la pantalla
@@ -87,7 +87,7 @@ void Mundo::TeclaEspecial(unsigned char key) {
 		else if (vel.x < 0)
 			d->SetVel(-7.0f, 0.0f);		
 		disparos.Agregar(d);
-		//ETSIDI::play("sonidos/shoot.wav");
+		ETSIDI::play("sonidos/shoot.wav");
 		break;
 	}
 }
