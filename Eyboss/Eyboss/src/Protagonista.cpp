@@ -13,6 +13,7 @@ Protagonista::Protagonista() {
 	aceleracion.y = -9.8f;
 	salto = 8.0f;
 	on = false;
+	orientacion = false;
 }
 
 Vector2D Protagonista::GetPos() {
@@ -39,6 +40,10 @@ bool Protagonista::GetOn() {
 	return on;
 }
 
+bool Protagonista::GetOrientacion() {
+	return orientacion;
+}
+
 void Protagonista::SetPos(float px, float py) {
 	posicion.x = px;
 	posicion.y = py;
@@ -60,6 +65,10 @@ void Protagonista::SetSalto(float sy) {
 
 void Protagonista::SetOn(bool x) {
 	on = x;
+}
+
+void Protagonista::SetOrientacion(bool ori) {
+	orientacion = ori;
 }
 
 void Protagonista::Dibuja() {
