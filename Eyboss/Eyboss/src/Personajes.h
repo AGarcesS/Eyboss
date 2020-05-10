@@ -7,11 +7,16 @@ protected:
 	float altura;
 	float ancho;
 	bool orientacion; //true-> derecha, false-> izquierda
+	int vida;
 	Vector2D posicion;
 	Vector2D velocidad;
 	Vector2D aceleracion;
 
 public:
+	Personajes();
+	virtual ~Personajes();
+
+	int GetVida();
 	Vector2D GetPos();
 	Vector2D GetVel();
 	Vector2D GetAcel();

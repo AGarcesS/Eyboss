@@ -1,6 +1,16 @@
 #include "Personajes.h"
 #include "glut.h"
 
+Personajes::Personajes()
+{
+
+}
+
+Personajes::~Personajes()
+{
+
+}
+
 Vector2D Personajes::GetPos() {
 	return posicion;
 }
