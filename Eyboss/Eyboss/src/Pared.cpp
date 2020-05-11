@@ -6,7 +6,7 @@
 
 Pared::Pared() {
 	rojo = verde = azul = 255;
-	
+	textura = "texturas/floor.png";	
 }	
 
 void Pared::SetColor(unsigned char r, unsigned char v, unsigned char a){
@@ -27,22 +27,22 @@ void Pared::SetTextura(const char* text) {
 	textura = text;
 }
 
-/*void Pared::Dibuja() {                                                       //Implementar texturas
+void Pared::Dibuja() {                                                       //Implementar texturas
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("floor.png").id);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture(textura).id);
 	glDisable(GL_LIGHTING);
 	glColor3f(1, 1, 1);
 	glRectd(limite1.x, limite1.y, limite2.x, limite2.y);
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
-}*/
-
-void Pared::Dibuja() {
-	glDisable(GL_LIGHTING);
-	glColor3ub(rojo, verde, azul);
-	glRectd(limite1.x, limite1.y, limite2.x, limite2.y);	
-	glEnable(GL_LIGHTING);
 }
+
+//void Pared::Dibuja() {
+//	glDisable(GL_LIGHTING);
+//	glColor3ub(rojo, verde, azul);
+//	glRectd(limite1.x, limite1.y, limite2.x, limite2.y);	
+//	glEnable(GL_LIGHTING);
+//}
 
 float Pared::distanciap_r(Vector2D punto1, Vector2D punto2, Vector2D punto3, Vector2D* dir) {
 	Vector2D u = punto3 - punto1;

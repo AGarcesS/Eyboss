@@ -23,8 +23,10 @@
     <ClCompile Include="src\Caja.cpp" />
     <ClCompile Include="src\Disparo.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
+    <ClCompile Include="src\Interfaz.cpp" />
     <ClCompile Include="src\ListaDisparos.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\MaqEstados.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\Pared.cpp" />
     <ClCompile Include="src\Protagonista.cpp" />
@@ -36,7 +38,9 @@
     <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\Disparo.h" />
     <ClInclude Include="src\Interaccion.h" />
+    <ClInclude Include="src\Interfaz.h" />
     <ClInclude Include="src\ListaDisparos.h" />
+    <ClInclude Include="src\MaqEstados.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Pared.h" />
     <ClInclude Include="src\Protagonista.h" />

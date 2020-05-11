@@ -3,9 +3,11 @@
 #include "Protagonista.h"
 #include "glut.h"
 
+ETSIDI::SpriteSequence* animacion_par;
+
 Protagonista::Protagonista() {
 	altura = 1.8f;
-	ancho = 1.0f;
+	ancho = altura;
 	posicion.x = 0.0f;
 	posicion.y = altura / 2;
 	velocidad.x = velocidad.y = 0;
@@ -14,6 +16,13 @@ Protagonista::Protagonista() {
 	salto = 8.0f;
 	on = false;
 	orientacion = false;
+	vida = 10;
+	damage = false;
+	textura = "texturas/eris_der.png";
+}
+
+void Protagonista::Inicializa() {
+	animacion_par = new ETSIDI::SpriteSequence(textura, 6, 1, 50, true, 0, 0, altura, altura);
 }
 
 Vector2D Protagonista::GetPos() {
@@ -44,6 +53,10 @@ bool Protagonista::GetOrientacion() {
 	return orientacion;
 }
 
+int Protagonista::GetVida() {
+	return vida;
+}
+
 void Protagonista::SetPos(float px, float py) {
 	posicion.x = px;
 	posicion.y = py;
@@ -71,6 +84,18 @@ void Protagonista::SetOrientacion(bool ori) {
 	orientacion = ori;
 }
 
+void Protagonista::SetVida(int v) {
+	vida = v;
+}
+
+void Protagonista::SetTextura(const char* text) {
+	textura = text;
+}
+
+void Protagonista::SetAltura(float alt) {
+	altura = alt;
+}
+
 void Protagonista::Dibuja() {
 
 	/*glEnable(GL_TEXTURE_2D);                                                    //Texturas
@@ -82,15 +107,38 @@ void Protagonista::Dibuja() {
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();*/
 
-	glPushMatrix();
+	/*glPushMatrix();                                                            //Rectangulo
 	glTranslatef(posicion.x, posicion.y, 0);
 	glColor3f(1.0f, 0.0f, 0.0f);
 	glRectd(-ancho/2, -altura/2, ancho/2, altura/2);
 	glTranslatef(-posicion.x, -posicion.y, 0);
-	glPopMatrix();
+	glPopMatrix();*/
+
+	glTranslatef(posicion.x, posicion.y, 0);
+	if (velocidad.x > 0)
+		animacion_par->flip(true, false);
+	else if (velocidad.x < 0)
+		animacion_par->flip(false, false);
+	animacion_par->draw();
+	glTranslatef(-posicion.x, -posicion.y, 0);
 }
 
 void Protagonista::Mueve(float t) {
 	posicion = posicion + velocidad * t + aceleracion * (0.5 * t * t);
 	velocidad = velocidad + aceleracion * t;
+
+	if (velocidad.x > 0) {
+		animacion_par->pause(false);
+	}
+	else if (velocidad.x < 0) {
+		animacion_par->pause(false);
+	}
+	else if (velocidad.x == 0) {
+		animacion_par->setState(5, true);
+	}
+	animacion_par->loop();
+}
+
+void Protagonista::DestruirContenido() {
+	delete animacion_par;
 }
