@@ -21,13 +21,13 @@ void Interfaz::ImprimeJuego(Protagonista p, Tiempo t) {
 	str_tiempo = sstr_tiempo.str();
 	const char* t_tiempo = str_tiempo.c_str();
 	ETSIDI::setTextColor(1, 1, 1);
-	ETSIDI::setFont("fuentes/fuente.ttf", 12);
+	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 	ETSIDI::printxy(t_tiempo, -14, 10);
 
 	sstr_vida << "Vida: " << p.GetVida();
 	str_vida = sstr_vida.str();
 	const char* t_vida = str_vida.c_str();
 	ETSIDI::setTextColor(1, 1, 1);
-	ETSIDI::setFont("fuentes/fuente.ttf", 12);
+	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 	ETSIDI::printxy(t_vida, -14, 9);
 }

@@ -81,7 +81,7 @@ void Mundo::Tecla(unsigned char key)
 			protagonista.SetVel(protagonista.GetVel().x, protagonista.GetSalto());
 			protagonista.SetAcel(protagonista.GetAcel().x, -9.8f);
 			protagonista.SetOn(false);
-			ETSIDI::play("sonidos/jump.wav");
+			ETSIDI::play("bin/sonidos/jump.wav");
 		}
 		break;			
 	}
@@ -107,7 +107,7 @@ void Mundo::TeclaEspecial(unsigned char key) {
 		else
 			d->SetVel(-7.0f, 0.0f);		
 		disparos.Agregar(d);
-		ETSIDI::play("sonidos/shoot.wav");
+		ETSIDI::play("bin/sonidos/shoot.wav");
 		break;
 	}
 }
@@ -130,7 +130,7 @@ bool Mundo::CargarNivel() {
 
 	if (nivel == 1) {
 		plataforma.SetPos(-5.0f, 2.0f, 5.0f, 2.5f);
-		plataforma.SetTextura("texturas/wall.png");
+		plataforma.SetTextura("bin/texturas/wall.png");
 	}
 
 	if (nivel == 2) {

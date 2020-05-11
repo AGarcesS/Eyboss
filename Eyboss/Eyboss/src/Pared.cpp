@@ -6,7 +6,7 @@
 
 Pared::Pared() {
 	rojo = verde = azul = 255;
-	textura = "texturas/floor.png";	
+	textura = "bin/texturas/floor.png";	
 }	
 
 void Pared::SetColor(unsigned char r, unsigned char v, unsigned char a){

@@ -18,7 +18,7 @@ Protagonista::Protagonista() {
 	orientacion = false;
 	vida = 10;
 	damage = false;
-	textura = "texturas/eris_der.png";
+	textura = "bin/texturas/eris_der.png";
 }
 
 void Protagonista::Inicializa() {
@@ -140,5 +140,5 @@ void Protagonista::Mueve(float t) {
 }
 
 void Protagonista::DestruirContenido() {
-	delete animacion_par;
+	//delete animacion_par;
 }

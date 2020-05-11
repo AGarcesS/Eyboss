@@ -12,11 +12,11 @@ void MaqEstados::Dibuja() {
 			0.0, 7.5, 0.0,
 			0.0, 1.0, 0.0);
 		ETSIDI::setTextColor(1, 1, 0);
-		ETSIDI::setFont("fuentes/fuente.ttf", 16);
+		ETSIDI::setFont("bin/fuentes/fuente.ttf", 16);
 		ETSIDI::printxy("Titulo", -5, 8);
 
 		ETSIDI::setTextColor(1, 1, 1);
-		ETSIDI::setFont("fuentes/fuente.ttf", 12);
+		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 		ETSIDI::printxy("Pulsa la tecla E para empezar", -5, 7);
 		ETSIDI::printxy("Pulsa la tecla S para salir", -5, 6);
 	}
@@ -28,7 +28,7 @@ void MaqEstados::Dibuja() {
 		glTranslatef(mundo.GetOjo().x, mundo.GetOjo().y, 0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		ETSIDI::setTextColor(1, 0, 0);
-		ETSIDI::setFont("fuentes/fuente.ttf", 16);
+		ETSIDI::setFont("bin/fuentes/fuente.ttf", 16);
 		ETSIDI::printxy("ENHORABUENA", -5, 1);
 		ETSIDI::printxy("Has ganado", -5, 0);
 		ETSIDI::printxy("Pulsa la tecla C para continuar", -5, -1);
@@ -38,7 +38,7 @@ void MaqEstados::Dibuja() {
 		glTranslatef(mundo.GetOjo().x, mundo.GetOjo().y, 0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		ETSIDI::setTextColor(1, 0, 0);
-		ETSIDI::setFont("fuentes/fuente.ttf", 16);
+		ETSIDI::setFont("bin/fuentes/fuente.ttf", 16);
 		ETSIDI::printxy("GAMEOVER", -5, 1);
 		ETSIDI::printxy("Has perdido", -5, 0);
 		ETSIDI::printxy("Pulsa la tecla C para continuar", -5, -1);
@@ -48,7 +48,7 @@ void MaqEstados::Dibuja() {
 		glTranslatef(mundo.GetOjo().x, mundo.GetOjo().y, 0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		ETSIDI::setTextColor(1, 0, 0);
-		ETSIDI::setFont("fuentes/fuente.ttf", 16);
+		ETSIDI::setFont("bin/fuentes/fuente.ttf", 16);
 		ETSIDI::printxy("PAUSA", -5, 1);
 		ETSIDI::printxy("Pulsa la tecla C para volver al juego", -5, 0);
 		ETSIDI::printxy("Pulsa la tecla S para volver a inicio", -5, -1);
