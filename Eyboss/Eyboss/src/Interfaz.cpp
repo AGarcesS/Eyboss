@@ -29,5 +29,5 @@ void Interfaz::ImprimeJuego(Protagonista p, Tiempo t) {
 	const char* t_vida = str_vida.c_str();
 	ETSIDI::setTextColor(1, 1, 1);
 	ETSIDI::setFont("fuentes/fuente.ttf", 12);
-	ETSIDI::printxy(t_vida, -14, 10);
+	ETSIDI::printxy(t_vida, -14, 9);
 }
