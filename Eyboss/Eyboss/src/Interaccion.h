@@ -9,11 +9,11 @@ public:
 	Interaccion();
 	virtual ~Interaccion() {}
 
-	static bool Colision(Pared p, Vector2D pos, float r, float s);
+	static bool Colision(Pared pa, Vector2D pos, float r);
 
-	static bool Colision(Protagonista& h, Pared p);
-	static bool Colision(Protagonista& h, Caja c);
+	static bool Colision(Personaje& p, Pared pa);
+	static bool Colision(Personaje& p, Caja c);
 
-	static bool Colision(Disparo &d, Pared p);
+	static bool Colision(Disparo &d, Pared pa);
 	static bool Colision(Disparo &d, Caja c);
 };

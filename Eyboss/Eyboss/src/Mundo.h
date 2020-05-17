@@ -1,11 +1,13 @@
 #include "Caja.h"
-#include "Protagonista.h"
 #include "Bonus.h"
 #include "Disparo.h"
 #include "ListaDisparos.h"
 #include "Vector2D.h"
 #include "Tiempo.h"
 #include "Interfaz.h"
+#include "ListaEnemigos.h"
+#include "Purk.h"
+#include "Protagonista.h"
 
 class Mundo
 {
@@ -16,14 +18,16 @@ private:
 
 	float t;
 
-	Disparo disparo;
+	//Disparo disparo;
 	Protagonista protagonista;
+	Purk purk;
 	Caja caja;
 	Bonus bonus;
 	Pared plataforma;	
 	ListaDisparos disparos;
 	Interfaz interfaz;
 	Tiempo tiempo;
+	ListaEnemigos enemigos;
 
 	int nivel;
 

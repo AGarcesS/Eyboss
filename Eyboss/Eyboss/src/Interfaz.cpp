@@ -1,6 +1,6 @@
 #include <sstream>
-#include "Interfaz.h"
 #include "ETSIDI.h"
+#include "Interfaz.h"
 #include "glut.h"
 
 void Interfaz::ImprimeJuego(Protagonista p, Tiempo t) {

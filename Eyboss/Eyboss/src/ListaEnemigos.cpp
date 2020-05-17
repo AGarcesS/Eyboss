@@ -1,0 +1,87 @@
+#include "ListaEnemigos.h"
+#include "Interaccion.h"
+
+ListaEnemigos::ListaEnemigos() {
+	numero = 0;
+	for (int i = 0; i < MAX_ENEMIGOS; i++)
+		lista[i] = 0;
+}
+
+bool ListaEnemigos::Agregar(Personaje* p) {
+	if (numero < MAX_ENEMIGOS) {
+		lista[numero] = p;
+		numero++;
+		for (int i = 0; i < numero; i++)
+		{
+			if (lista[i] == p)
+				return false;
+			else
+				return true;
+		}
+	}
+	else
+		return false;
+}
+
+void ListaEnemigos::DestruirContenido() {
+	for (int i = 0; i < numero; i++)
+		delete lista[i];
+	numero = 0;
+}
+
+void ListaEnemigos::Eliminar(int index) {
+	if ((index < 0 || index >= numero))
+		return;
+	delete lista[index];
+	numero--;
+	for (int i = index; i < numero; i++)
+		lista[i] = lista[i + 1];
+}
+
+void ListaEnemigos::Eliminar(Personaje* p) {
+	for (int i = 0; i < numero; i++) {
+		if (lista[i] == p) {
+			Eliminar(i);
+			return;
+		}
+	}
+}
+
+void ListaEnemigos::Mueve(float t) {
+	for (int i = 0; i < numero; i++)
+		lista[i]->Mueve(t);
+}
+
+void ListaEnemigos::Dibuja() {
+	for (int i = 0; i < numero; i++)
+		lista[i]->Dibuja();
+}
+
+void ListaEnemigos::Inicializa() {
+	for (int i = 0; i < numero; i++)
+		lista[i]->Inicializa();
+}
+
+Personaje* ListaEnemigos::Colision(Pared pa) {
+	for (int i = 0; i < numero; i++) {
+		if (Interaccion::Colision(*lista[i], pa))
+			return lista[i];
+	}
+	return 0;
+}
+
+Personaje* ListaEnemigos::Colision(Caja c) {
+	for (int i = 0; i < numero; i++) {
+		if (Interaccion::Colision(*lista[i], c))
+			return lista[i];
+	}
+	return 0;
+}
+
+Personaje* ListaEnemigos::operator [] (int i) {
+	if (i >= numero)
+		i = numero - 1;
+	if (i < 0)
+		i = 0;
+	return lista[i];
+}
