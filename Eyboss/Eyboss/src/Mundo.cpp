@@ -13,6 +13,7 @@ Mundo::~Mundo() {
 	enemigos.DestruirContenido();
 	protagonista.DestruirContenido();
 	purk.DestruirContenido();
+	interfaz.DestruirContenido();
 }
 
 Vector2D Mundo::GetOjo() {
@@ -74,6 +75,7 @@ void Mundo::Mueve()
 
 void Mundo::Inicializa()
 {
+	interfaz.Inicializa();
 	bonus.SetPos(5.0f, 5.0f);
 	protagonista.Inicializa();	
 

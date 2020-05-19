@@ -1,5 +1,4 @@
 #include <sstream>
-#include "ETSIDI.h"
 #include "Interfaz.h"
 #include "glut.h"
 
@@ -7,7 +6,7 @@ void Interfaz::ImprimeJuego(Protagonista p, Tiempo t) {
 	std::stringstream sstr_tiempo, sstr_vida;
 	std::string str_tiempo, str_vida;
 
-	glTranslatef(p.GetPos().x, p.GetPos().y, 0);
+	glTranslatef(p.GetPos().x, p.GetPos().y, 1);
 
 	int minutos, segundos;
 	minutos = t.GetTiempo() / 60;
@@ -30,4 +29,14 @@ void Interfaz::ImprimeJuego(Protagonista p, Tiempo t) {
 	ETSIDI::setTextColor(1, 1, 1);
 	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 	ETSIDI::printxy(t_vida, -14, 9);
+
+	corazon->draw();
+}
+
+void Interfaz::Inicializa() {
+	corazon = new ETSIDI::Sprite("bin/texturas/clleno.png", -11, 9.2, 0.8, 0.8);
+}
+
+void Interfaz::DestruirContenido() {
+	//delete corazon;
 }
