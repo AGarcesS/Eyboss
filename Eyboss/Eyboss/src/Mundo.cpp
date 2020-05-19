@@ -11,6 +11,8 @@ Mundo::Mundo() {
 Mundo::~Mundo() {
 	disparos.DestruirContenido();
 	enemigos.DestruirContenido();
+	protagonista.DestruirContenido();
+	purk.DestruirContenido();
 }
 
 Vector2D Mundo::GetOjo() {
@@ -28,10 +30,10 @@ void Mundo::Dibuja()
 
 	//aqui es donde hay que poner el codigo de dibujo
 
-	enemigos.Dibuja();
-	purk.Dibuja();
-	caja.Dibuja();
 	protagonista.Dibuja();
+	purk.Dibuja();
+	enemigos.Dibuja();	
+	caja.Dibuja();	
 	disparos.Dibuja();
 	plataforma.Dibuja();
 	bonus.Dibuja();	
@@ -41,10 +43,11 @@ void Mundo::Dibuja()
 void Mundo::Mueve()
 {
 	protagonista.Mueve(0.025f);	
-	bonus.Mueve(0.025f);
-	disparos.Mueve(0.025f);
-	enemigos.Mueve(0.025f);
 	purk.Mueve(0.025f);
+	enemigos.Mueve(0.025f);
+	bonus.Mueve(0.025f);
+	disparos.Mueve(0.025f);	
+	
 
 	Interaccion::Colision(protagonista, caja);
 	Interaccion::Colision(protagonista, plataforma);
@@ -72,8 +75,7 @@ void Mundo::Mueve()
 void Mundo::Inicializa()
 {
 	bonus.SetPos(5.0f, 5.0f);
-	protagonista.Inicializa();
-	enemigos.Inicializa();
+	protagonista.Inicializa();	
 
 	x_ojo = protagonista.GetPos().x;
 	y_ojo = protagonista.GetPos().y;
@@ -144,8 +146,21 @@ bool Mundo::CargarNivel() {
 		plataforma.SetPos(-5.0f, 2.0f, 5.0f, 2.5f);
 		plataforma.SetTextura("bin/texturas/wall.png");
 
-		purk.Inicializa();
 		purk.SetPos(0, 5);
+		purk.Inicializa();
+		
+		Purk* a = new Purk();
+		Purk* b = new Purk();
+		Purk* c = new Purk();
+		a->SetVel(0, 3);
+		b->SetPos(5, 3);
+		b->SetVel(3, 5);
+		c->SetPos(-5, 3);
+		c->SetVel(-1, 0);
+		enemigos.Agregar(a);
+		enemigos.Agregar(b);
+		enemigos.Agregar(c);
+		enemigos.Inicializa();
 	}
 
 	if (nivel == 2) {

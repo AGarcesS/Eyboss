@@ -91,11 +91,13 @@ bool Interaccion::Colision(Personaje& p, Caja c) {
 	}
 	if ((p.posicion.x + p.ancho / 2) > c.pared_dcha.limite1.x) {
 		p.posicion.x = c.pared_dcha.limite1.x - p.ancho / 2;
+		p.velocidad.x *= -1;
 		colision = true;
 	}
 
 	if ((p.posicion.x - p.ancho / 2) < c.pared_izq.limite2.x) {
 		p.posicion.x = c.pared_izq.limite2.x + p.ancho / 2;
+		p.velocidad.x *= -1;
 		colision = true;
 	}		
 	return colision;

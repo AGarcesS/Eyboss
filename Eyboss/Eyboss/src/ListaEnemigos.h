@@ -20,7 +20,8 @@ public:
 	void Dibuja();
 	void Inicializa();
 
-	Personaje* Colision(Pared pa);
-	Personaje* Colision(Caja c);
+	void Colision(Pared pa);
+	void Colision(Caja c);
 	Personaje* operator [] (int i);
+	int getNumero() { return numero; }
 };

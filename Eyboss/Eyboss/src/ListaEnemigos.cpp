@@ -62,20 +62,19 @@ void ListaEnemigos::Inicializa() {
 		lista[i]->Inicializa();
 }
 
-Personaje* ListaEnemigos::Colision(Pared pa) {
+void ListaEnemigos::Colision(Pared pa) {
 	for (int i = 0; i < numero; i++) {
-		if (Interaccion::Colision(*lista[i], pa))
-			return lista[i];
-	}
-	return 0;
+		Interaccion::Colision(*lista[i], pa);
+	}	
 }
+			
 
-Personaje* ListaEnemigos::Colision(Caja c) {
+
+void ListaEnemigos::Colision(Caja c) {
 	for (int i = 0; i < numero; i++) {
-		if (Interaccion::Colision(*lista[i], c))
-			return lista[i];
+		Interaccion::Colision(*lista[i], c);		
 	}
-	return 0;
+	
 }
 
 Personaje* ListaEnemigos::operator [] (int i) {

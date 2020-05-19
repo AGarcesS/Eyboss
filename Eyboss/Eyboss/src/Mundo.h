@@ -8,6 +8,7 @@
 #include "ListaEnemigos.h"
 #include "Purk.h"
 #include "Protagonista.h"
+#include "Personaje.h"
 
 class Mundo
 {
@@ -18,12 +19,11 @@ private:
 
 	float t;
 
-	//Disparo disparo;
 	Protagonista protagonista;
 	Purk purk;
 	Caja caja;
-	Bonus bonus;
-	Pared plataforma;	
+	Pared plataforma;
+	Bonus bonus;		
 	ListaDisparos disparos;
 	Interfaz interfaz;
 	Tiempo tiempo;
