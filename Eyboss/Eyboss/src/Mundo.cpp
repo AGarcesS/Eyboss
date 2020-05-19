@@ -14,6 +14,7 @@ Mundo::~Mundo() {
 	protagonista.DestruirContenido();
 	purk.DestruirContenido();
 	interfaz.DestruirContenido();
+	plataformas.DestruirContenido();
 }
 
 Vector2D Mundo::GetOjo() {
@@ -37,6 +38,7 @@ void Mundo::Dibuja()
 	caja.Dibuja();	
 	disparos.Dibuja();
 	plataforma.Dibuja();
+	plataformas.Dibuja();
 	bonus.Dibuja();	
 	interfaz.ImprimeJuego(protagonista, tiempo);
 }
@@ -55,6 +57,11 @@ void Mundo::Mueve()
 
 	Interaccion::Colision(purk, caja);
 	Interaccion::Colision(purk, plataforma);
+
+	for (int i = 0; i < plataformas.getNumero(); i++) {
+		Interaccion::Colision(protagonista, *plataformas[i]);
+		enemigos.Colision(*plataformas[i]);
+	}
 
 	enemigos.Colision(caja);
 	enemigos.Colision(plataforma);
@@ -163,6 +170,10 @@ bool Mundo::CargarNivel() {
 		enemigos.Agregar(b);
 		enemigos.Agregar(c);
 		enemigos.Inicializa();
+
+		Pared* d = new Pared();
+		d->SetPos(7.0f, 2.0f, 17.0f, 2.5f);
+		plataformas.Agregar(d);
 	}
 
 	if (nivel == 2) {

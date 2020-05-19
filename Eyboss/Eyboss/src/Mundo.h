@@ -9,6 +9,7 @@
 #include "Purk.h"
 #include "Protagonista.h"
 #include "Personaje.h"
+#include "ListaPlataformas.h"
 
 class Mundo
 {
@@ -28,6 +29,7 @@ private:
 	Interfaz interfaz;
 	Tiempo tiempo;
 	ListaEnemigos enemigos;
+	ListaPlataformas plataformas;
 
 	int nivel;
 

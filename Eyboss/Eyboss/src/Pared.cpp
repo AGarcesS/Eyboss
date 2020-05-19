@@ -28,13 +28,22 @@ void Pared::SetTextura(const char* text) {
 }
 
 void Pared::Dibuja() {                                                       //Implementar texturas
+	glPushMatrix();
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture(textura).id);
 	glDisable(GL_LIGHTING);
+
+	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
-	glRectd(limite1.x, limite1.y, limite2.x, limite2.y);
+	glTexCoord2d(0.5*limite1.x, 0.5 * limite2.y); glVertex2f(limite1.x, limite2.y);
+	glTexCoord2d(0.5 * limite2.x, 0.5 * limite2.y); glVertex2f(limite2.x, limite2.y);
+	glTexCoord2d(0.5 * limite2.x, 0.5 * limite1.y); glVertex2f(limite2.x, limite1.y);
+	glTexCoord2d(0.5 * limite1.x, 0.5 * limite1.y); glVertex2f(limite1.x, limite1.y);
+	glEnd();
+
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
 }
 
 //void Pared::Dibuja() {
