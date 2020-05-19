@@ -5,7 +5,9 @@ Interaccion::Interaccion() {
 
 }
 
-bool Interaccion::Colision(Pared pa, Vector2D pos, float r) { //Colisión como objeto sólido (proyectiles)
+bool Interaccion::Colision(Pared pa, Vector2D pos, float r, float s = 0) { //Colisión como objeto sólido (proyectiles)
+	if (s == 0)
+		s = r;
 	Vector2D punto1(pa.limite1.x, pa.limite2.y);
 	Vector2D dir1;
 	float d1 = pa.distanciap_r(punto1, pa.limite2, pos, &dir1) - r;                      //     p1.--------------------------.limite2
@@ -15,10 +17,10 @@ bool Interaccion::Colision(Pared pa, Vector2D pos, float r) { //Colisión como ob
 	float d2 = pa.distanciap_r(pa.limite1, punto2, pos, &dir2) - r;                  //       |                          |  
 																					   //limite1.--------------------------.p2
 	Vector2D dir3;
-	float d3 = pa.distanciap_r(punto1, pa.limite1, pos, &dir3) - r;
+	float d3 = pa.distanciap_r(punto1, pa.limite1, pos, &dir3) - s;
 
 	Vector2D dir4;
-	float d4 = pa.distanciap_r(pa.limite2, punto2, pos, &dir4) - r;
+	float d4 = pa.distanciap_r(pa.limite2, punto2, pos, &dir4) - s;
 
 	if ((d1 <= 0.0f) || (d2 <= 0.0f) || (d3 <= 0.0f) || (d4 <= 0.0f)) {
 		return true;
@@ -101,6 +103,12 @@ bool Interaccion::Colision(Personaje& p, Caja c) {
 		colision = true;
 	}		
 	return colision;
+}
+
+bool Interaccion::Colision(Personaje p, Bonus b) {
+	Pared aux;
+	aux.SetPos(p.posicion.x - p.ancho / 2, p.posicion.y + p.altura / 2, p.posicion.x + p.ancho / 2, p.posicion.y - p.altura / 2);
+	return Interaccion::Colision(aux, b.posicion, b.lado);
 }
 
 bool Interaccion::Colision(Disparo &d, Pared pa) {

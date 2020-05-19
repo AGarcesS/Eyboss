@@ -10,6 +10,8 @@
 #include "Protagonista.h"
 #include "Personaje.h"
 #include "ListaPlataformas.h"
+#include "ListaBonus.h"
+#include "Corazon.h"
 
 class Mundo
 {
@@ -23,13 +25,13 @@ private:
 	Protagonista protagonista;
 	Purk purk;
 	Caja caja;
-	Pared plataforma;
-	Bonus bonus;		
+	Pared plataforma;		
 	ListaDisparos disparos;
 	Interfaz interfaz;
 	Tiempo tiempo;
 	ListaEnemigos enemigos;
 	ListaPlataformas plataformas;
+	ListaBonus bonus;
 
 	int nivel;
 

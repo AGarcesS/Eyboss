@@ -1,13 +1,14 @@
-#include "ListaPlataformas.h"
+#include "ListaBonus.h"
+#include "Interaccion.h"
 
-ListaPlataformas::ListaPlataformas() {
+ListaBonus::ListaBonus() {
 	numero = 0;
-	for (int i = 0; i < MAX_PLATAFORMAS; i++)
+	for (int i = 0; i < MAX_BONUS; i++)
 		lista[i] = 0;
 }
 
-bool ListaPlataformas::Agregar(Pared* p) {
-	if (numero < MAX_PLATAFORMAS) {
+bool ListaBonus::Agregar(Bonus* p) {
+	if (numero < MAX_BONUS) {
 		lista[numero] = p;
 		numero++;
 		for (int i = 0; i < numero; i++)
@@ -22,13 +23,13 @@ bool ListaPlataformas::Agregar(Pared* p) {
 		return false;
 }
 
-void ListaPlataformas::DestruirContenido() {
+void ListaBonus::DestruirContenido() {
 	for (int i = 0; i < numero; i++)
 		delete lista[i];
 	numero = 0;
 }
 
-void ListaPlataformas::Eliminar(int index) {
+void ListaBonus::Eliminar(int index) {
 	if ((index < 0 || index >= numero))
 		return;
 	delete lista[index];
@@ -37,7 +38,7 @@ void ListaPlataformas::Eliminar(int index) {
 		lista[i] = lista[i + 1];
 }
 
-void ListaPlataformas::Eliminar(Pared* p) {
+void ListaBonus::Eliminar(Bonus* p) {
 	for (int i = 0; i < numero; i++) {
 		if (lista[i] == p) {
 			Eliminar(i);
@@ -46,12 +47,22 @@ void ListaPlataformas::Eliminar(Pared* p) {
 	}
 }
 
-void ListaPlataformas::Dibuja() {
+void ListaBonus::Dibuja() {
 	for (int i = 0; i < numero; i++)
 		lista[i]->Dibuja();
 }
 
-Pared* ListaPlataformas::operator [] (int i) {
+void ListaBonus::Audio() {
+	for (int i = 0; i < numero; i++)
+		lista[i]->Audio();
+}
+
+void ListaBonus::Inicializa() {
+	for (int i = 0; i < numero; i++)
+		lista[i]->Inicializa();
+}
+
+Bonus* ListaBonus::operator [] (int i) {
 	if (i >= numero)
 		i = numero - 1;
 	if (i < 0)

@@ -15,6 +15,7 @@ Mundo::~Mundo() {
 	purk.DestruirContenido();
 	interfaz.DestruirContenido();
 	plataformas.DestruirContenido();
+	bonus.DestruirContenido();
 }
 
 Vector2D Mundo::GetOjo() {
@@ -48,7 +49,6 @@ void Mundo::Mueve()
 	protagonista.Mueve(0.025f);	
 	purk.Mueve(0.025f);
 	enemigos.Mueve(0.025f);
-	bonus.Mueve(0.025f);
 	disparos.Mueve(0.025f);	
 	
 
@@ -62,6 +62,13 @@ void Mundo::Mueve()
 		Interaccion::Colision(protagonista, *plataformas[i]);
 		enemigos.Colision(*plataformas[i]);
 	}
+
+	for (int i = 0; i < bonus.getNumero(); i++) {
+		if (Interaccion::Colision(protagonista, *bonus[i])) {
+			bonus.Audio();
+			bonus.Eliminar(bonus[i]);
+		}
+	}	
 
 	enemigos.Colision(caja);
 	enemigos.Colision(plataforma);
@@ -83,7 +90,6 @@ void Mundo::Mueve()
 void Mundo::Inicializa()
 {
 	interfaz.Inicializa();
-	bonus.SetPos(5.0f, 5.0f);
 	protagonista.Inicializa();	
 
 	x_ojo = protagonista.GetPos().x;
@@ -174,6 +180,14 @@ bool Mundo::CargarNivel() {
 		Pared* d = new Pared();
 		d->SetPos(7.0f, 2.0f, 17.0f, 2.5f);
 		plataformas.Agregar(d);
+
+		Corazon* e = new Corazon();
+		Corazon* f = new Corazon();
+		e->SetPos(12, 3);
+		f->SetPos(0, 3);
+		bonus.Agregar(e);
+		bonus.Agregar(f);
+		bonus.Inicializa();
 	}
 
 	if (nivel == 2) {
