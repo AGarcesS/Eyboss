@@ -9,6 +9,7 @@ private:
 	Vector2D limite1;
 	Vector2D limite2;
 	const char* textura;
+	float z; //zoom
 	
 	Vector2D CPlano1;
 	Vector2D CPlano2;
@@ -19,9 +20,9 @@ public:
 	void SetColor(unsigned char r, unsigned char v, unsigned char a);
 	void SetPos(float x1, float y1, float x2, float y2);
 	void SetTextura(const char* text);
-	void Dibuja();
-	float distanciap_r(Vector2D punto1, Vector2D punto2, Vector2D punto3, Vector2D* dir);
+	void Dibuja(float k = 1);
+	float distanciap_r(Vector2D recta1, Vector2D recta2, Vector2D punto, Vector2D* dir = 0);
 	//float distancia(Vector2D punto, Vector2D* direccion = 0);
-
+	void SetZ(float z) { this->z = z; }
 	friend class Interaccion;
 };

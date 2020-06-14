@@ -9,7 +9,4 @@ private:
 public:
 	Corazon();
 	virtual ~Corazon() {}
-
-	void Inicializa();
-	void DestruirContenido();
 };

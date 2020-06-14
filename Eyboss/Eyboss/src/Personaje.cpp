@@ -61,13 +61,17 @@ void Personaje::SetOrientacion(bool ori) {
 	orientacion = ori;
 }
 
+void Personaje::SetTextura(const char* t) {
+	textura = t;
+}
+
 void Personaje::SetVida(int v) {
-	vida = v;
+	vida += v;
 }
 
 void Personaje::Dibuja() {
 	glTranslatef(posicion.x, posicion.y, 0);
-	if (orientacion)
+	if (velocidad.x < 0)
 		animacion->flip(true, false);
 	else
 		animacion->flip(false, false);
@@ -84,5 +88,9 @@ void Personaje::Mueve(float t) {
 	else
 		animacion->setState(0, true);
 	animacion->loop();		
+}
+
+void Personaje::Inicializa() {
+	animacion = new ETSIDI::SpriteSequence(textura, col, 1, 50, true, 0, 0, ancho, altura, 0);
 }
 

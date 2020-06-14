@@ -1,9 +1,8 @@
 #include "Disparo.h"
-#include "Protagonista.h"
 #include "glut.h"
 
 Disparo::Disparo() {
-	radio = 0.25;
+	radio = 0.5;
 	posicion.x = 0;
 	posicion.y = 0;
 	velocidad.x = 5;
@@ -12,7 +11,8 @@ Disparo::Disparo() {
 	aceleracion.y = 0;
 	origen.x = 0;
 	origen.y = 0;
-	longitud = 2;
+	longitud = 0;
+	textura = "bin/texturas/bolitahada.png";
 }
 
 float Disparo::GetRadio() {
@@ -33,15 +33,19 @@ void Disparo::SetVel(float vx, float vy) {
 	velocidad.y = vy;
 }
 
+void Disparo::Inicializa() {
+	sprite = new ETSIDI::Sprite(textura, 0, 0, radio * 1.5, radio);
+}
+
 void Disparo::Dibuja() {
 	glColor3f(0.0f, 1.0f, 1.0f);
 	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
-	glutSolidSphere(radio, 20, 20);	
-	glBegin(GL_LINES);
-	glVertex3f(origen.x, origen.y, 0);
-	glVertex3f(0, 0, 0);
-	glEnd();
+	if (velocidad.x < 0)
+		sprite->flip(true, false);
+	else
+		sprite->flip(false, false);
+	sprite->draw();	
 	glPopMatrix();
 }
 

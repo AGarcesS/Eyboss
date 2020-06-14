@@ -29,6 +29,7 @@ public:
 	bool GetOn();
 	bool GetOrientacion();
 	int GetVida();
+	virtual void GetDamage() {} //Depende de cada enemigo (para el protagonista depende del objeto)
 
 	void SetPos(float px, float py);
 	void SetVel(float vx, float vy);
@@ -38,10 +39,11 @@ public:
 	void SetOrientacion(bool ori);
 	void SetVida(int v);
 
+	void SetTextura(const char* t);
+
 	virtual void Dibuja();
 	void Mueve(float t);
-	virtual void Inicializa() {}
-	virtual void DestruirContenido() {}
+	void Inicializa();
 
 	friend class Interaccion;
 };

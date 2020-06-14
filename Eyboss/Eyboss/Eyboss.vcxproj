@@ -20,43 +20,53 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Bonus.cpp" />
+    <ClCompile Include="src\B_Espada.cpp" />
     <ClCompile Include="src\Caja.cpp" />
     <ClCompile Include="src\Corazon.cpp" />
     <ClCompile Include="src\Disparo.cpp" />
+    <ClCompile Include="src\FactoryObjetos.cpp" />
+    <ClCompile Include="src\Global.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\Interfaz.cpp" />
     <ClCompile Include="src\ListaBonus.cpp" />
     <ClCompile Include="src\ListaDisparos.cpp" />
     <ClCompile Include="src\ListaEnemigos.cpp" />
+    <ClCompile Include="src\ListaObjetos.cpp" />
     <ClCompile Include="src\ListaPlataformas.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MaqEstados.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
+    <ClCompile Include="src\Objeto.cpp" />
+    <ClCompile Include="src\O_Espada.cpp" />
     <ClCompile Include="src\Pared.cpp" />
     <ClCompile Include="src\Personaje.cpp" />
     <ClCompile Include="src\Protagonista.cpp" />
     <ClCompile Include="src\Purk.cpp" />
-    <ClCompile Include="src\Tiempo.cpp" />
     <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bonus.h" />
+    <ClInclude Include="src\B_Espada.h" />
     <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\Corazon.h" />
     <ClInclude Include="src\Disparo.h" />
+    <ClInclude Include="src\FactoryObjetos.h" />
+    <ClInclude Include="src\Global.h" />
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\Interfaz.h" />
     <ClInclude Include="src\ListaBonus.h" />
     <ClInclude Include="src\ListaDisparos.h" />
     <ClInclude Include="src\ListaEnemigos.h" />
+    <ClInclude Include="src\ListaObjetos.h" />
     <ClInclude Include="src\ListaPlataformas.h" />
     <ClInclude Include="src\MaqEstados.h" />
     <ClInclude Include="src\Mundo.h" />
+    <ClInclude Include="src\Objeto.h" />
+    <ClInclude Include="src\O_Espada.h" />
     <ClInclude Include="src\Pared.h" />
     <ClInclude Include="src\Personaje.h" />
     <ClInclude Include="src\Protagonista.h" />
     <ClInclude Include="src\Purk.h" />
-    <ClInclude Include="src\Tiempo.h" />
     <ClInclude Include="src\Vector2D.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

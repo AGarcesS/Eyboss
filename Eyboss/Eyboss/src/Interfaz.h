@@ -1,13 +1,11 @@
 #pragma once
 #include "ETSIDI.h"
-#include "Tiempo.h"
 #include "Protagonista.h"
 
 class Interfaz {
 private:
 	ETSIDI::Sprite* corazon;
 public:
-	void ImprimeJuego(Protagonista p, Tiempo t);
+	void ImprimeJuego(Protagonista &p);
 	void Inicializa();
-	void DestruirContenido();
 };
