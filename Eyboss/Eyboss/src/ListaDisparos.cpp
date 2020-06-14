@@ -13,7 +13,7 @@ bool ListaDisparos::Agregar(Disparo* d) {
 		numero++;
 		for (int i = 0; i < numero; i++)
 		{
-			if (lista[numero] == lista[i])
+			if (lista[i] == d)
 				return false;
 			else
 				return true;

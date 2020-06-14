@@ -2,6 +2,7 @@
 #define MAX_DISPAROS 50
 #include "Disparo.h"
 #include "Caja.h"
+#include "Pared.h"
 
 class ListaDisparos {
 private:

@@ -1,6 +1,6 @@
 #include "Disparo.h"
-#include "glut.h"
 #include "Protagonista.h"
+#include "glut.h"
 
 Disparo::Disparo() {
 	radio = 0.25;

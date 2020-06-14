@@ -1,11 +1,8 @@
-#include<math.h>
-#include "ETSIDI.h"
 #include "Protagonista.h"
-#include "glut.h"
 
 Protagonista::Protagonista() {
 	altura = 1.8f;
-	ancho = 1.0f;
+	ancho = altura;
 	posicion.x = 0.0f;
 	posicion.y = altura / 2;
 	velocidad.x = velocidad.y = 0;
@@ -14,61 +11,14 @@ Protagonista::Protagonista() {
 	salto = 8.0f;
 	on = false;
 	orientacion = false;
+	vida = 10;
+	textura = "bin/texturas/eris_der.png";
+	col = 6;
 }
 
-Vector2D Protagonista::GetPos() {
-	return posicion;
-}
-
-Vector2D Protagonista::GetVel() {
-	return velocidad;
-}
-
-float Protagonista::GetAltura() {
-	return altura;
-}
-
-Vector2D Protagonista::GetAcel() {
-	return aceleracion;
-}
-
-float Protagonista::GetSalto() {
-	return salto;
-}
-
-bool Protagonista::GetOn() {
-	return on;
-}
-
-bool Protagonista::GetOrientacion() {
-	return orientacion;
-}
-
-void Protagonista::SetPos(float px, float py) {
-	posicion.x = px;
-	posicion.y = py;
-}
-
-void Protagonista::SetVel(float vx, float vy) {
-	velocidad.x = vx;
-	velocidad.y = vy;
-}
-
-void Protagonista::SetAcel(float ax, float ay) {
-	aceleracion.x = ax;
-	aceleracion.y = ay;
-}
-
-void Protagonista::SetSalto(float sy) {
-	salto = sy;
-}
-
-void Protagonista::SetOn(bool x) {
-	on = x;
-}
-
-void Protagonista::SetOrientacion(bool ori) {
-	orientacion = ori;
+void Protagonista::Inicializa() {
+	eris = new ETSIDI::SpriteSequence(textura, col, 1, 50, true, 0, 0, ancho, altura);
+	animacion = eris;
 }
 
 void Protagonista::Dibuja() {
@@ -82,15 +32,24 @@ void Protagonista::Dibuja() {
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();*/
 
-	glPushMatrix();
+	/*glPushMatrix();                                                            //Rectangulo
 	glTranslatef(posicion.x, posicion.y, 0);
 	glColor3f(1.0f, 0.0f, 0.0f);
 	glRectd(-ancho/2, -altura/2, ancho/2, altura/2);
 	glTranslatef(-posicion.x, -posicion.y, 0);
+	glPopMatrix();*/
+
+	glPushMatrix();
+	glTranslatef(posicion.x, posicion.y, 0);
+	if (velocidad.x > 0)
+		animacion->flip(true, false);
+	else if (velocidad.x < 0)
+		animacion->flip(false, false);
+	animacion->draw();
 	glPopMatrix();
 }
 
-void Protagonista::Mueve(float t) {
-	posicion = posicion + velocidad * t + aceleracion * (0.5 * t * t);
-	velocidad = velocidad + aceleracion * t;
+void Protagonista::DestruirContenido() {
+	//delete eris;
+	//delete animacion;
 }

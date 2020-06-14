@@ -1,17 +1,24 @@
 #pragma once
+#include "ETSIDI.h"
 #include "Vector2D.h"
 
 class Bonus {
-private:	
+protected:	
 	float lado;
 	Vector2D posicion;
-	Vector2D velocidad;
-	Vector2D aceleracion;
+	ETSIDI::Sprite* sprite;
+	const char* textura;
+	const char* audio;	
 public:
 	Bonus();
 	virtual ~Bonus() {}
 
 	void SetPos(float ix, float iy);
+
+	virtual void Inicializa() {}
 	void Dibuja();
-	void Mueve(float t);
+	void Audio();
+	virtual void DestruirContenido() {}
+
+	friend class Interaccion;
 };

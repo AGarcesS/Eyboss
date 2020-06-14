@@ -1,7 +1,7 @@
-#include "Mundo.h"
+#include "MaqEstados.h"
 #include "glut.h" //Ultimo de los include
 
-Mundo mundo;
+MaqEstados juego;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
@@ -37,9 +37,6 @@ int main(int argc,char* argv[])
 	glutSpecialFunc(OnSpecialKeyboardDown); //gestión de los cursores
 	glutSpecialUpFunc(OnSpecialUpFunc);
 	glutIgnoreKeyRepeat(1);
-
-
-	mundo.Inicializa();
 		
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();
@@ -56,7 +53,7 @@ void OnDraw(void)
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
 	
-	mundo.Dibuja();
+	juego.Dibuja();
 
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
@@ -64,23 +61,23 @@ void OnDraw(void)
 void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 {
 	//poner aqui el código de teclado
-	mundo.Tecla(key);
+	juego.Tecla(key);
 
 	glutPostRedisplay();
 }
 
 void OnSpecialKeyboardDown(int key, int x, int y) {
-	mundo.TeclaEspecial(key);
+	juego.TeclaEspecial(key);
 }
 
 void OnSpecialUpFunc(int key, int x, int y) {
-	mundo.TeclaMantenida(key);
+	juego.TeclaMantenida(key);
 }
 
 void OnTimer(int value)
 {
 //poner aqui el código de animacion
-	mundo.Mueve();
+	juego.Mueve();
 
 	//no borrar estas lineas
 	glutTimerFunc(25,OnTimer,0);
