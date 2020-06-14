@@ -16,9 +16,9 @@ public:
 	void Eliminar(int index);
 	void Eliminar(Bonus* b);
 	void Dibuja();
-	void Audio();
 	void Inicializa();
 
 	Bonus* operator[](int i);
+
 	int getNumero() { return numero; }
 };

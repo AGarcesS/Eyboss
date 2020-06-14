@@ -1,6 +1,7 @@
 #include "MaqEstados.h"
 #include "ETSIDI.h"
 #include "glut.h"
+#include "Global.h"
 
 MaqEstados::MaqEstados() {
 	estado = INICIO;
@@ -23,6 +24,7 @@ void MaqEstados::Dibuja() {
 	else if (estado == JUEGO) {
 		mundo.Dibuja();
 	}
+
 	else if (estado == FIN) {
 		mundo.Dibuja();
 		glTranslatef(mundo.GetOjo().x, mundo.GetOjo().y, 0);
@@ -101,5 +103,8 @@ void MaqEstados::TeclaMantenida(unsigned char key) {
 void MaqEstados::Mueve() {
 	if (estado == JUEGO) {
 		mundo.Mueve();
+		/*if ((Global::tiempo / 40) > 30) {
+			estado = FIN;
+		}*/
 	}	
 }

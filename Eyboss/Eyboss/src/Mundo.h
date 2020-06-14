@@ -1,9 +1,8 @@
 #include "Caja.h"
 #include "Bonus.h"
-#include "Disparo.h"
+#include "Corazon.h"
 #include "ListaDisparos.h"
 #include "Vector2D.h"
-#include "Tiempo.h"
 #include "Interfaz.h"
 #include "ListaEnemigos.h"
 #include "Purk.h"
@@ -11,7 +10,10 @@
 #include "Personaje.h"
 #include "ListaPlataformas.h"
 #include "ListaBonus.h"
-#include "Corazon.h"
+#include "B_Espada.h"
+#include "O_Espada.h"
+#include "ListaObjetos.h"
+#include "FactoryObjetos.h"
 
 class Mundo
 {
@@ -20,20 +22,17 @@ private:
 	float y_ojo;
 	float z_ojo;
 
-	float t;
-
 	Protagonista protagonista;
-	Purk purk;
 	Caja caja;
-	Pared plataforma;		
-	ListaDisparos disparos;
 	Interfaz interfaz;
-	Tiempo tiempo;
 	ListaEnemigos enemigos;
 	ListaPlataformas plataformas;
 	ListaBonus bonus;
+	ListaObjetos objetos;
+	FactoryObjetos factory;	
 
 	int nivel;
+	int o_index[4];
 
 public:
 	Mundo();

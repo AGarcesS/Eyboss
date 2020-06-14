@@ -1,21 +1,21 @@
-#include"Interaccion.h"
 #include <math.h>
 #include "ETSIDI.h"
-#include "glut.h"
+#include "Interaccion.h"
+#include "Global.h"
 #include "Mundo.h"
+#include "glut.h"
 
 Mundo::Mundo() {
-	t = 0;
+	for (int i = 0; i < 4; i++) {
+		o_index[i] = 0;
+	}
 }
 
 Mundo::~Mundo() {
-	disparos.DestruirContenido();
 	enemigos.DestruirContenido();
-	protagonista.DestruirContenido();
-	purk.DestruirContenido();
-	interfaz.DestruirContenido();
 	plataformas.DestruirContenido();
 	bonus.DestruirContenido();
+	objetos.DestruirContenido();
 }
 
 Vector2D Mundo::GetOjo() {
@@ -33,30 +33,26 @@ void Mundo::Dibuja()
 
 	//aqui es donde hay que poner el codigo de dibujo
 
-	protagonista.Dibuja();
-	purk.Dibuja();
+	protagonista.Dibuja();	
 	enemigos.Dibuja();	
 	caja.Dibuja();	
-	disparos.Dibuja();
-	plataforma.Dibuja();
 	plataformas.Dibuja();
 	bonus.Dibuja();	
-	interfaz.ImprimeJuego(protagonista, tiempo);
+	objetos.Dibuja();
+	interfaz.ImprimeJuego(protagonista);
 }
 
 void Mundo::Mueve()
 {
 	protagonista.Mueve(0.025f);	
-	purk.Mueve(0.025f);
 	enemigos.Mueve(0.025f);
-	disparos.Mueve(0.025f);	
+	objetos.Mueve(0.025f);
+
+	objetos.Colision(enemigos);
+	objetos.Colision(plataformas);
+	objetos.Colision(caja);
 	
-
 	Interaccion::Colision(protagonista, caja);
-	Interaccion::Colision(protagonista, plataforma);
-
-	Interaccion::Colision(purk, caja);
-	Interaccion::Colision(purk, plataforma);
 
 	for (int i = 0; i < plataformas.getNumero(); i++) {
 		Interaccion::Colision(protagonista, *plataformas[i]);
@@ -64,33 +60,42 @@ void Mundo::Mueve()
 	}
 
 	for (int i = 0; i < bonus.getNumero(); i++) {
-		if (Interaccion::Colision(protagonista, *bonus[i])) {
-			bonus.Audio();
-			bonus.Eliminar(bonus[i]);
+		if (Interaccion::Colision(*bonus[i], protagonista)) {
+			bonus[i]->Audio();
+			for (int j = 0; j < 4; j++) {
+				if (o_index[j] == bonus[i]->GetIndex()) { //Si ese índice ya está en el vector se sale
+					bonus.Eliminar(bonus[i]);
+					return;
+				}
+				if (o_index[j] == 0) { //Si hay una posición vacía (0), se escribe ahí ese índice
+					o_index[j] = bonus[i]->GetIndex();
+					factory.Crear(bonus[i]->GetIndex(), objetos);
+					bonus.Eliminar(bonus[i]);
+					return;
+				}
+			}
 		}
-	}	
+	}		
+
+	for (int i = 0; i < enemigos.getNumero(); i++) {
+		if (Interaccion::Colision(*enemigos[i], protagonista)) {
+			enemigos.Eliminar(enemigos[i]);
+		}
+	}
 
 	enemigos.Colision(caja);
-	enemigos.Colision(plataforma);
 
-	Disparo* aux = disparos.Colision(caja);
-	if (aux != 0)
-		disparos.Eliminar(aux);
-
-	Disparo* aux1 = disparos.Colision(plataforma);
-	if (aux1 != 0)
-		disparos.Eliminar(aux1);
-
-	t++;
-	tiempo.SetTiempo(t);
-	if (tiempo.GetReset())
-		t = 0.0f;
+	Global::tiempo++;
+	if (Global::reset)
+		Global::tiempo = 0;	
 }
 
 void Mundo::Inicializa()
 {
+	protagonista.Inicializa();
 	interfaz.Inicializa();
-	protagonista.Inicializa();	
+	Global::tiempo = 0;
+	Global::bajas = 0;		
 
 	x_ojo = protagonista.GetPos().x;
 	y_ojo = protagonista.GetPos().y;
@@ -105,13 +110,24 @@ void Mundo::Tecla(unsigned char key)
 	switch (key) {
 	
 	case ' ': //Salto
+	{
 		if (protagonista.GetOn()) {
 			protagonista.SetVel(protagonista.GetVel().x, protagonista.GetSalto());
 			protagonista.SetAcel(protagonista.GetAcel().x, -9.8f);
 			protagonista.SetOn(false);
 			ETSIDI::play("bin/sonidos/jump.wav");
 		}
-		break;			
+		break;
+	}
+	case 'q': //Tirachinas
+	{
+		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
+			if (objetos[i] != NULL)
+				if (objetos[i]->GetTipo() == Objeto::TIRACHINAS)
+					objetos[i]->Ataca(protagonista);
+		}
+		break;
+	}				
 	}
 }
 
@@ -124,19 +140,7 @@ void Mundo::TeclaEspecial(unsigned char key) {
 	case GLUT_KEY_RIGHT:		
 		protagonista.SetVel(5.0f,protagonista.GetVel().y);		
 		protagonista.SetOrientacion(true);
-		break;
-	case GLUT_KEY_UP:
-		Disparo* d = new Disparo();
-		Vector2D pos = protagonista.GetPos();
-		Vector2D vel = protagonista.GetVel();
-		d->SetPos(pos.x, pos.y);
-		if (protagonista.GetOrientacion())
-			d->SetVel(7.0f, 0.0f);
-		else
-			d->SetVel(-7.0f, 0.0f);		
-		disparos.Agregar(d);
-		ETSIDI::play("bin/sonidos/shoot.wav");
-		break;
+		break;	
 	}
 }
 
@@ -154,16 +158,12 @@ void Mundo::TeclaMantenida(unsigned char key) { //Si se deja de pulsar la tecla
 bool Mundo::CargarNivel() {
 	nivel++;
 	protagonista.SetPos(0, 0);
-	disparos.DestruirContenido();
 	enemigos.DestruirContenido();
+	objetos.DestruirContenido();
+	plataformas.DestruirContenido();	
 
 	if (nivel == 1) {
-		plataforma.SetPos(-5.0f, 2.0f, 5.0f, 2.5f);
-		plataforma.SetTextura("bin/texturas/wall.png");
 
-		purk.SetPos(0, 5);
-		purk.Inicializa();
-		
 		Purk* a = new Purk();
 		Purk* b = new Purk();
 		Purk* c = new Purk();
@@ -175,29 +175,33 @@ bool Mundo::CargarNivel() {
 		enemigos.Agregar(a);
 		enemigos.Agregar(b);
 		enemigos.Agregar(c);
-		enemigos.Inicializa();
+		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada purk)
 
 		Pared* d = new Pared();
+		Pared* h = new Pared();
 		d->SetPos(7.0f, 2.0f, 17.0f, 2.5f);
+		h->SetPos(-5.0f, 2.0f, 5.0f, 2.5f);
 		plataformas.Agregar(d);
+		plataformas.Agregar(h);
 
 		Corazon* e = new Corazon();
 		Corazon* f = new Corazon();
+		Corazon* g = new Corazon();
 		e->SetPos(12, 3);
 		f->SetPos(0, 3);
+		g->SetPos(15, 1);
 		bonus.Agregar(e);
 		bonus.Agregar(f);
+		bonus.Agregar(g);
 		bonus.Inicializa();
 	}
 
 	if (nivel == 2) {
-		plataforma.SetPos(-3.0f, 6.0f, 3.0f, 6.0f);
-		plataforma.SetColor(255, 0, 0);
+	
 	}
 
 	if (nivel == 3) {
-		plataforma.SetPos(-10.0f, 12.0f, 4.0f, 10.0f);
-		plataforma.SetColor(255, 0, 255);
+	
 	}
 
 	if (nivel <= 3)

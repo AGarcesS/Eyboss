@@ -7,6 +7,7 @@
 Pared::Pared() {
 	rojo = verde = azul = 255;
 	textura = "bin/texturas/floor.png";	
+	z = 0;
 }	
 
 void Pared::SetColor(unsigned char r, unsigned char v, unsigned char a){
@@ -27,18 +28,20 @@ void Pared::SetTextura(const char* text) {
 	textura = text;
 }
 
-void Pared::Dibuja() {                                                       //Implementar texturas
+void Pared::Dibuja(float k) {                                                       //Implementar texturas
 	glPushMatrix();
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture(textura).id);
 	glDisable(GL_LIGHTING);
 
+	glTranslatef(0, 0, z); //Se dibuja en un plano un poco por atrás del resto de objetos
+
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
-	glTexCoord2d(0.5*limite1.x, 0.5 * limite2.y); glVertex2f(limite1.x, limite2.y);
-	glTexCoord2d(0.5 * limite2.x, 0.5 * limite2.y); glVertex2f(limite2.x, limite2.y);
-	glTexCoord2d(0.5 * limite2.x, 0.5 * limite1.y); glVertex2f(limite2.x, limite1.y);
-	glTexCoord2d(0.5 * limite1.x, 0.5 * limite1.y); glVertex2f(limite1.x, limite1.y);
+	glTexCoord2d(k * limite1.x, k * limite2.y); glVertex2f(limite1.x, limite2.y);
+	glTexCoord2d(k * limite2.x, k * limite2.y); glVertex2f(limite2.x, limite2.y);
+	glTexCoord2d(k * limite2.x, k * limite1.y); glVertex2f(limite2.x, limite1.y);
+	glTexCoord2d(k * limite1.x, k * limite1.y); glVertex2f(limite1.x, limite1.y);
 	glEnd();
 
 	glEnable(GL_LIGHTING);
@@ -53,17 +56,22 @@ void Pared::Dibuja() {                                                       //I
 //	glEnable(GL_LIGHTING);
 //}
 
-float Pared::distanciap_r(Vector2D punto1, Vector2D punto2, Vector2D punto3, Vector2D* dir) {
-	Vector2D u = punto3 - punto1;
-	Vector2D v = (punto2 - punto1).Unitario();
-	float longitud = (punto1 - punto2).modulo();
+float Pared::distanciap_r(Vector2D recta1, Vector2D recta2, Vector2D punto, Vector2D* dir) {
+	Vector2D u = punto - recta1;
+	Vector2D v = (recta2 - recta1).Unitario();
+	float longitud = (recta1 - recta2).modulo();
+	Vector2D direccion;
 	float valor = u * v;
 	float distancia = 0;
+
 	if (valor < 0)
-		*dir = u;
+		direccion = u;
 	else if (valor > longitud)
-		*dir = (punto3 - punto2);
+		direccion = (punto - recta2);
 	else
-		*dir = u - v * valor;
-	return distancia = dir->modulo();
+		direccion = u - v * valor;
+	distancia = direccion.modulo();
+	if (dir != 0)
+		*dir = direccion.Unitario();
+	return distancia;
 }

@@ -22,6 +22,8 @@ public:
 
 	void Colision(Pared pa);
 	void Colision(Caja c);
+	Personaje* Colision(Personaje& p);
+
 	Personaje* operator [] (int i);
 	int getNumero() { return numero; }
 };

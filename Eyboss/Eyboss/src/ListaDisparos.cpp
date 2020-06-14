@@ -1,11 +1,7 @@
 #include "ListaDisparos.h"
 #include "Interaccion.h"
-
-ListaDisparos::ListaDisparos() {
-	numero = 0;
-	for (int i = 0; i < MAX_DISPAROS; i++)
-		lista[i] = 0;
-}
+#include "ETSIDI.h"
+#include "Global.h"
 
 bool ListaDisparos::Agregar(Disparo* d) {
 	if (numero < MAX_DISPAROS) {
@@ -47,9 +43,14 @@ void ListaDisparos::Eliminar(Disparo* d) {
 	}
 }
 
-void ListaDisparos::Mueve(float t) {
+void ListaDisparos::Inicializa() {
 	for (int i = 0; i < numero; i++)
-		lista[i]->Mueve(t);
+		lista[i]->Inicializa();
+}
+
+void ListaDisparos::Mueve(float t){
+	for (int i = 0; i < numero; i++)
+		lista[i]->Mueve(t);	
 }
 
 void ListaDisparos::Dibuja() {
@@ -65,14 +66,6 @@ Disparo* ListaDisparos::Colision(Pared p) {
 	return 0;
 }
 
-Disparo* ListaDisparos::Colision(Caja c) {
-	for (int i = 0; i < numero; i++) {
-		if (Interaccion::Colision(*lista[i], c))
-			return lista[i];
-	}
-	return 0;
-}
-
 Disparo* ListaDisparos::operator [] (int i) {
 	if (i >= numero)
 		i = numero - 1;
@@ -80,3 +73,48 @@ Disparo* ListaDisparos::operator [] (int i) {
 		i = 0;
 	return lista[i];
 }
+
+void ListaDisparos::Ataca(Personaje& p) {
+	Disparo* d = new Disparo();
+	d->SetPos(p.GetPos().x, p.GetPos().y);
+	if (p.GetOrientacion())
+		d->SetVel(7.0f, 0.0f);
+	else
+		d->SetVel(-7.0f, 0.0f);
+	Agregar(d);
+	Inicializa();
+	ETSIDI::play("bin/sonidos/shoot.wav");
+}
+
+void ListaDisparos::Colision(ListaEnemigos& l) {
+	for (int i = 0; i < l.getNumero(); i++) {
+		for (int j = 0; j < numero; j++) {
+			if (Interaccion::Colision(*lista[i], *l[i])) {
+				if (l[i]->GetVida() > 0) {
+					l[i]->SetVida(-1);
+				}
+				else {
+					l.Eliminar(l[i]);
+				}
+				Eliminar(lista[j]);
+				break;
+			}
+		}		
+	}
+}
+
+void ListaDisparos::Colision(ListaPlataformas& l) {
+	for (int i = 0; i < l.getNumero(); i++) {
+		Disparo* aux = Colision(*l[i]);
+		if (aux != 0)
+			Eliminar(aux);
+	}
+}
+
+void ListaDisparos::Colision(Caja &c) {
+	for (int i = 0; i < numero; i++) {
+		if (Interaccion::Colision(*lista[i], c))
+			Eliminar(lista[i]);
+	}
+}
+

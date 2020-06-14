@@ -9,16 +9,17 @@ protected:
 	ETSIDI::Sprite* sprite;
 	const char* textura;
 	const char* audio;	
+	int index; //índice de cada arma
 public:
 	Bonus();
 	virtual ~Bonus() {}
 
+	int GetIndex();
 	void SetPos(float ix, float iy);
 
-	virtual void Inicializa() {}
+	void Inicializa();
 	void Dibuja();
 	void Audio();
-	virtual void DestruirContenido() {}
 
 	friend class Interaccion;
 };

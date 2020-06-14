@@ -7,6 +7,7 @@ private:
 	Pared techo;
 	Pared pared_izq;
 	Pared pared_dcha;
+	Pared fondo;
 public:
 	Caja();
 	virtual ~Caja() {}

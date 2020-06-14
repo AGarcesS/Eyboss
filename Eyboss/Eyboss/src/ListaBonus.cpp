@@ -38,9 +38,9 @@ void ListaBonus::Eliminar(int index) {
 		lista[i] = lista[i + 1];
 }
 
-void ListaBonus::Eliminar(Bonus* p) {
+void ListaBonus::Eliminar(Bonus* b) {
 	for (int i = 0; i < numero; i++) {
-		if (lista[i] == p) {
+		if (lista[i] == b) {
 			Eliminar(i);
 			return;
 		}
@@ -50,11 +50,6 @@ void ListaBonus::Eliminar(Bonus* p) {
 void ListaBonus::Dibuja() {
 	for (int i = 0; i < numero; i++)
 		lista[i]->Dibuja();
-}
-
-void ListaBonus::Audio() {
-	for (int i = 0; i < numero; i++)
-		lista[i]->Audio();
 }
 
 void ListaBonus::Inicializa() {

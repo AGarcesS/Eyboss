@@ -1,10 +1,13 @@
-#include <stdlib.h>
 #include "Bonus.h"
 #include "glut.h"
 
 Bonus::Bonus() {
 	lado = 1;
 	posicion.x = posicion.y = 0;
+}
+
+int Bonus::GetIndex() {
+	return index;
 }
 
 void Bonus::SetPos(float ix, float iy) {
@@ -21,4 +24,8 @@ void Bonus::Dibuja() {
 
 void Bonus::Audio() {
 	ETSIDI::play(audio);
+}
+
+void Bonus::Inicializa() {
+	sprite = new ETSIDI::Sprite(textura, 0, 0, lado, lado);
 }

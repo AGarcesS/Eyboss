@@ -16,11 +16,6 @@ Protagonista::Protagonista() {
 	col = 6;
 }
 
-void Protagonista::Inicializa() {
-	eris = new ETSIDI::SpriteSequence(textura, col, 1, 50, true, 0, 0, ancho, altura);
-	animacion = eris;
-}
-
 void Protagonista::Dibuja() {
 
 	/*glEnable(GL_TEXTURE_2D);                                                    //Texturas
@@ -47,9 +42,4 @@ void Protagonista::Dibuja() {
 		animacion->flip(false, false);
 	animacion->draw();
 	glPopMatrix();
-}
-
-void Protagonista::DestruirContenido() {
-	//delete eris;
-	//delete animacion;
 }

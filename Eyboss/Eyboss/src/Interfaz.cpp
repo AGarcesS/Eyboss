@@ -1,16 +1,18 @@
 #include <sstream>
 #include "Interfaz.h"
+#include "Global.h"
 #include "glut.h"
 
-void Interfaz::ImprimeJuego(Protagonista p, Tiempo t) {
-	std::stringstream sstr_tiempo, sstr_vida;
-	std::string str_tiempo, str_vida;
+void Interfaz::ImprimeJuego(Protagonista &p) {
+	std::stringstream sstr_tiempo, sstr_vida, sstr_bajas;
+	std::string str_tiempo, str_vida, str_bajas;
 
 	glTranslatef(p.GetPos().x, p.GetPos().y, 1);
 
 	int minutos, segundos;
-	minutos = t.GetTiempo() / 60;
-	segundos = t.GetTiempo() - minutos * 60;
+
+	minutos = Global::tiempo / (40 * 60); //Cada 25 ms se incrementa en uno, por lo que para milisegundos se divide entre 40
+	segundos = (Global::tiempo / 40) - minutos * 60;
 
 	if (segundos > 9)
 		sstr_tiempo << "Tiempo: " << minutos << ":" << segundos;
@@ -30,13 +32,18 @@ void Interfaz::ImprimeJuego(Protagonista p, Tiempo t) {
 	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 	ETSIDI::printxy(t_vida, -14, 9);
 
+	sstr_bajas << "Kills: " << Global::bajas;
+	str_bajas = sstr_bajas.str();
+	const char* t_bajas = str_bajas.c_str();
+	ETSIDI::setTextColor(1, 1, 1);
+	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
+	ETSIDI::printxy(t_bajas, -14, 8);
+
+	glPushMatrix();
 	corazon->draw();
+	glPopMatrix();
 }
 
 void Interfaz::Inicializa() {
-	corazon = new ETSIDI::Sprite("bin/texturas/clleno.png", -11, 9.2, 0.8, 0.8);
-}
-
-void Interfaz::DestruirContenido() {
-	//delete corazon;
+	corazon = new ETSIDI::Sprite("bin/texturas/clleno.png", -11.1, 9.1, 0.8, 0.8);
 }
