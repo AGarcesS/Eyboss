@@ -109,6 +109,16 @@ void Mundo::Tecla(unsigned char key)
 {
 	switch (key) {
 	
+	
+	case 'q': //Tirachinas
+	{
+		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
+			if (objetos[i] != NULL)
+				if (objetos[i]->GetTipo() == Objeto::TIRACHINAS)
+					objetos[i]->Ataca(protagonista);
+		}
+		break;
+	}	
 	case ' ': //Salto
 	{
 		if (protagonista.GetOn()) {
@@ -119,15 +129,6 @@ void Mundo::Tecla(unsigned char key)
 		}
 		break;
 	}
-	case 'q': //Tirachinas
-	{
-		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
-			if (objetos[i] != NULL)
-				if (objetos[i]->GetTipo() == Objeto::TIRACHINAS)
-					objetos[i]->Ataca(protagonista);
-		}
-		break;
-	}				
 	}
 }
 
@@ -147,11 +148,16 @@ void Mundo::TeclaEspecial(unsigned char key) {
 void Mundo::TeclaMantenida(unsigned char key) { //Si se deja de pulsar la tecla
 	switch (key) {
 	case GLUT_KEY_RIGHT:
+	{
 		protagonista.SetVel(0.0f, protagonista.GetVel().y);
 		break;
+	}
 	case GLUT_KEY_LEFT:
+	{
 		protagonista.SetVel(0.0f, protagonista.GetVel().y);
 		break;
+	}
+
 	}
 }
 
@@ -177,8 +183,8 @@ bool Mundo::CargarNivel() {
 		enemigos.Agregar(c);
 		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada purk)
 
-		factory_p.Crear(Pared::NORMAL, plataformas, 7.0f, 2.0f, 17.0f, 2.5f);
-		factory_p.Crear(Pared::NORMAL, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);	
+		factory_p.Crear(Pared::SALTO, plataformas, 7.0f, 2.0f, 17.0f, 2.5f);
+		factory_p.Crear(Pared::VELOCIDAD, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);	
 
 		Corazon* e = new Corazon();
 		Corazon* f = new Corazon();

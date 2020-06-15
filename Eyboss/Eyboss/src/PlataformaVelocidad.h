@@ -6,7 +6,7 @@ class PlataformaVelocidad : public Pared {
 public:
 	PlataformaVelocidad() :Pared(VELOCIDAD) {
 		rojo = verde = azul = 255;
-		textura = "bin/texturas/floor.png";
+		textura = "bin/texturas/speed.png";
 		z = 0;
 	}
 	virtual ~PlataformaVelocidad() {}

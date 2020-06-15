@@ -6,7 +6,7 @@ class PlataformaSalto : public Pared {
 public:
 	PlataformaSalto() :Pared(SALTO) {
 		rojo = verde = azul = 255;
-		textura = "bin/texturas/floor.png";
+		textura = "bin/texturas/salto.png";
 		z = 0;
 	}
 	virtual ~PlataformaSalto() {}
