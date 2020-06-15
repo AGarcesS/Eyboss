@@ -139,6 +139,14 @@ bool Interaccion::Colision(Bonus& b, Personaje& p) {
 }
 
 bool Interaccion::Colision(Personaje& p1, Personaje& p2) {
+
+	if (abs(p1.posicion.y - p2.posicion.y) < (p1.altura + p2.altura) / 2 && abs(p1.posicion.x - p2.posicion.x) < (p1.ancho + p2.ancho) / 2) {
+		return true;
+	}
+
+	return false;
+
+	/*
 	if ((p1.posicion.x - p1.ancho / 2) > (p2.posicion.x + p2.ancho / 2))
 		return 0;
 	if ((p1.posicion.x + p1.ancho / 2) < (p2.posicion.x - p2.ancho / 2))
@@ -149,6 +157,7 @@ bool Interaccion::Colision(Personaje& p1, Personaje& p2) {
 		return 0;
 	else
 		return 1;
+	*/
 
 	/*Pared aux;
 	aux.SetPos(p1.posicion.x - p1.ancho / 2, p1.posicion.y + p1.altura / 2, p1.posicion.x + p1.ancho / 2, p1.posicion.y - p1.altura / 2);
@@ -172,9 +181,9 @@ bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 			return true;
 		}
 	}
-	if (p2.orientacion == true)
-		p2.velocidad.x = 2;
+	if (p2.orientacion == p2.orien_ini)
+		p2.velocidad.x = p2.GetVelIni().x;
 	else
-		p2.velocidad.x = -2;
+		p2.velocidad.x = -p2.GetVelIni().x;
 	return false;
 }
