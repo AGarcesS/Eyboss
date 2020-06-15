@@ -2,7 +2,7 @@
 #include "Vector2D.h"
 
 class Pared {
-private:	
+protected:	
 	unsigned char rojo;
 	unsigned char verde;
 	unsigned char azul;	
@@ -20,7 +20,7 @@ public:
 	void SetColor(unsigned char r, unsigned char v, unsigned char a);
 	void SetPos(float x1, float y1, float x2, float y2);
 	void SetTextura(const char* text);
-	void Dibuja(float k = 1);
+	virtual void Dibuja(float k = 1);
 	float distanciap_r(Vector2D recta1, Vector2D recta2, Vector2D punto, Vector2D* dir = 0);
 	//float distancia(Vector2D punto, Vector2D* direccion = 0);
 	void SetZ(float z) { this->z = z; }

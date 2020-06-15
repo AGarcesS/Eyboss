@@ -107,6 +107,9 @@ bool Interaccion::Colision(Personaje& p, Caja &c) {
 	return colision;
 }
 
+
+
+
 bool Interaccion::Colision(Disparo &d, Pared &pa) {
 
 	if (Colision(pa, d.posicion, d.radio)) {
@@ -116,12 +119,17 @@ bool Interaccion::Colision(Disparo &d, Pared &pa) {
 		return false;
 }
 
+
+
 bool Interaccion::Colision(Disparo &d, Caja &c) {
 	if (Colision(d, c.techo) || Colision(d, c.suelo) || Colision(d, c.pared_izq) || Colision(d, c.pared_dcha))
 		return true;
 	else
 		return false;
 }
+
+
+
 
 bool Interaccion::Colision(Disparo& d, Personaje& p) {
 	Pared pa;

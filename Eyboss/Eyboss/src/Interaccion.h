@@ -4,6 +4,8 @@
 #include "Disparo.h"
 #include "Pared.h"
 #include "Bonus.h"
+#include "PlataformaSalto.h"
+#include "PlataformaVelocidad.h"
 
 class Interaccion {
 public:
