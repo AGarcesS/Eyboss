@@ -139,6 +139,14 @@ bool Interaccion::Colision(Bonus& b, Personaje& p) {
 }
 
 bool Interaccion::Colision(Personaje& p1, Personaje& p2) {
+
+	if (abs(p1.posicion.y - p2.posicion.y) < (p1.altura + p2.altura) / 2 && abs(p1.posicion.x - p2.posicion.x) < (p1.ancho + p2.ancho) / 2) {
+		return true;
+	}
+
+	return false;
+
+	/*
 	if ((p1.posicion.x - p1.ancho / 2) > (p2.posicion.x + p2.ancho / 2))
 		return 0;
 	if ((p1.posicion.x + p1.ancho / 2) < (p2.posicion.x - p2.ancho / 2))
@@ -149,8 +157,33 @@ bool Interaccion::Colision(Personaje& p1, Personaje& p2) {
 		return 0;
 	else
 		return 1;
+	*/
 
 	/*Pared aux;
 	aux.SetPos(p1.posicion.x - p1.ancho / 2, p1.posicion.y + p1.altura / 2, p1.posicion.x + p1.ancho / 2, p1.posicion.y - p1.altura / 2);
 	return Interaccion::Colision(aux, p2.posicion, p2.altura, p2.ancho);*/
+}
+
+bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
+
+	if (Distancia(p1.posicion, p2.posicion) < 7) {
+		bool derecha = false;						// p1 a la izquierda de p2
+		if ((p1.posicion.x - p2.posicion.x) > 0)
+			derecha = true;							// p1 a la derecha de p2
+
+		if (derecha) {
+			p2.velocidad.x = 3.5;
+			return true;
+		}
+
+		else {
+			p2.velocidad.x = -3.5;
+			return true;
+		}
+	}
+	if (p2.orientacion == p2.orien_ini)
+		p2.velocidad.x = p2.GetVelIni().x;
+	else
+		p2.velocidad.x = -p2.GetVelIni().x;
+	return false;
 }

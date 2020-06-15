@@ -11,7 +11,7 @@ Purk::Purk() {
 	col = 3;
 	posicion.x = 0;
 	posicion.y = 5;
-	orientacion = false;
+	orientacion = orien_ini = false;
 	salto = 0;
 	on = false;	
 	vida = 4;

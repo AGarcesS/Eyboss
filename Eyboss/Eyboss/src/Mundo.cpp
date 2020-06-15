@@ -54,6 +54,10 @@ void Mundo::Mueve()
 	
 	Interaccion::Colision(protagonista, caja);
 
+	for (int i = 0; i < enemigos.getNumero(); i++) {
+		Interaccion::Cercania(protagonista, *enemigos[i]);
+	}
+
 	for (int i = 0; i < plataformas.getNumero(); i++) {
 		Interaccion::Colision(protagonista, *plataformas[i]);
 		enemigos.Colision(*plataformas[i]);
@@ -157,7 +161,7 @@ void Mundo::TeclaMantenida(unsigned char key) { //Si se deja de pulsar la tecla
 
 bool Mundo::CargarNivel() {
 	nivel++;
-	protagonista.SetPos(0, 0);
+	protagonista.SetPos(10, 0);
 	enemigos.DestruirContenido();
 	objetos.DestruirContenido();
 	plataformas.DestruirContenido();	
@@ -167,11 +171,11 @@ bool Mundo::CargarNivel() {
 		Purk* a = new Purk();
 		Purk* b = new Purk();
 		Purk* c = new Purk();
-		a->SetVel(0, 3);
+		a->SetVelIni(2, 3);
 		b->SetPos(5, 3);
-		b->SetVel(3, 5);
+		b->SetVelIni(2, 5);
 		c->SetPos(-5, 3);
-		c->SetVel(-1, 0);
+		c->SetVelIni(-2, 0);
 		enemigos.Agregar(a);
 		enemigos.Agregar(b);
 		enemigos.Agregar(c);
