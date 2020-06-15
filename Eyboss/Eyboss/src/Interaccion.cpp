@@ -154,3 +154,27 @@ bool Interaccion::Colision(Personaje& p1, Personaje& p2) {
 	aux.SetPos(p1.posicion.x - p1.ancho / 2, p1.posicion.y + p1.altura / 2, p1.posicion.x + p1.ancho / 2, p1.posicion.y - p1.altura / 2);
 	return Interaccion::Colision(aux, p2.posicion, p2.altura, p2.ancho);*/
 }
+
+bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
+
+	if (Distancia(p1.posicion, p2.posicion) < 7) {
+		bool derecha = false;						// p1 a la izquierda de p2
+		if ((p1.posicion.x - p2.posicion.x) > 0)
+			derecha = true;							// p1 a la derecha de p2
+
+		if (derecha) {
+			p2.velocidad.x = 3.5;
+			return true;
+		}
+
+		else {
+			p2.velocidad.x = -3.5;
+			return true;
+		}
+	}
+	if (p2.orientacion == true)
+		p2.velocidad.x = 2;
+	else
+		p2.velocidad.x = -2;
+	return false;
+}
