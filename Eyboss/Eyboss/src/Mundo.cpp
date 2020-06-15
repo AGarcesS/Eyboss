@@ -76,12 +76,17 @@ void Mundo::Mueve()
 			}
 		}
 	}		
+	
+
 
 	for (int i = 0; i < enemigos.getNumero(); i++) {
 		if (Interaccion::Colision(*enemigos[i], protagonista)) {
 			enemigos.Eliminar(enemigos[i]);
+			break;
 		}
 	}
+	
+	
 
 	enemigos.Colision(caja);
 
@@ -173,24 +178,24 @@ bool Mundo::CargarNivel() {
 		Purk* a = new Purk();
 		Purk* b = new Purk();
 		Purk* c = new Purk();
-		a->SetVel(0, 3);
-		b->SetPos(5, 3);
-		b->SetVel(3, 5);
-		c->SetPos(-5, 3);
-		c->SetVel(-1, 0);
+		a->SetVel(-3, 0);
+		b->SetPos(10, 3);
+		b->SetVel(-3, 0);
+		c->SetPos(-6, 3);
+		c->SetVel(-3, 0);
 		enemigos.Agregar(a);
 		enemigos.Agregar(b);
 		enemigos.Agregar(c);
 		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada purk)
 
 		factory_p.Crear(Pared::SALTO, plataformas, 7.0f, 2.0f, 17.0f, 2.5f);
-		factory_p.Crear(Pared::VELOCIDAD, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);	
+		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);	
 
 		Corazon* e = new Corazon();
 		Corazon* f = new Corazon();
 		Corazon* g = new Corazon();
 		e->SetPos(12, 3);
-		f->SetPos(0, 3);
+		f->SetPos(0, 1);
 		g->SetPos(15, 1);
 		bonus.Agregar(e);
 		bonus.Agregar(f);

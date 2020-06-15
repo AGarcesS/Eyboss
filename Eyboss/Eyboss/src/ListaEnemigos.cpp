@@ -9,6 +9,7 @@ ListaEnemigos::ListaEnemigos() {
 }
 
 bool ListaEnemigos::Agregar(Personaje* p) {
+
 	if (numero < MAX_ENEMIGOS) {
 		lista[numero] = p;
 		numero++;

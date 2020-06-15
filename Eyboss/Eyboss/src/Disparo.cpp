@@ -5,7 +5,7 @@ Disparo::Disparo() {
 	radio = 0.5;
 	posicion.x = 0;
 	posicion.y = 0;
-	velocidad.x = 5;
+	velocidad.x = 6;
 	velocidad.y = 0;
 	aceleracion.x = 0;
 	aceleracion.y = 0;

@@ -2,7 +2,6 @@
 #include <math.h>
 
 Interaccion::Interaccion() {
-
 }
 
 bool Interaccion::Colision(Pared &pa, Vector2D pos, float r, float s) { //Colisión de dos rectángulos (r=altura, s=ancho)
@@ -143,7 +142,6 @@ bool Interaccion::Colision(Disparo &d, Pared &pa) {
 }
 
 
-
 bool Interaccion::Colision(Disparo &d, Caja &c) {
 	if (Colision(d, c.techo) || Colision(d, c.suelo) || Colision(d, c.pared_izq) || Colision(d, c.pared_dcha))
 		return true;
@@ -152,15 +150,15 @@ bool Interaccion::Colision(Disparo &d, Caja &c) {
 }
 
 
-
-
 bool Interaccion::Colision(Disparo& d, Personaje& p) {
 	Pared pa;
 	pa.SetPos(p.posicion.x - p.ancho / 2, p.posicion.y + p.altura / 2, p.posicion.x + p.ancho / 2, p.posicion.y - p.altura / 2);
 	if (Colision(pa, d.posicion, d.radio + 0.5, d.radio))
 		return true;
 	else
+	
 		return false;
+		
 }
 
 bool Interaccion::Colision(Bonus& b, Personaje& p) {
@@ -170,18 +168,15 @@ bool Interaccion::Colision(Bonus& b, Personaje& p) {
 }
 
 bool Interaccion::Colision(Personaje& p1, Personaje& p2) {
+	
 	if ((p1.posicion.x - p1.ancho / 2) > (p2.posicion.x + p2.ancho / 2))
 		return 0;
-	if ((p1.posicion.x + p1.ancho / 2) < (p2.posicion.x - p2.ancho / 2))
+	else if ((p1.posicion.x + p1.ancho / 2) < (p2.posicion.x - p2.ancho / 2))
 		return 0;
-	if ((p1.posicion.y + p1.altura / 2) > (p2.posicion.y + 1.5 * p2.altura))
+	else if ((p1.posicion.y - p1.altura / 2) > (p2.posicion.y + p2.altura / 2))
 		return 0;
-	if ((p1.posicion.y + 1.5 * p1.altura) > (p2.posicion.y + p2.altura / 2))
+	else if ((p1.posicion.y + p1.altura / 2) < (p2.posicion.y - p2.altura / 2))
 		return 0;
 	else
 		return 1;
-
-	/*Pared aux;
-	aux.SetPos(p1.posicion.x - p1.ancho / 2, p1.posicion.y + p1.altura / 2, p1.posicion.x + p1.ancho / 2, p1.posicion.y - p1.altura / 2);
-	return Interaccion::Colision(aux, p2.posicion, p2.altura, p2.ancho);*/
 }

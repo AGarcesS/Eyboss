@@ -9,8 +9,7 @@ public:
 	virtual ~DisparoRapido() {}
 
 	void Inicializa();
-	void Dibuja();
-	void Mueve(float t);
+	
 
 	friend class Interaccion;
 };

@@ -22,8 +22,8 @@ public:
 	void SetVel (float vx, float vy);
 
 	virtual void Inicializa();
-	virtual void Dibuja();
-	virtual void Mueve(float t);
+	void Dibuja();
+	void Mueve(float t);
 
 	friend class Interaccion;
 };
