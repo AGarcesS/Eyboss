@@ -5,13 +5,6 @@
 #include "glut.h"
 
 
-PlataformaVelocidad::PlataformaVelocidad() {
-	rojo = verde = azul = 255;
-	textura = "bin/texturas/floor.png";
-	z = 0;
-}
-
-
 void PlataformaVelocidad::Dibuja(float k) {                                                       //Implementar texturas
 	glPushMatrix();
 	glEnable(GL_TEXTURE_2D);

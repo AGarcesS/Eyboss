@@ -69,7 +69,7 @@ void Mundo::Mueve()
 				}
 				if (o_index[j] == 0) { //Si hay una posición vacía (0), se escribe ahí ese índice
 					o_index[j] = bonus[i]->GetIndex();
-					factory.Crear(bonus[i]->GetIndex(), objetos);
+					factory_o.Crear(bonus[i]->GetIndex(), objetos);
 					bonus.Eliminar(bonus[i]);
 					return;
 				}
@@ -177,12 +177,8 @@ bool Mundo::CargarNivel() {
 		enemigos.Agregar(c);
 		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada purk)
 
-		Pared* d = new Pared();
-		Pared* h = new Pared();
-		d->SetPos(7.0f, 2.0f, 17.0f, 2.5f);
-		h->SetPos(-5.0f, 2.0f, 5.0f, 2.5f);
-		plataformas.Agregar(d);
-		plataformas.Agregar(h);
+		factory_p.Crear(Pared::NORMAL, plataformas, 7.0f, 2.0f, 17.0f, 2.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);	
 
 		Corazon* e = new Corazon();
 		Corazon* f = new Corazon();

@@ -182,5 +182,8 @@
     <ClInclude Include="src\PlataformaVelocidad.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="src\FactoryPlataforma.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

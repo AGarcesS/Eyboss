@@ -4,7 +4,11 @@
 
 class PlataformaVelocidad : public Pared {
 public:
-	PlataformaVelocidad();
+	PlataformaVelocidad() :Pared(VELOCIDAD) {
+		rojo = verde = azul = 255;
+		textura = "bin/texturas/floor.png";
+		z = 0;
+	}
 	virtual ~PlataformaVelocidad() {}
 	void Dibuja(float k = 1);
 

@@ -14,6 +14,7 @@
 #include "O_Espada.h"
 #include "ListaObjetos.h"
 #include "FactoryObjetos.h"
+#include "FactoryPlataforma.h"
 
 class Mundo
 {
@@ -29,7 +30,8 @@ private:
 	ListaPlataformas plataformas;
 	ListaBonus bonus;
 	ListaObjetos objetos;
-	FactoryObjetos factory;	
+	FactoryObjetos factory_o;	
+	FactoryPlataforma factory_p;
 
 	int nivel;
 	int o_index[4];

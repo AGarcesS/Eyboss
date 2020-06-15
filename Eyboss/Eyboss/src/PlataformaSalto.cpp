@@ -4,14 +4,6 @@
 #include "PlataformaSalto.h"
 #include "glut.h"
 
-
-PlataformaSalto::PlataformaSalto() {
-	rojo = verde = azul = 255;
-	textura = "bin/texturas/floor.png";
-	z = 0;
-}
-
-
 void PlataformaSalto::Dibuja(float k) {                                                       //Implementar texturas
 	glPushMatrix();
 	glEnable(GL_TEXTURE_2D);
