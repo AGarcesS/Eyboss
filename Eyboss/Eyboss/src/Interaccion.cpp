@@ -150,15 +150,10 @@ bool Interaccion::Colision(Disparo &d, Caja &c) {
 }
 
 
-bool Interaccion::Colision(Disparo& d, Personaje& p) {
+bool Interaccion::Colision(Disparo d, Personaje p) {
 	Pared pa;
 	pa.SetPos(p.posicion.x - p.ancho / 2, p.posicion.y + p.altura / 2, p.posicion.x + p.ancho / 2, p.posicion.y - p.altura / 2);
-	if (Colision(pa, d.posicion, d.radio + 0.5, d.radio))
-		return true;
-	else
-	
-		return false;
-		
+	return Interaccion::Colision(pa, d.posicion, d.radio + 0.5, d.radio);		
 }
 
 bool Interaccion::Colision(Bonus& b, Personaje& p) {

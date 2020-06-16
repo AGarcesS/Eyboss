@@ -29,7 +29,7 @@ void Mundo::Dibuja()
 {
 	gluLookAt(protagonista.GetPos().x, protagonista.GetPos().y, 30,	// posicion del ojo
 			protagonista.GetPos().x, protagonista.GetPos().y, 0.0,      // hacia que punto mira  (0,0,0) 
-			0.0, protagonista.GetPos().y, 0.0);     // definimos hacia arriba (eje Y)    
+			0.0, protagonista.GetPos().y, 0.0);    // definimos hacia arriba (eje Y)    
 
 	//aqui es donde hay que poner el codigo de dibujo
 
@@ -76,17 +76,13 @@ void Mundo::Mueve()
 			}
 		}
 	}		
-	
-
 
 	for (int i = 0; i < enemigos.getNumero(); i++) {
 		if (Interaccion::Colision(*enemigos[i], protagonista)) {
 			enemigos.Eliminar(enemigos[i]);
 			break;
 		}
-	}
-	
-	
+	}	
 
 	enemigos.Colision(caja);
 
@@ -171,7 +167,7 @@ bool Mundo::CargarNivel() {
 	protagonista.SetPos(0, 0);
 	enemigos.DestruirContenido();
 	objetos.DestruirContenido();
-	plataformas.DestruirContenido();	
+	plataformas.DestruirContenido();
 
 	if (nivel == 1) {
 
