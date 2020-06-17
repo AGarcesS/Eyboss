@@ -69,7 +69,8 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 	float d3 = pa.distanciap_r(punto1, pa.limite1, p.posicion, &dir3) - p.ancho / 2;
 	if ((d3 <= 0) && (p.posicion.x > pa.limite1.x - p.ancho / 2)) {
 		p.posicion.x = pa.limite1.x - p.ancho / 2;
-		p.velocidad.x = p.aceleracion.x = 0.0f;
+		p.velocidad.x *= -1;
+		p.aceleracion.x = 0.0f;
 		p.aceleracion.y = -9.8f;
 		colision = true;
 		colisionarriba = false;
@@ -79,7 +80,8 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 	float d4 = pa.distanciap_r(pa.limite2, punto2, p.posicion, &dir4) - p.ancho / 2;
 	if ((d4 <= 0) && (p.posicion.x < pa.limite2.x + p.ancho / 2)){
 		p.posicion.x = pa.limite2.x + p.ancho / 2;
-		p.velocidad.x = p.aceleracion.x = 0.0f;
+		p.velocidad.x *= -1;
+		p.aceleracion.x = 0.0f;
 		p.aceleracion.y = -9.8f;
 		colision = true;
 		colisionarriba = false;
@@ -154,35 +156,63 @@ bool Interaccion::Colision(Disparo &d, Caja &c) {
 }
 
 bool Interaccion::Colision(Disparo& d, Personaje& p) {
+	
+	if (d.posicion.x - p.posicion.x < (d.radio * 1.5 + p.ancho) / 2 && d.posicion.x - p.posicion.x > 0 && abs(d.posicion.y - p.posicion.y) < (d.radio + p.ancho) / 2)
+		return true;
+	if (d.posicion.x - p.posicion.x > -(d.radio * 1.5 + p.ancho) / 2 && d.posicion.x - p.posicion.x < 0 && abs(d.posicion.y - p.posicion.y) < (d.radio + p.ancho) / 2)
+		return true;
+	return false;
+
+	/*  CON PARED AUXILIAR
 	Pared pa;
 	pa.SetPos(p.posicion.x - p.ancho / 2, p.posicion.y + p.altura / 2, p.posicion.x + p.ancho / 2, p.posicion.y - p.altura / 2);
 	if (Colision(pa, d.posicion, d.radio + 0.5, d.radio))
 		return true;
 	else
 		return false;
+		*/
 }
 
 bool Interaccion::Colision(Bonus& b, Personaje& p) {
+
+	if (abs(b.posicion.x - p.posicion.x) < (b.lado + p.ancho) / 2 && abs(b.posicion.y - p.posicion.y) < (b.lado + p.ancho) / 2)
+		return true;
+	return false;
+
+/* CON PARED AUXILIAR
 	Pared aux;
 	aux.SetPos(p.posicion.x - p.ancho / 2, p.posicion.y + p.altura / 2, p.posicion.x + p.ancho / 2, p.posicion.y - p.altura / 2);
 	return Interaccion::Colision(aux, b.posicion, b.lado);
+	*/
 }
 
 bool Interaccion::Colision(Personaje& p1, Personaje& p2) {
 
+	if ((p1.posicion.x - p1.ancho / 2) > (p2.posicion.x + p2.ancho / 2))
+		return 0;
+	else if ((p1.posicion.x + p1.ancho / 2) < (p2.posicion.x - p2.ancho / 2))
+		return 0;
+	else if ((p1.posicion.y - p1.altura / 2) > (p2.posicion.y + p2.altura / 2))
+		return 0;
+	else if ((p1.posicion.y + p1.altura / 2) < (p2.posicion.y - p2.altura / 2))
+		return 0;
+	else
+		return 1;
+
+	/* NO DETECTA DESDE DONDE COLISIONÓ (IZQ O DER)
 	if (abs(p1.posicion.y - p2.posicion.y) < (p1.altura + p2.altura) / 2 && abs(p1.posicion.x - p2.posicion.x) < (p1.ancho + p2.ancho) / 2) {
 		return true;
 	}
 
 	return false;
-
+	*/
 }
 
 bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 
 	if (Distancia(p1.posicion, p2.posicion) < 7) {
 		bool derecha = false;						// p1 a la izquierda de p2
-		
+		/*
 		if ((p1.posicion.x - p2.posicion.x) > 1.6) {
 			p2.velocidad.x = 3.5;
 			return true;
@@ -195,7 +225,7 @@ bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 			p2.velocidad.x = 0;
 			return true;
 		}
-		/*
+		*/
 		if ((p1.posicion.x - p2.posicion.x) > 0)
 			derecha = true;							// p1 a la derecha de p2
 
@@ -207,7 +237,7 @@ bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 			p2.velocidad.x = -3.5;
 			return true;
 		}
-		*/
+		
 	}
 	if (p2.orientacion == p2.orien_ini)
 		p2.velocidad.x = p2.GetVelIni().x;
