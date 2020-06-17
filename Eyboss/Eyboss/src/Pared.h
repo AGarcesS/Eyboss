@@ -2,7 +2,10 @@
 #include "Vector2D.h"
 
 class Pared {
-private:	
+public:
+	enum plataformas { NORMAL = 0, SALTO, VELOCIDAD };
+protected:
+	plataformas tipo;	
 	unsigned char rojo;
 	unsigned char verde;
 	unsigned char azul;	
@@ -14,7 +17,13 @@ private:
 	Vector2D CPlano1;
 	Vector2D CPlano2;
 public:
-	Pared();
+	//Pared();
+	Pared(plataformas t = NORMAL) :tipo(t) {
+		rojo = verde = azul = 255;
+		textura = "bin/texturas/floor.png";
+		z = 0;
+	}
+	plataformas GetTipo() { return tipo; }
 	virtual ~Pared() {}
 
 	void SetColor(unsigned char r, unsigned char v, unsigned char a);

@@ -34,21 +34,25 @@ bool Interaccion::Colision(Pared &pa, Vector2D pos, float r, float s) { //Colisi
 bool Interaccion::Colision(Personaje& p, Pared &pa) {
 
 	bool colision = false;
+	bool colisionarriba = false;
+
 	Vector2D punto1(pa.limite1.x, pa.limite2.y);
 	Vector2D punto2(pa.limite2.x, pa.limite1.y);
 
 	Vector2D dir1;
 	float d1 = pa.distanciap_r(punto1, pa.limite2, p.posicion, &dir1) - p.altura / 2;               
-	if ((d1 <= 0) && (pa.limite1.x - p.ancho / 2 < p.posicion.x < pa.limite2.x + p.ancho / 2)) {
+	if ((d1 <= 0) && (pa.limite1.x + -p.ancho / 2 < p.posicion.x < pa.limite2.x + p.ancho / 2) && ((p.posicion.y - p.altura / 2 + 0.1 > pa.limite2.y) || (p.velocidad.y < -7))) {
 		p.posicion.y = pa.limite2.y + p.altura / 2;
 		p.velocidad.y = 0.0f;
 		p.aceleracion.y = 0.0f;
 		p.on = true;
 		colision = true;
+		colisionarriba = true;
 	}
 	else {
 		p.aceleracion.y = -9.8f;
 		colision = false;
+		colisionarriba = false;
 	}																							   
 	                                       
 	Vector2D dir2;                                                                     
@@ -58,6 +62,7 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 		p.velocidad.y = 0.0f;
 		p.aceleracion.y = -9.8f;
 		colision = true;
+		colisionarriba = false;
 	}
 																					  
 	Vector2D dir3;
@@ -67,6 +72,7 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 		p.velocidad.x = p.aceleracion.x = 0.0f;
 		p.aceleracion.y = -9.8f;
 		colision = true;
+		colisionarriba = false;
 	}
 
 	Vector2D dir4;
@@ -76,7 +82,31 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 		p.velocidad.x = p.aceleracion.x = 0.0f;
 		p.aceleracion.y = -9.8f;
 		colision = true;
+		colisionarriba = false;
 	}
+
+
+
+
+	if (pa.GetTipo() == Pared::SALTO) {
+		if (colisionarriba)
+			p.SetSalto(p.GetSalto() + 2);
+		else {
+			p.SetSalto(8.0f);
+		}
+	}
+
+	if (pa.GetTipo() == Pared::VELOCIDAD) {
+		if (colisionarriba) {
+			if (p.GetOrientacion())
+				p.SetVel(p.GetVel().x + 1, p.GetVel().y);
+			else
+				p.SetVel(p.GetVel().x - 1, p.GetVel().y);
+		}
+	}
+
+
+
 	return colision;
 }
 
@@ -146,28 +176,26 @@ bool Interaccion::Colision(Personaje& p1, Personaje& p2) {
 
 	return false;
 
-	/*
-	if ((p1.posicion.x - p1.ancho / 2) > (p2.posicion.x + p2.ancho / 2))
-		return 0;
-	if ((p1.posicion.x + p1.ancho / 2) < (p2.posicion.x - p2.ancho / 2))
-		return 0;
-	if ((p1.posicion.y + p1.altura / 2) > (p2.posicion.y + 1.5 * p2.altura))
-		return 0;
-	if ((p1.posicion.y + 1.5 * p1.altura) > (p2.posicion.y + p2.altura / 2))
-		return 0;
-	else
-		return 1;
-	*/
-
-	/*Pared aux;
-	aux.SetPos(p1.posicion.x - p1.ancho / 2, p1.posicion.y + p1.altura / 2, p1.posicion.x + p1.ancho / 2, p1.posicion.y - p1.altura / 2);
-	return Interaccion::Colision(aux, p2.posicion, p2.altura, p2.ancho);*/
 }
 
 bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 
 	if (Distancia(p1.posicion, p2.posicion) < 7) {
 		bool derecha = false;						// p1 a la izquierda de p2
+		
+		if ((p1.posicion.x - p2.posicion.x) > 1.6) {
+			p2.velocidad.x = 3.5;
+			return true;
+		}
+		if ((p1.posicion.x - p2.posicion.x) < -1.6) {
+			p2.velocidad.x = -3.5;
+			return true;
+		}
+		if (-1.6 <= (p1.posicion.x - p2.posicion.x) <= 1.6) {
+			p2.velocidad.x = 0;
+			return true;
+		}
+		/*
 		if ((p1.posicion.x - p2.posicion.x) > 0)
 			derecha = true;							// p1 a la derecha de p2
 
@@ -175,11 +203,11 @@ bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 			p2.velocidad.x = 3.5;
 			return true;
 		}
-
 		else {
 			p2.velocidad.x = -3.5;
 			return true;
 		}
+		*/
 	}
 	if (p2.orientacion == p2.orien_ini)
 		p2.velocidad.x = p2.GetVelIni().x;

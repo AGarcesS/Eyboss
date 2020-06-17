@@ -4,12 +4,6 @@
 #include "glut.h"
 
 
-Pared::Pared() {
-	rojo = verde = azul = 255;
-	textura = "bin/texturas/floor.png";	
-	z = 0;
-}	
-
 void Pared::SetColor(unsigned char r, unsigned char v, unsigned char a){
 	rojo = r;
 	verde = v;

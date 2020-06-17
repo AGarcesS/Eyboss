@@ -3,7 +3,7 @@
 #include "ETSIDI.h"
 
 class Disparo {
-private:	
+protected:	
 	float radio;
 	float longitud;
 	Vector2D origen;

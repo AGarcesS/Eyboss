@@ -181,12 +181,9 @@ bool Mundo::CargarNivel() {
 		enemigos.Agregar(c);
 		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada purk)
 
-		Pared* d = new Pared();
-		Pared* h = new Pared();
-		d->SetPos(7.0f, 2.0f, 17.0f, 2.5f);
-		h->SetPos(-5.0f, 2.0f, 5.0f, 2.5f);
-		plataformas.Agregar(d);
-		plataformas.Agregar(h);
+
+		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.0f, 17.0f, 2.5f);
+		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);
 
 		Corazon* e = new Corazon();
 		Corazon* f = new Corazon();
