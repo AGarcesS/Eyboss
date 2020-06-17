@@ -168,18 +168,13 @@ bool Mundo::CargarNivel() {
 
 	if (nivel == 1) {
 
-		Purk* a = new Purk();
-		Purk* b = new Purk();
-		Purk* c = new Purk();
-		a->SetVelIni(2, 3);
-		b->SetPos(5, 3);
-		b->SetVelIni(2, 5);
-		c->SetPos(-5, 3);
-		c->SetVelIni(-2, 0);
-		enemigos.Agregar(a);
-		enemigos.Agregar(b);
-		enemigos.Agregar(c);
-		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada purk)
+		// Enemigos
+		factory_e.Crear(Personaje::PURK, enemigos, 0, 0, 2, 3);
+		factory_e.Crear(Personaje::PURK, enemigos, 5, 3, 2, 5);
+		factory_e.Crear(Personaje::VELOZ, enemigos, 30, 2, -4, 0);
+		factory_e.Crear(Personaje::TROLL, enemigos, 40, 0, -2, 3);
+
+		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada enemigo)
 
 
 		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.0f, 17.0f, 2.5f);

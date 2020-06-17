@@ -3,7 +3,10 @@
 #include "Vector2D.h"
 
 class Personaje {
+public:
+	enum enemigos { PURK, VELOZ, TROLL };
 protected:
+	enemigos tipo;
 	float altura;                                  
 	float ancho;
 	bool orientacion; //marca de orientacion
@@ -21,6 +24,7 @@ protected:
 
 public:
 	Personaje() {}
+	enemigos GetTipo() { return tipo; }
 	virtual ~Personaje() {}
 
 	Vector2D GetPos();

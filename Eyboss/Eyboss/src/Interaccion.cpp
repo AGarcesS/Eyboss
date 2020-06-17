@@ -230,18 +230,50 @@ bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 			derecha = true;							// p1 a la derecha de p2
 
 		if (derecha) {
-			p2.velocidad.x = 3.5;
+			switch (p2.GetTipo()) {
+			case Personaje::PURK:
+			{
+				p2.velocidad.x = 3.5;
+				break;
+			}
+			case Personaje::VELOZ:
+			{
+				p2.velocidad.x = 6.0;
+				break;
+			}
+			case Personaje::TROLL:
+			{
+				p2.velocidad.x = 1.5;
+				break;
+			}
+			}
 			return true;
 		}
 		else {
-			p2.velocidad.x = -3.5;
+			switch (p2.GetTipo()) {
+			case Personaje::PURK:
+			{
+				p2.velocidad.x = -3.5;
+				break;
+			}
+			case Personaje::VELOZ:
+			{
+				p2.velocidad.x = -6.0;
+				break;
+			}
+			case Personaje::TROLL:
+			{
+				p2.velocidad.x = -1.5;
+				break;
+			}
+			}
 			return true;
 		}
-		
+
 	}
-	if (p2.orientacion == p2.orien_ini)
-		p2.velocidad.x = p2.GetVelIni().x;
-	else
-		p2.velocidad.x = -p2.GetVelIni().x;
+	if (p2.velocidad.x * p2.vel_ini.x >= 0)		//Signos iguales o si una de ellas es 0
+		p2.velocidad.x = p2.vel_ini.x;
+	if (p2.velocidad.x * p2.vel_ini.x < 0)
+		p2.velocidad.x = -p2.vel_ini.x;			//Signos opuestos
 	return false;
 }
