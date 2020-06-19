@@ -89,7 +89,7 @@ void ListaDisparos::Ataca(Personaje& p) {
 void ListaDisparos::Colision(ListaEnemigos& l) {
 	for (int i = 0; i < l.getNumero(); i++) {
 		for (int j = 0; j < numero; j++) {
-			if (Interaccion::Colision(*lista[i], *l[i])) {
+			if (Interaccion::Colision(*lista[j], *l[i])) {
 				if (l[i]->GetVida() > 0) {
 					l[i]->SetVida(-1);
 				}

@@ -46,6 +46,7 @@ void Disparo::Dibuja() {
 	else
 		sprite->flip(false, false);
 	sprite->draw();	
+	glTranslatef(-posicion.x, -posicion.y, 0);
 	glPopMatrix();
 }
 

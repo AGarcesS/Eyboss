@@ -19,7 +19,7 @@ public:
 	
 	static bool Colision(Disparo &d, Pared &pa);
 	static bool Colision(Disparo &d, Caja &c);
-	static bool Colision(Disparo d, Personaje p);
+	static bool Colision(Disparo &d, Personaje &p);
 	static bool Colision(Bonus& b, Personaje& p);
 	static bool Colision(Personaje& p1, Personaje& p2);
 };

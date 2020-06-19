@@ -82,7 +82,7 @@ void Mundo::Mueve()
 			enemigos.Eliminar(enemigos[i]);
 			break;
 		}
-	}	
+	}
 
 	enemigos.Colision(caja);
 

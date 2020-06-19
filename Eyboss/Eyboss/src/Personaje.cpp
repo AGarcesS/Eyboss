@@ -70,6 +70,7 @@ void Personaje::SetVida(int v) {
 }
 
 void Personaje::Dibuja() {
+	glPushMatrix();
 	glTranslatef(posicion.x, posicion.y, 0);
 	if (velocidad.x < 0)
 		animacion->flip(true, false);
@@ -77,6 +78,7 @@ void Personaje::Dibuja() {
 		animacion->flip(false, false);
 	animacion->draw();
 	glTranslatef(-posicion.x, -posicion.y, 0);
+	glPopMatrix();
 }
 
 void Personaje::Mueve(float t) {
