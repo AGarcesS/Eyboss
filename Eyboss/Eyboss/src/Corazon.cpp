@@ -9,5 +9,12 @@ Corazon::Corazon() {
 }
 
 void Corazon::Accion(Personaje& p) {
-	p.SetVida(2);
+	if (p.GetVida() <= 8) {
+		p.SetVida(2);
+		return;
+	}
+	if (p.GetVida() < 10) {
+		p.SetVida(1);
+		return;
+	}	
 }
