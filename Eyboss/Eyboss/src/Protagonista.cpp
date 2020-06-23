@@ -43,3 +43,7 @@ void Protagonista::Dibuja() {
 	animacion->draw();
 	glPopMatrix();
 }
+
+void Protagonista::ResetVida() {
+	vida = 10;
+}

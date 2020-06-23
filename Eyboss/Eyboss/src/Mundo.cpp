@@ -35,7 +35,7 @@ void Mundo::Dibuja()
 
 	protagonista.Dibuja();	
 	enemigos.Dibuja();	
-	caja.Dibuja();	
+	//caja.Dibuja();	
 	plataformas.Dibuja();
 	bonus.Dibuja();	
 	objetos.Dibuja();
@@ -50,9 +50,13 @@ void Mundo::Mueve()
 
 	objetos.Colision(enemigos);
 	objetos.Colision(plataformas);
-	objetos.Colision(caja);
+	//objetos.Colision(caja);
 	
 	Interaccion::Colision(protagonista, caja);
+
+	for (int i = 0; i < enemigos.getNumero(); i++) {
+		Interaccion::Cercania(protagonista, *enemigos[i]);
+	}
 
 	for (int i = 0; i < plataformas.getNumero(); i++) {
 		Interaccion::Colision(protagonista, *plataformas[i]);
@@ -88,10 +92,13 @@ void Mundo::Mueve()
 	Global::tiempo++;
 	if (Global::reset)
 		Global::tiempo = 0;	
+
+	Global::vida = protagonista.GetVida();
 }
 
 void Mundo::Inicializa()
 {
+	protagonista.ResetVida();
 	protagonista.Inicializa();
 	interfaz.Inicializa();
 	Global::tiempo = 0;
@@ -157,32 +164,29 @@ void Mundo::TeclaMantenida(unsigned char key) { //Si se deja de pulsar la tecla
 
 bool Mundo::CargarNivel() {
 	nivel++;
-	protagonista.SetPos(0, 0);
+	protagonista.SetPos(10, 0);
 	enemigos.DestruirContenido();
 	objetos.DestruirContenido();
 	plataformas.DestruirContenido();	
 
 	if (nivel == 1) {
 
-		Purk* a = new Purk();
-		Purk* b = new Purk();
-		Purk* c = new Purk();
-		a->SetVel(0, 3);
-		b->SetPos(5, 3);
-		b->SetVel(3, 5);
-		c->SetPos(-5, 3);
-		c->SetVel(-1, 0);
-		enemigos.Agregar(a);
-		enemigos.Agregar(b);
-		enemigos.Agregar(c);
-		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada purk)
+		// Enemigos
+		factory_e.Crear(Personaje::PURK, enemigos, 0, 0, 2, 3);
+		factory_e.Crear(Personaje::PURK, enemigos, 5, 3, 2, 5);
+		factory_e.Crear(Personaje::VELOZ, enemigos, 30, 2, -4, 0);
+		factory_e.Crear(Personaje::TROLL, enemigos, 40, 0, -2, 3);
 
-		Pared* d = new Pared();
-		Pared* h = new Pared();
-		d->SetPos(7.0f, 2.0f, 17.0f, 2.5f);
-		h->SetPos(-5.0f, 2.0f, 5.0f, 2.5f);
-		plataformas.Agregar(d);
-		plataformas.Agregar(h);
+		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada enemigo)
+
+		factory_p.Crear(Pared::NORMAL, plataformas, -10.0f, -0.5f, 80.0f, 0.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, -10.0f, 15.0f, 80.0f, 15.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, -10.5f, 0.0f, -10.0f, 15.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 80.0f, 0.0f, 80.5f, 15.0f);
+
+
+		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.0f, 17.0f, 2.5f);
+		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);		
 
 		Corazon* e = new Corazon();
 		Corazon* f = new Corazon();

@@ -24,6 +24,9 @@
     <ClCompile Include="src\Caja.cpp" />
     <ClCompile Include="src\Corazon.cpp" />
     <ClCompile Include="src\Disparo.cpp" />
+    <ClCompile Include="src\DisparoLento.cpp" />
+    <ClCompile Include="src\DisparoRapido.cpp" />
+    <ClCompile Include="src\FactoryEnemigos.cpp" />
     <ClCompile Include="src\FactoryObjetos.cpp" />
     <ClCompile Include="src\Global.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
@@ -40,9 +43,14 @@
     <ClCompile Include="src\O_Espada.cpp" />
     <ClCompile Include="src\Pared.cpp" />
     <ClCompile Include="src\Personaje.cpp" />
+    <ClCompile Include="src\PlataformaSalto.cpp" />
+    <ClCompile Include="src\PlataformaVelocidad.cpp" />
     <ClCompile Include="src\Protagonista.cpp" />
     <ClCompile Include="src\Purk.cpp" />
+    <ClCompile Include="src\Source.cpp" />
+    <ClCompile Include="src\Troll.cpp" />
     <ClCompile Include="src\Vector2D.cpp" />
+    <ClCompile Include="src\Veloz.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bonus.h" />
@@ -50,7 +58,11 @@
     <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\Corazon.h" />
     <ClInclude Include="src\Disparo.h" />
+    <ClInclude Include="src\DisparoLento.h" />
+    <ClInclude Include="src\DisparoRapido.h" />
+    <ClInclude Include="src\FactoryEnemigos.h" />
     <ClInclude Include="src\FactoryObjetos.h" />
+    <ClInclude Include="src\FactoryPlataforma.h" />
     <ClInclude Include="src\Global.h" />
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\Interfaz.h" />
@@ -65,9 +77,13 @@
     <ClInclude Include="src\O_Espada.h" />
     <ClInclude Include="src\Pared.h" />
     <ClInclude Include="src\Personaje.h" />
+    <ClInclude Include="src\PlataformaSalto.h" />
+    <ClInclude Include="src\PlataformaVelocidad.h" />
     <ClInclude Include="src\Protagonista.h" />
     <ClInclude Include="src\Purk.h" />
+    <ClInclude Include="src\Troll.h" />
     <ClInclude Include="src\Vector2D.h" />
+    <ClInclude Include="src\Veloz.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

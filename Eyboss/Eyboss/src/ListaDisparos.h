@@ -29,6 +29,13 @@ public:
 		index = 1;
 	}
 
+	/*ListaDisparos(){
+		numero = 0;
+		for (int i = 0; i < MAX_DISPAROS; i++)
+			lista[i] = 0;
+		index = 1;
+	}*/
+
 	virtual ~ListaDisparos() {}
 
 	bool Agregar(Disparo* d);

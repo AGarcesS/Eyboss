@@ -10,6 +10,10 @@ Vector2D Personaje::GetVel() {
 	return velocidad;
 }
 
+Vector2D Personaje::GetVelIni() {
+	return vel_ini;
+}
+
 Vector2D Personaje::GetAcel() {
 	return aceleracion;
 }
@@ -30,6 +34,10 @@ bool Personaje::GetOrientacion() {
 	return orientacion;
 }
 
+bool Personaje::GetOrienini() {
+	return orien_ini;
+}
+
 int Personaje::GetVida() {
 	return vida;
 }
@@ -42,6 +50,11 @@ void Personaje::SetPos(float px, float py) {
 void Personaje::SetVel(float vx, float vy) {
 	velocidad.x = vx;
 	velocidad.y = vy;
+}
+
+void Personaje::SetVelIni(float vix, float viy) {
+	velocidad.x = vel_ini.x = vix;
+	velocidad.y = vel_ini.y = viy;
 }
 
 void Personaje::SetAcel(float ax, float ay) {
@@ -59,6 +72,10 @@ void Personaje::SetOn(bool x) {
 
 void Personaje::SetOrientacion(bool ori) {
 	orientacion = ori;
+}
+
+void Personaje::SetOrienini(bool oriini) {
+	orientacion = orien_ini = oriini;
 }
 
 void Personaje::SetTextura(const char* t) {

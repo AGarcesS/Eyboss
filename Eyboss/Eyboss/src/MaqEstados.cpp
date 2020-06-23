@@ -106,5 +106,8 @@ void MaqEstados::Mueve() {
 		/*if ((Global::tiempo / 40) > 30) {
 			estado = FIN;
 		}*/
+
+		if (Global::vida < 0)
+			estado = GAMEOVER;
 	}	
 }
