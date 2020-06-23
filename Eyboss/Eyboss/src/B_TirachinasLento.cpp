@@ -2,7 +2,7 @@
 
 B_TirachinasLento::B_TirachinasLento() {
 	lado = 0.8;
-	textura = "bin/texturas/tirachinas.png";
+	textura = "bin/texturas/tirachinasLento.png";
 	audio = "bin/sonidos/recogida.wav";
 	index = 4;
 }
