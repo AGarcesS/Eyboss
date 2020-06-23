@@ -5,7 +5,7 @@
 
 class ListaObjetos {
 public:
-	static const int n_objetos = 4;
+	static const int n_objetos = 8;
 private:
 	Objeto* lista[n_objetos];
 	int numero;

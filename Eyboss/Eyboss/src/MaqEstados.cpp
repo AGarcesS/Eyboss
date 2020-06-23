@@ -27,7 +27,10 @@ void MaqEstados::Dibuja() {
 
 	else if (estado == FIN) {
 		mundo.Dibuja();
-		glTranslatef(mundo.GetOjo().x, mundo.GetOjo().y, 0);
+		//glTranslatef(mundo.GetOjo().x, mundo.GetOjo().y, 0);
+		gluLookAt(mundo.GetOjo().x, mundo.GetOjo().y, 30,
+			mundo.GetOjo().x, mundo.GetOjo().y, 0.0,
+			0.0, mundo.GetOjo().y, 0.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		ETSIDI::setTextColor(1, 0, 0);
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 16);
@@ -37,7 +40,10 @@ void MaqEstados::Dibuja() {
 	}
 	else if (estado == GAMEOVER) {
 		mundo.Dibuja();
-		glTranslatef(mundo.GetOjo().x, mundo.GetOjo().y, 0);
+		gluLookAt(mundo.GetOjo().x, mundo.GetOjo().y, 30,
+			0.0, mundo.GetOjo().y, 0.0,
+			0.0, mundo.GetOjo().y, 0.0);
+		//glTranslatef(mundo.GetOjo().x, mundo.GetOjo().y, 0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		ETSIDI::setTextColor(1, 0, 0);
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 16);
@@ -47,7 +53,10 @@ void MaqEstados::Dibuja() {
 	}
 	else if (estado == PAUSA) {
 		mundo.Dibuja();
-		glTranslatef(mundo.GetOjo().x, mundo.GetOjo().y, 0);
+		//glTranslatef(mundo.GetOjo().x, mundo.GetOjo().y, 0);
+		gluLookAt(mundo.GetOjo().x, mundo.GetOjo().y, 30,
+			mundo.GetOjo().x+8, mundo.GetOjo().y, 0.0,
+			0.0, mundo.GetOjo().y, 0.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		ETSIDI::setTextColor(1, 0, 0);
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 16);

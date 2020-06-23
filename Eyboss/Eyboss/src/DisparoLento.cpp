@@ -12,7 +12,7 @@ DisparoLento::DisparoLento() {
 	origen.x = 0;
 	origen.y = 0;
 	longitud = 0;
-	textura = "bin/texturas/lento.png";
+	textura = "bin/texturas/lento2.png";
 }
 
 

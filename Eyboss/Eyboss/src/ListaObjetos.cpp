@@ -8,7 +8,7 @@ ListaObjetos::ListaObjetos() {
 
 bool ListaObjetos::Agregar(Objeto* o) {
 	if (numero < n_objetos) {
-		lista[o->index - 1] = o;
+		lista[numero] = o;
 		numero++;
 		return true;
 	}
@@ -67,7 +67,6 @@ void ListaObjetos::Colision(ListaEnemigos& p) {
 	for (int i = 0; i < numero; i++) {
 		lista[i]->Colision(p);
 	}
-
 }
 
 void ListaObjetos::Colision(Caja& c) {

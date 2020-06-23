@@ -7,7 +7,7 @@
 
 class Objeto {
 public:
-	enum objetos { OBJETO = 0, TIRACHINAS, ESPADA };
+	enum objetos { OBJETO = 0, TIRACHINAS, ESPADA, TIRACHINAS_LENTO, TIRACHINAS_RAPIDO };
 protected:
 	objetos tipo;
 public:
