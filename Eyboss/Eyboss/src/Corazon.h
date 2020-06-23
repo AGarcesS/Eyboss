@@ -9,4 +9,5 @@ private:
 public:
 	Corazon();
 	virtual ~Corazon() {}
+	void Accion(Personaje &p);
 };

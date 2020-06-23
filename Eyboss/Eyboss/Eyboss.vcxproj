@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\Bonus.cpp" />
     <ClCompile Include="src\B_Espada.cpp" />
+    <ClCompile Include="src\B_Tirachinas.cpp" />
     <ClCompile Include="src\Caja.cpp" />
     <ClCompile Include="src\Corazon.cpp" />
     <ClCompile Include="src\Disparo.cpp" />
@@ -55,6 +56,7 @@
   <ItemGroup>
     <ClInclude Include="src\Bonus.h" />
     <ClInclude Include="src\B_Espada.h" />
+    <ClInclude Include="src\B_Tirachinas.h" />
     <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\Corazon.h" />
     <ClInclude Include="src\Disparo.h" />

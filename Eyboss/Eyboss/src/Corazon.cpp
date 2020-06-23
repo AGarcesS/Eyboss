@@ -5,5 +5,9 @@ Corazon::Corazon() {
 	lado = 0.8f;
 	textura = "bin/texturas/clleno.png";
 	audio = "bin/sonidos/vida.wav";
-	index = 1;
+	index = 3;
+}
+
+void Corazon::Accion(Personaje& p) {
+	p.SetVida(2);
 }

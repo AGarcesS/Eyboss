@@ -11,6 +11,7 @@
 #include "ListaPlataformas.h"
 #include "ListaBonus.h"
 #include "B_Espada.h"
+#include "B_Tirachinas.h"
 #include "O_Espada.h"
 #include "ListaObjetos.h"
 #include "FactoryObjetos.h"

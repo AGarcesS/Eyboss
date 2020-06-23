@@ -66,6 +66,7 @@ void Mundo::Mueve()
 	for (int i = 0; i < bonus.getNumero(); i++) {
 		if (Interaccion::Colision(*bonus[i], protagonista)) {
 			bonus[i]->Audio();
+			bonus[i]->Accion(protagonista);
 			for (int j = 0; j < 4; j++) {
 				if (o_index[j] == bonus[i]->GetIndex()) { //Si ese índice ya está en el vector se sale
 					bonus.Eliminar(bonus[i]);
@@ -189,8 +190,8 @@ bool Mundo::CargarNivel() {
 		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);		
 
 		Corazon* e = new Corazon();
-		Corazon* f = new Corazon();
-		Corazon* g = new Corazon();
+		B_Espada* f = new B_Espada();
+		B_Tirachinas* g = new B_Tirachinas();
 		e->SetPos(12, 3);
 		f->SetPos(0, 3);
 		g->SetPos(15, 1);

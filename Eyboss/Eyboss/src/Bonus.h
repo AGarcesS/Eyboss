@@ -1,6 +1,7 @@
 #pragma once
 #include "ETSIDI.h"
 #include "Vector2D.h"
+#include "Personaje.h"
 
 class Bonus {
 protected:	
@@ -20,6 +21,7 @@ public:
 	void Inicializa();
 	void Dibuja();
 	void Audio();
+	virtual void Accion(Personaje& p) {}
 
 	friend class Interaccion;
 };
