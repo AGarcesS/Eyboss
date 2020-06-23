@@ -7,4 +7,5 @@ public:
 	static bool reset;
 
 	static int bajas;
+	static int vida;
 };
