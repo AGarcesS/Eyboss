@@ -13,7 +13,16 @@ private:
 	Disparo* lista[MAX_DISPAROS];
 	int numero;
 public:
+	/*
 	ListaDisparos() :Objeto(TIRACHINAS) {
+		numero = 0;
+		for (int i = 0; i < MAX_DISPAROS; i++)
+			lista[i] = 0;
+		index = 1;
+	}
+	*/
+
+	ListaDisparos(){
 		numero = 0;
 		for (int i = 0; i < MAX_DISPAROS; i++)
 			lista[i] = 0;
