@@ -35,7 +35,7 @@ void Mundo::Dibuja()
 
 	protagonista.Dibuja();	
 	enemigos.Dibuja();	
-	//caja.Dibuja();	
+	caja.Dibuja();	
 	plataformas.Dibuja();
 	bonus.Dibuja();	
 	objetos.Dibuja();

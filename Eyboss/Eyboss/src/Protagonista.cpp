@@ -12,7 +12,7 @@ Protagonista::Protagonista() {
 	on = false;
 	orientacion = false;
 	vida = 10;
-	textura = "bin/texturas/eris_der.png";
+	textura = "bin/texturas/eris_der2.png";
 	col = 6;
 }
 
