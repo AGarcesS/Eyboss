@@ -40,7 +40,7 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 	Vector2D punto1(pa.limite1.x, pa.limite2.y);
 	Vector2D punto2(pa.limite2.x, pa.limite1.y);
 
-	if (p.velocidad.y < -4) {
+	if (p.velocidad.y < -10) {
 		d_caida = true;
 	}
 
@@ -94,7 +94,7 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 
 
 
-
+	
 	if (pa.GetTipo() == Pared::SALTO) {
 		if (colisionarriba)
 			p.SetSalto(p.GetSalto() + 2);
@@ -102,6 +102,7 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 			p.SetSalto(8.0f);
 		}
 	}
+	
 
 	if (pa.GetTipo() == Pared::VELOCIDAD) {
 		if (colisionarriba) {
