@@ -12,6 +12,8 @@
 #include "ListaBonus.h"
 #include "B_Espada.h"
 #include "B_Tirachinas.h"
+#include "B_TirachinasLento.h"
+#include "B_TirachinasRapido.h"
 #include "O_Espada.h"
 #include "ListaObjetos.h"
 #include "FactoryObjetos.h"

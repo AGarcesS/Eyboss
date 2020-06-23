@@ -67,7 +67,7 @@ void Mundo::Mueve()
 		if (Interaccion::Colision(*bonus[i], protagonista)) {
 			bonus[i]->Audio();
 			bonus[i]->Accion(protagonista);
-			for (int j = 0; j < 4; j++) {
+			for (int j = 0; j < 6; j++) {
 				if (o_index[j] == bonus[i]->GetIndex()) { //Si ese índice ya está en el vector se sale
 					bonus.Eliminar(bonus[i]);
 					return;
@@ -135,7 +135,25 @@ void Mundo::Tecla(unsigned char key)
 					objetos[i]->Ataca(protagonista);
 		}
 		break;
-	}				
+	}
+	case 'w': //Tirachinas lento
+	{
+		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
+			if (objetos[i] != NULL)
+				if (objetos[i]->GetTipo() == Objeto::TIRACHINAS_LENTO)
+					objetos[i]->Ataca(protagonista);
+		}
+		break;
+	}
+	case 'e': //Tirachinas rapido
+	{
+		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
+			if (objetos[i] != NULL)
+				if (objetos[i]->GetTipo() == Objeto::TIRACHINAS_RAPIDO)
+					objetos[i]->Ataca(protagonista);
+		}
+		break;
+	}
 	}
 }
 
@@ -192,12 +210,21 @@ bool Mundo::CargarNivel() {
 		Corazon* e = new Corazon();
 		B_Espada* f = new B_Espada();
 		B_Tirachinas* g = new B_Tirachinas();
+		B_Tirachinas* h = new B_Tirachinas();
+		B_TirachinasLento* i = new B_TirachinasLento();
+		B_TirachinasRapido* j = new B_TirachinasRapido();
 		e->SetPos(12, 3);
 		f->SetPos(0, 3);
 		g->SetPos(15, 1);
+		h->SetPos(18, 1);
+		i->SetPos(5, 3);
+		j->SetPos(-4, 1);
 		bonus.Agregar(e);
 		bonus.Agregar(f);
 		bonus.Agregar(g);
+		bonus.Agregar(h);
+		bonus.Agregar(i);
+		bonus.Agregar(j);
 		bonus.Inicializa();
 	}
 
