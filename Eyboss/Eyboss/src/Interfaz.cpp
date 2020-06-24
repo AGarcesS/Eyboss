@@ -4,8 +4,8 @@
 #include "glut.h"
 
 void Interfaz::ImprimeJuego(Protagonista &p) {
-	std::stringstream sstr_tiempo, sstr_vida, sstr_bajas;
-	std::string str_tiempo, str_vida, str_bajas;
+	std::stringstream sstr_tiempo, sstr_vida, sstr_bajas, sstr_municion, sstr_municionlenta, sstr_municionrapida;
+	std::string str_tiempo, str_vida, str_bajas, str_municion, str_municionlenta, str_municionrapida;
 
 	glTranslatef(p.GetPos().x, p.GetPos().y, 1);
 
@@ -38,6 +38,27 @@ void Interfaz::ImprimeJuego(Protagonista &p) {
 	ETSIDI::setTextColor(1, 1, 1);
 	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 	ETSIDI::printxy(t_bajas, -14, 8);
+
+	sstr_municion << "Normal: " << Global::municion;
+	str_municion = sstr_municion.str();
+	const char* t_municion = str_municion.c_str();
+	ETSIDI::setTextColor(1, 1, 1);
+	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
+	ETSIDI::printxy(t_municion, -14, 7);
+
+	sstr_municionlenta << "Lenta: " << Global::municionlenta;
+	str_municionlenta = sstr_municionlenta.str();
+	const char* t_municionlenta = str_municionlenta.c_str();
+	ETSIDI::setTextColor(1, 1, 1);
+	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
+	ETSIDI::printxy(t_municionlenta, -14, 6);
+
+	sstr_municionrapida << "Rapida: " << Global::municionrapida;
+	str_municionrapida = sstr_municionrapida.str();
+	const char* t_municionrapida = str_municionrapida.c_str();
+	ETSIDI::setTextColor(1, 1, 1);
+	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
+	ETSIDI::printxy(t_municionrapida, -14, 5);
 
 	glPushMatrix();
 	corazon->draw();

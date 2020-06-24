@@ -8,4 +8,8 @@ public:
 
 	static int bajas;
 	static int vida;
+
+	static int municion;
+	static int municionlenta;
+	static int municionrapida;
 };

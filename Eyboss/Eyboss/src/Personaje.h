@@ -4,7 +4,7 @@
 
 class Personaje {
 public:
-	enum enemigos { PURK, VELOZ, TROLL };
+	enum enemigos { PROTAGONISTA = 0, PURK, VELOZ, TROLL };
 protected:
 	enemigos tipo;
 	float altura;                                  
@@ -23,7 +23,7 @@ protected:
 	ETSIDI::SpriteSequence* animacion;                //Sprites
 
 public:
-	Personaje() {}
+	Personaje(enemigos e) :tipo(e) {}
 	enemigos GetTipo() { return tipo; }
 	virtual ~Personaje() {}
 

@@ -1,21 +1,5 @@
 #include "Protagonista.h"
 
-Protagonista::Protagonista() {
-	altura = 1.8f;
-	ancho = altura;
-	posicion.x = 0.0f;
-	posicion.y = altura / 2;
-	velocidad.x = velocidad.y = 0;
-	aceleracion.x = 0.0f;
-	aceleracion.y = -9.8f;
-	salto = 8.0f;
-	on = false;
-	orientacion = false;
-	vida = 10;
-	textura = "bin/texturas/eris_der2.png";
-	col = 6;
-}
-
 void Protagonista::Dibuja() {
 
 	/*glEnable(GL_TEXTURE_2D);                                                    //Texturas

@@ -8,6 +8,7 @@
 #include "ListaEnemigos.h"
 #include "ListaPlataformas.h"
 #include "Interaccion.h"
+#include "Global.h"
 
 //class ListaDisparos :public Objeto {
 //private:
@@ -61,27 +62,37 @@ template<class T, int ind, Objeto::objetos tip> class ListaDisparos :public Obje
 private:
 	T *lista[MAX_DISPAROS];
 	int numero;
+	int municion;
 public:
 	ListaDisparos() :Objeto(tip) {
 		numero = 0;
 		for (int i = 0; i < MAX_DISPAROS; i++)
 			lista[i] = 0;
 		index = ind;
+		municion = 0;
 	}
 
 	virtual ~ListaDisparos() {}
 
 	bool Agregar(T* d) {
-		if (numero < MAX_DISPAROS) {
+		if (tip == Objeto::TIRACHINAS)
+			municion = Global::municion;
+		if (tip == Objeto::TIRACHINAS_LENTO)
+			municion = Global::municionlenta;
+		if (tip == Objeto::TIRACHINAS_RAPIDO)
+			municion = Global::municionrapida;
+		if (numero < municion) {
+			municion--;
 			lista[numero] = d;
-			numero++;
-			for (int i = 0; i < numero; i++)
-			{
-				if (lista[i] == d)
-					return false;
-				else
-					return true;
-			}
+			ETSIDI::play("bin/sonidos/shoot.wav");
+			numero++;			
+			if (tip == Objeto::TIRACHINAS)
+				Global::municion = municion;
+			if (tip == Objeto::TIRACHINAS_LENTO)
+				Global::municionlenta = municion;
+			if (tip == Objeto::TIRACHINAS_RAPIDO)
+				Global::municionrapida = municion;
+			return true;
 		}
 		else
 			return false;
@@ -91,6 +102,7 @@ public:
 		for (int i = 0; i < numero; i++)
 			delete lista[i];
 		numero = 0;
+		municion = 0;
 	}
 
 	void Eliminar(int index) {
@@ -150,8 +162,7 @@ public:
 		else
 			d->SetVel(-7.0f, 0.0f);
 		Agregar(d);
-		Inicializa();
-		ETSIDI::play("bin/sonidos/shoot.wav");
+		Inicializa();		
 	}
 
 	void Colision(ListaEnemigos& l) {
