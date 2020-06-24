@@ -154,6 +154,15 @@ void Mundo::Tecla(unsigned char key)
 		}
 		break;
 	}
+	case 'r': //Espada
+	{
+		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
+			if (objetos[i] != NULL)
+				if (objetos[i]->GetTipo() == Objeto::ESPADA)
+					objetos[i]->Ataca(protagonista);
+		}
+		break;
+	}
 	}
 }
 
@@ -183,6 +192,9 @@ void Mundo::TeclaMantenida(unsigned char key) { //Si se deja de pulsar la tecla
 
 bool Mundo::CargarNivel() {
 	nivel++;
+	for (int i = 0; i < 4; i++) {
+		o_index[i] = 0;
+	}
 	protagonista.SetPos(10, 0);
 	enemigos.DestruirContenido();
 	objetos.DestruirContenido();

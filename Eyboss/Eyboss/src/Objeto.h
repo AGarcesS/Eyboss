@@ -10,6 +10,12 @@ public:
 	enum objetos { OBJETO = 0, TIRACHINAS, ESPADA, TIRACHINAS_LENTO, TIRACHINAS_RAPIDO };
 protected:
 	objetos tipo;
+	float ancho;
+	float altura;
+	Vector2D posicion;
+	bool orientacion;		//marca de orientacion
+	ETSIDI::Sprite* sprite;
+	const char* textura;
 public:
 	Objeto(objetos t = OBJETO) :tipo(t) {}
 	virtual ~Objeto() {}

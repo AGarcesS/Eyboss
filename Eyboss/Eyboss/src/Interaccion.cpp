@@ -286,3 +286,16 @@ bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 		p2.velocidad.x = -p2.vel_ini.x;			//Signos opuestos
 	return false;
 }
+
+bool Interaccion::Colision(O_Espada& e, Personaje& p) {
+	if ((p.posicion.x - p.ancho / 2) > (e.posicion.x + e.ancho / 2))
+		return 0;
+	else if ((p.posicion.x + p.ancho / 2) < (e.posicion.x - e.ancho / 2))
+		return 0;
+	else if ((p.posicion.y - p.altura / 2) > (e.posicion.y + e.altura / 2))
+		return 0;
+	else if ((p.posicion.y + p.altura / 2) < (e.posicion.y - e.altura / 2))
+		return 0;
+	else
+		return 1;
+}
