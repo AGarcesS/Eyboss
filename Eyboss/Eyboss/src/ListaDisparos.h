@@ -70,22 +70,23 @@ public:
 			lista[i] = 0;
 		index = ind;
 		municion = 0;
+		
 	}
 
 	virtual ~ListaDisparos() {}
 
-	bool Agregar(T* d) {
+	bool Agregar(T* d) {		
 		if (tip == Objeto::TIRACHINAS)
 			municion = Global::municion;
 		if (tip == Objeto::TIRACHINAS_LENTO)
 			municion = Global::municionlenta;
 		if (tip == Objeto::TIRACHINAS_RAPIDO)
 			municion = Global::municionrapida;
-		if (numero < municion) {
+		if (numero < municion) {				
+			lista[numero] = d;			
+			numero++;		
 			municion--;
-			lista[numero] = d;
 			ETSIDI::play("bin/sonidos/shoot.wav");
-			numero++;			
 			if (tip == Objeto::TIRACHINAS)
 				Global::municion = municion;
 			if (tip == Objeto::TIRACHINAS_LENTO)
@@ -154,7 +155,7 @@ public:
 		return lista[i];
 	}
 
-	void Ataca(Personaje& p) {
+	void Ataca(Personaje& p) {			
 		T* d = new T();
 		d->SetPos(p.GetPos().x, p.GetPos().y);
 		if (p.GetOrientacion())
