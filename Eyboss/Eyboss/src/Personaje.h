@@ -32,6 +32,7 @@ public:
 	Vector2D GetVelIni();
 	Vector2D GetAcel();
 	float GetAltura();
+	float GetAncho();
 	float GetSalto();
 	bool GetOn();
 	bool GetOrientacion();

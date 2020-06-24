@@ -22,6 +22,10 @@ float Personaje::GetAltura() {
 	return altura;
 }
 
+float Personaje::GetAncho() {
+	return ancho;
+}
+
 float Personaje::GetSalto() {
 	return salto;
 }

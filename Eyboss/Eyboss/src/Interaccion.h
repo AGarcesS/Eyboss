@@ -2,6 +2,7 @@
 #include "Personaje.h"
 #include "Caja.h"
 #include "Disparo.h"
+#include "O_Espada.h"
 #include "Pared.h"
 #include "Bonus.h"
 

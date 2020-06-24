@@ -19,13 +19,13 @@ public:
 			obj->Inicializa();
 			break;
 		}
-		/*case 2:
+		case 2:
 		{
-			Objeto* obj = new O_Espada();
-			l.Agregar(obj);
-			obj->Inicializa();
+			O_Espada* aux = new O_Espada();
+			l.Agregar(aux);
+			aux->Inicializa();
 			break;
-		}		*/
+		}
 		case 4:
 		{
 			ListaDisparos<DisparoLento, 5, Objeto::TIRACHINAS_LENTO>* obj;
