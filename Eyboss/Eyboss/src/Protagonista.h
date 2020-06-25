@@ -2,7 +2,6 @@
 #include "Personaje.h"
 
 class Protagonista :public Personaje {
-private:	
 public:
 	Protagonista():Personaje(Personaje::PROTAGONISTA) {
 		altura = 1.8f;

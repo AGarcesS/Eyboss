@@ -7,12 +7,14 @@
 
 class Objeto {
 public:
-	enum objetos { OBJETO = 0, TIRACHINAS, ESPADA, TIRACHINAS_LENTO, TIRACHINAS_RAPIDO };
+	enum objetos { OBJETO = 0, TIRACHINAS, ESPADA, TIRACHINAS_LENTO, TIRACHINAS_RAPIDO, GANCHO };
 protected:
 	objetos tipo;
 	float ancho;
 	float altura;
 	Vector2D posicion;
+	Vector2D velocidad;
+	Vector2D aceleracion;
 	bool orientacion;		//marca de orientacion
 	ETSIDI::Sprite* sprite;
 	const char* textura;

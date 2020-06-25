@@ -163,6 +163,13 @@ void Mundo::Tecla(unsigned char key)
 		}
 		break;
 	}
+	case 't':
+		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
+			if (objetos[i] != NULL)
+				if (objetos[i]->GetTipo() == Objeto::GANCHO)
+					objetos[i]->Ataca(protagonista);
+		}
+		break;
 	}
 }
 
@@ -225,18 +232,21 @@ bool Mundo::CargarNivel() {
 		B_Tirachinas* h = new B_Tirachinas();
 		B_TirachinasLento* i = new B_TirachinasLento();
 		B_TirachinasRapido* j = new B_TirachinasRapido();
+		B_Gancho* k = new B_Gancho();
 		e->SetPos(12, 3);
 		f->SetPos(0, 3);
 		g->SetPos(15, 1);
 		h->SetPos(18, 1);
 		i->SetPos(5, 3);
 		j->SetPos(-4, 1);
+		k->SetPos(3, 1);
 		bonus.Agregar(e);
 		bonus.Agregar(f);
 		bonus.Agregar(g);
 		bonus.Agregar(h);
 		bonus.Agregar(i);
 		bonus.Agregar(j);
+		bonus.Agregar(k);
 		bonus.Inicializa();
 	}
 

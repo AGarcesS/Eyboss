@@ -21,7 +21,7 @@ protected:
 	int vida;	 
 	int col;
 	ETSIDI::SpriteSequence* animacion;                //Sprites
-
+	bool detencion;
 public:
 	Personaje(enemigos e) :tipo(e) {}
 	enemigos GetTipo() { return tipo; }
@@ -49,6 +49,9 @@ public:
 	void SetOrientacion(bool ori);
 	void SetOrienini(bool oriini);
 	void SetVida(int v);
+
+	bool GetDetencion() { return detencion; }
+	void SetDetencion(bool on) { detencion = on; }
 
 	void SetTextura(const char* t);
 

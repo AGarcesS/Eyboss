@@ -3,6 +3,7 @@
 #include "ListaObjetos.h"
 #include "ListaDisparos.h"
 #include "O_Espada.h"
+#include "O_Gancho.h"
 #include "DisparoLento.h"
 #include "DisparoRapido.h"
 
@@ -42,8 +43,11 @@ public:
 			obj->Inicializa();
 			break;
 		}
-		
-
+		case 6:
+			O_Gancho * aux = new O_Gancho();
+			l.Agregar(aux);
+			aux->Inicializa();
+			break;
 		}
 	}
 };

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\Bonus.cpp" />
     <ClCompile Include="src\B_Espada.cpp" />
+    <ClCompile Include="src\B_Gancho.cpp" />
     <ClCompile Include="src\B_Tirachinas.cpp" />
     <ClCompile Include="src\B_TirachinasLento.cpp" />
     <ClCompile Include="src\B_TirachinasRapido.cpp" />
@@ -44,6 +45,7 @@
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\Objeto.cpp" />
     <ClCompile Include="src\O_Espada.cpp" />
+    <ClCompile Include="src\O_Gancho.cpp" />
     <ClCompile Include="src\Pared.cpp" />
     <ClCompile Include="src\Personaje.cpp" />
     <ClCompile Include="src\PlataformaSalto.cpp" />
@@ -58,6 +60,7 @@
   <ItemGroup>
     <ClInclude Include="src\Bonus.h" />
     <ClInclude Include="src\B_Espada.h" />
+    <ClInclude Include="src\B_Gancho.h" />
     <ClInclude Include="src\B_Tirachinas.h" />
     <ClInclude Include="src\B_TirachinasLento.h" />
     <ClInclude Include="src\B_TirachinasRapido.h" />
@@ -81,6 +84,7 @@
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Objeto.h" />
     <ClInclude Include="src\O_Espada.h" />
+    <ClInclude Include="src\O_Gancho.h" />
     <ClInclude Include="src\Pared.h" />
     <ClInclude Include="src\Personaje.h" />
     <ClInclude Include="src\PlataformaSalto.h" />
