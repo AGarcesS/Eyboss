@@ -12,7 +12,7 @@ bool Interaccion::Colision(Pared &pa, Vector2D pos, float r, float s) { //Colisi
 	Vector2D punto2(pa.limite2.x, pa.limite1.y);
 
 	Vector2D dir1;
-	float d1 = pa.distanciap_r(punto1, pa.limite2, pos, &dir1) - r;                      //     p1.--------------------------.limite2
+	float d1 = pa.distanciap_r(punto1, pa.limite2, pos, &dir1) - r;                    //     p1.--------------------------.limite2
                                                                                        //       |                          | 
 	                                                                                   //       |                          | 
 	Vector2D dir2;                                                                     //       |                          |  
@@ -298,4 +298,16 @@ bool Interaccion::Colision(O_Espada& e, Personaje& p) {
 		return 0;
 	else
 		return 1;
+}
+
+bool Interaccion::Colision(DisparoGancho& dg, Pared& pa) {
+
+	if (Colision(pa, dg.posicion, 0))
+	{
+		dg.velocidad.x = 0.0f;
+		dg.velocidad.y = 0.0f;
+		return true;
+	}
+	else
+		return false;
 }

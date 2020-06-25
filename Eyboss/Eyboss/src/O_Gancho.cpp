@@ -3,98 +3,119 @@
 #include "Interaccion.h"
 
 
-void O_Gancho::Inicializa() {
-    sprite = new ETSIDI::Sprite(textura, 0.0f, 0.0f, ancho, altura);
+bool O_Gancho::Agregar(Disparo* d) {
+	if (numero < MAX_GANCHOS) {
+		lista[numero] = d;
+		numero++;
+		for (int i = 0; i < numero; i++)
+		{
+			if (lista[i] == d)
+				return false;
+			else
+				return true;
+		}
+	}
+	else
+		return false;
 }
 
+void O_Gancho::DestruirContenido() {
+	for (int i = 0; i < numero; i++)
+		delete lista[i];
+	numero = 0;
+}
 
+void O_Gancho::Eliminar(int index) {
+	if ((index < 0 || index >= numero))
+		return;
+	delete lista[index];
+	numero--;
+	for (int i = index; i < numero; i++)
+		lista[i] = lista[i + 1];
+}
+
+void O_Gancho::Eliminar(Disparo* d) {
+	for (int i = 0; i < numero; i++) {
+		if (lista[i] == d) {
+			Eliminar(i);
+			return;
+		}
+	}
+}
+
+void O_Gancho::Inicializa() {
+	for (int i = 0; i < numero; i++)
+		lista[i]->Inicializa();
+}
+
+void O_Gancho::Mueve(float t){
+	for (int i = 0; i < numero; i++)
+		lista[i]->Mueve(t);	
+}
 
 void O_Gancho::Dibuja() {
-    glColor3f(0.0f, 1.0f, 1.0f);
-    glDisable(GL_LIGHTING);
-    glBegin(GL_LINES);
-    glVertex2f(posorigen.x, posorigen.y);
-    glVertex2f(posicion.x, posicion.y);
-    glEnd();
-    glEnable(GL_LIGHTING);
- /*   glPushMatrix();
-    glTranslatef(posicion.x, posicion.y, 0);
-    glutSolidSphere(altura, 20, 20);
-    glPopMatrix();
+	for (int i = 0; i < numero; i++)
+		lista[i]->Dibuja();
+}
+/*
+Disparo* O_Gancho::Colision(Pared p) {
+	for (int i = 0; i < numero; i++) {
+		if (Interaccion::Colision(*lista[i], p))
+			return lista[i];
+	}		
+	return 0;
+}
 */
-    glPushMatrix();
-    glTranslatef(posicion.x, posicion.y, 0);
-    if (orientacion)
-        sprite->flip(false, false);
-    else
-        sprite->flip(true, false);;
-    sprite->draw();
-    //glTranslatef(-posicion.x, -posicion.y, 0);
-    glPopMatrix();
-}
 
-
-
-void O_Gancho::SetPosOr(float ix, float iy) {
-    posorigen.x = ix;
-    posorigen.y = iy;
-}
-
-
-
-void O_Gancho::Mueve(float t) {
-    posicion = posicion + velocidad * t + aceleracion * (0.5 * t * t);
-    velocidad = velocidad + aceleracion * t;
-}
-
-
-
-bool O_Gancho::Limite() {
-    Vector2D pos = posicion - posorigen;
-    if (longitud <= pos.modulo())
-        return true;
-    else
-        return false;
-}
-
-
-
-void O_Gancho::SetF(bool f) {
-    feuer = f;
-}
-bool O_Gancho::GetF() {
-    return feuer;
-}
-
-
-
-Vector2D O_Gancho::GetOr() {
-    return posorigen;
+Disparo* O_Gancho::operator [] (int i) {
+	if (i >= numero)
+		i = numero - 1;
+	if (i < 0)
+		i = 0;
+	return lista[i];
 }
 
 void O_Gancho::Ataca(Personaje& p) {
-    orientacion = p.GetOrientacion();
+	DisparoGancho* dg = new DisparoGancho();
+	dg->SetPosOr(p.GetPos().x, p.GetPos().y);
+	if (p.GetOrientacion())
+		dg->SetVel(7.0f, 7.0f);
+	else
+		dg->SetVel(-7.0f, 7.0f);
+	Agregar(dg);
+	Inicializa();
+	ETSIDI::play("bin/sonidos/shoot.wav");
+}
 
-    if (orientacion)
-        velocidad.x = 7;
-    else
-        velocidad.x = -7;
 
-    velocidad.y = 7;
+/*
+void O_Gancho::Ataca(Personaje& p) {
+	orientacion = p.GetOrientacion();
 
-    posorigen.x = posicion.x = p.GetPos().x;
-    posorigen.y = posicion.y = p.GetPos().y;
+	if (orientacion)
+		velocidad.x = 7;
+	else
+		velocidad.x = -7;
 
-    
-    /*
-    orientacion = p.GetOrientacion();
-    float dist;
-    if (orientacion)
-        dist = p.GetPos().x + p.GetAncho() / 2 + ancho / 2;
-    else
-        dist = p.GetPos().x - (p.GetAncho() / 2 + ancho / 2);
+	velocidad.y = 7;
 
-    SetPos(dist, p.GetPos().y);
-    ETSIDI::play("bin/sonidos/Espada1.wav");
-    */
+	posorigen.x = posicion.x = p.GetPos().x;
+	posorigen.y = posicion.y = p.GetPos().y;
+
+}
+*/
+
+void O_Gancho::Colision(Caja &c) {
+	for (int i = 0; i < numero; i++) {
+		if (Interaccion::Colision(*lista[i], c))
+			Eliminar(lista[i]);
+	}
+}
+
+void O_Gancho::Colision(ListaPlataformas& l) {
+    for (int i = 0; i < l.getNumero(); i++) {
+		for(int j=0; j<numero;j++){
+			Interaccion::Colision(*lista[j], *l[i]);
+        }
+    }
 }

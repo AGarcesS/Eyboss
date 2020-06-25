@@ -1,41 +1,41 @@
 #pragma once
-#include "Vector2D.h"
+#define MAX_GANCHOS 1
+#include "DisparoGancho.h"
 #include "Objeto.h"
+#include "Personaje.h"
+#include "ListaEnemigos.h"
+#include "ListaPlataformas.h"
+#include "Interaccion.h"
+#include "Global.h"
 
-
-
-class O_Gancho : public Objeto {
+class O_Gancho :public Objeto {
 private:
-    float longitud;
-    bool feuer;
-    Vector2D posorigen;
-
+	Disparo* lista[MAX_GANCHOS];
+	int numero;
 public:
-    O_Gancho() : Objeto(GANCHO) {
-        altura = ancho = 1;
-        longitud = 15.0;
-        velocidad.x = 0;
-        velocidad.y = 0;
-        posorigen.x = posicion.x = 0;
-        posorigen.y = posicion.y = 0;
-        orientacion = true;
-        textura = "bin/texturas/gancho.png";
-        index = 6;
-        feuer = false;
-    }
-    virtual ~O_Gancho() {}
 
+	O_Gancho() :Objeto(GANCHO) {
+		numero = 0;
+		for (int i = 0; i < MAX_GANCHOS; i++)
+			lista[i] = 0;
+		index = 6;
+	}
+	virtual ~O_Gancho() {}
 
-    void Inicializa();
-    void Dibuja();
-    void Mueve(float t);
-    void SetPosOr(float ix, float iy);
-    bool Limite();
-    void SetF(bool f);
-    bool GetF();
-    Vector2D GetOr();
+	bool Agregar(Disparo* d);
+	void DestruirContenido();
+	void Eliminar(int index);
+	void Eliminar(Disparo* d);
+	Disparo* operator [] (int i);
+	void Inicializa();
+	void Mueve(float t);
+	void Dibuja();
 
-    void Ataca(Personaje& p);
+	Disparo* Colision(Pared p);
 
-    friend class Interaccion;
+	int getNumero() { return numero; }
+
+	void Ataca(Personaje &p);
+	void Colision(ListaPlataformas& l);
+	void Colision(Caja &c);	
 };

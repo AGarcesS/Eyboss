@@ -13,8 +13,6 @@ protected:
 	float ancho;
 	float altura;
 	Vector2D posicion;
-	Vector2D velocidad;
-	Vector2D aceleracion;
 	bool orientacion;		//marca de orientacion
 	ETSIDI::Sprite* sprite;
 	const char* textura;

@@ -28,6 +28,7 @@
     <ClCompile Include="src\Caja.cpp" />
     <ClCompile Include="src\Corazon.cpp" />
     <ClCompile Include="src\Disparo.cpp" />
+    <ClCompile Include="src\DisparoGancho.cpp" />
     <ClCompile Include="src\DisparoLento.cpp" />
     <ClCompile Include="src\DisparoRapido.cpp" />
     <ClCompile Include="src\FactoryEnemigos.cpp" />
@@ -67,6 +68,7 @@
     <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\Corazon.h" />
     <ClInclude Include="src\Disparo.h" />
+    <ClInclude Include="src\DisparoGancho.h" />
     <ClInclude Include="src\DisparoLento.h" />
     <ClInclude Include="src\DisparoRapido.h" />
     <ClInclude Include="src\FactoryEnemigos.h" />
