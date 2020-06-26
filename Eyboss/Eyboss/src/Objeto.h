@@ -7,7 +7,7 @@
 
 class Objeto {
 public:
-	enum objetos { OBJETO = 0, TIRACHINAS, ESPADA, TIRACHINAS_LENTO, TIRACHINAS_RAPIDO };
+	enum objetos { OBJETO = 0, TIRACHINAS, ESPADA, TIRACHINAS_LENTO, TIRACHINAS_RAPIDO, GANCHO };
 protected:
 	objetos tipo;
 	float ancho;

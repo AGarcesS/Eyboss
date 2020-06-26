@@ -3,6 +3,7 @@
 #include "Caja.h"
 #include "Disparo.h"
 #include "O_Espada.h"
+#include "O_Gancho.h"
 #include "Pared.h"
 #include "Bonus.h"
 
@@ -23,7 +24,9 @@ public:
 	static bool Colision(Disparo &d, Caja &c);
 	static bool Colision(Disparo& d, Personaje& p);
 	static bool Colision(Bonus& b, Personaje& p);
+
 	static bool Colision(O_Espada& e, Personaje& p);
+	static bool Colision(DisparoGancho& dg, Pared p);
 
 	static bool Colision(Personaje& p1, Personaje& p2);
 	static bool Cercania(Personaje& p1, Personaje& p2);

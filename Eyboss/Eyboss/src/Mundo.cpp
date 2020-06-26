@@ -163,30 +163,41 @@ void Mundo::Tecla(unsigned char key)
 		}
 		break;
 	}
+	case 't':
+		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
+			if (objetos[i] != NULL)
+				if (objetos[i]->GetTipo() == Objeto::GANCHO)
+					objetos[i]->Ataca(protagonista);
+		}
+		break;
 	}
 }
 
 void Mundo::TeclaEspecial(unsigned char key) {
+	if (protagonista.GetMovimiento()) {
 	switch (key) {
-	case GLUT_KEY_LEFT:	
+	case GLUT_KEY_LEFT:
 		protagonista.SetVel(-5.0f, protagonista.GetVel().y);
 		protagonista.SetOrientacion(false);
 		break;
-	case GLUT_KEY_RIGHT:		
-		protagonista.SetVel(5.0f,protagonista.GetVel().y);		
+	case GLUT_KEY_RIGHT:
+		protagonista.SetVel(5.0f, protagonista.GetVel().y);
 		protagonista.SetOrientacion(true);
-		break;	
+		break;
+		}
 	}
 }
 
 void Mundo::TeclaMantenida(unsigned char key) { //Si se deja de pulsar la tecla
-	switch (key) {
-	case GLUT_KEY_RIGHT:
-		protagonista.SetVel(0.0f, protagonista.GetVel().y);
-		break;
-	case GLUT_KEY_LEFT:
-		protagonista.SetVel(0.0f, protagonista.GetVel().y);
-		break;
+	if (protagonista.GetMovimiento()) {
+		switch (key) {
+		case GLUT_KEY_RIGHT:
+			protagonista.SetVel(0.0f, protagonista.GetVel().y);
+			break;
+		case GLUT_KEY_LEFT:
+			protagonista.SetVel(0.0f, protagonista.GetVel().y);
+			break;
+		}
 	}
 }
 
@@ -217,7 +228,8 @@ bool Mundo::CargarNivel() {
 
 
 		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.0f, 17.0f, 2.5f);
-		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);		
+		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);
+		factory_p.Crear(Pared::SALTO, plataformas, 20.0f, 6.5f, 30.0f, 6.0f);
 
 		Corazon* e = new Corazon();
 		B_Espada* f = new B_Espada();
@@ -225,18 +237,21 @@ bool Mundo::CargarNivel() {
 		B_Tirachinas* h = new B_Tirachinas();
 		B_TirachinasLento* i = new B_TirachinasLento();
 		B_TirachinasRapido* j = new B_TirachinasRapido();
+		B_Gancho* k = new B_Gancho();
 		e->SetPos(12, 3);
 		f->SetPos(0, 3);
 		g->SetPos(15, 1);
 		h->SetPos(18, 1);
 		i->SetPos(5, 3);
 		j->SetPos(-4, 1);
+		k->SetPos(3, 1);
 		bonus.Agregar(e);
 		bonus.Agregar(f);
 		bonus.Agregar(g);
 		bonus.Agregar(h);
 		bonus.Agregar(i);
 		bonus.Agregar(j);
+		bonus.Agregar(k);
 		bonus.Inicializa();
 	}
 

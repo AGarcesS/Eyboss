@@ -2,7 +2,6 @@
 #include "Personaje.h"
 
 class Protagonista :public Personaje {
-private:	
 public:
 	Protagonista():Personaje(Personaje::PROTAGONISTA) {
 		altura = 1.8f;
@@ -15,6 +14,7 @@ public:
 		salto = 8.0f;
 		on = false;
 		orientacion = false;
+		nogancho = true;
 		vida = 10;
 		textura = "bin/texturas/eris_der2.png";
 		col = 6;
