@@ -3,6 +3,8 @@
 
 DisparoRapido::DisparoRapido() {
 	radio = 0.5;
+	damage = 1;
+	rapidez = 9.0f;
 	posicion.x = 0;
 	posicion.y = 0;
 	velocidad.x = 10;

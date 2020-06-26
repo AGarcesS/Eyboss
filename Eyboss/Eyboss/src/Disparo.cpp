@@ -3,6 +3,8 @@
 
 Disparo::Disparo() {
 	radio = 0.5;
+	damage = 2;
+	rapidez = 7.0f;
 	posicion.x = 0;
 	posicion.y = 0;
 	velocidad.x = 6;
@@ -17,6 +19,14 @@ Disparo::Disparo() {
 
 float Disparo::GetRadio() {
 	return radio;
+}
+
+int Disparo::GetDamage() {
+	return damage;
+}
+
+float Disparo::GetRapidez() {
+	return rapidez;
 }
 
 Vector2D Disparo::GetPos() {

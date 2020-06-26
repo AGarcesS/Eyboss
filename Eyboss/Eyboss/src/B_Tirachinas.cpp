@@ -9,5 +9,5 @@ B_Tirachinas::B_Tirachinas() {
 }
 
 void B_Tirachinas::Accion(Personaje &p) {
-	Global::municion += 3;
+	Global::municion += 5;
 }

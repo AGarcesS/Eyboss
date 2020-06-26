@@ -6,7 +6,7 @@
 #include "glut.h"
 
 Mundo::Mundo() {
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < 6; i++) {
 		o_index[i] = 0;
 	}
 }
@@ -104,7 +104,8 @@ void Mundo::Inicializa()
 	protagonista.Inicializa();
 	interfaz.Inicializa();
 	Global::tiempo = 0;
-	Global::bajas = 0;		
+	Global::bajas = 0;	
+	Global::municion = Global::municionlenta = Global::municionrapida = 0;
 
 	x_ojo = protagonista.GetPos().x;
 	y_ojo = protagonista.GetPos().y;
@@ -132,8 +133,10 @@ void Mundo::Tecla(unsigned char key)
 	{
 		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
 			if (objetos[i] != NULL)
-				if (objetos[i]->GetTipo() == Objeto::TIRACHINAS)
+				if (objetos[i]->GetTipo() == Objeto::TIRACHINAS) {
 					objetos[i]->Ataca(protagonista);
+					break;
+				}				
 		}
 		break;
 	}
@@ -141,17 +144,21 @@ void Mundo::Tecla(unsigned char key)
 	{
 		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
 			if (objetos[i] != NULL)
-				if (objetos[i]->GetTipo() == Objeto::TIRACHINAS_LENTO)
+				if (objetos[i]->GetTipo() == Objeto::TIRACHINAS_LENTO) {
 					objetos[i]->Ataca(protagonista);
+					break;
+				}					
 		}
 		break;
 	}
-	case 'e': //Tirachinas rapido
+	case 'e': //Tirachinas rápido
 	{
 		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
 			if (objetos[i] != NULL)
-				if (objetos[i]->GetTipo() == Objeto::TIRACHINAS_RAPIDO)
+				if (objetos[i]->GetTipo() == Objeto::TIRACHINAS_RAPIDO) {
 					objetos[i]->Ataca(protagonista);
+					break;
+				}					
 		}
 		break;
 	}
@@ -159,16 +166,20 @@ void Mundo::Tecla(unsigned char key)
 	{
 		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
 			if (objetos[i] != NULL)
-				if (objetos[i]->GetTipo() == Objeto::ESPADA)
+				if (objetos[i]->GetTipo() == Objeto::ESPADA) {
 					objetos[i]->Ataca(protagonista);
+					break;
+				}					
 		}
 		break;
 	}
-	case 't':
+	case 't': //Gancho
 		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
 			if (objetos[i] != NULL)
-				if (objetos[i]->GetTipo() == Objeto::GANCHO)
+				if (objetos[i]->GetTipo() == Objeto::GANCHO) {
 					objetos[i]->Ataca(protagonista);
+					break;
+				}					
 		}
 		break;
 	}
@@ -204,13 +215,14 @@ void Mundo::TeclaMantenida(unsigned char key) { //Si se deja de pulsar la tecla
 
 bool Mundo::CargarNivel() {
 	nivel++;
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < 6; i++) {
 		o_index[i] = 0;
 	}
 	protagonista.SetPos(10, 0);
 	enemigos.DestruirContenido();
 	objetos.DestruirContenido();
-	plataformas.DestruirContenido();	
+	plataformas.DestruirContenido();
+	bonus.DestruirContenido();
 
 	if (nivel == 1) {
 
@@ -222,12 +234,13 @@ bool Mundo::CargarNivel() {
 
 		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada enemigo)
 
+		//Caja
 		factory_p.Crear(Pared::NORMAL, plataformas, -10.0f, -0.5f, 80.0f, 0.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, -10.0f, 15.0f, 80.0f, 15.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, -10.5f, 0.0f, -10.0f, 15.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 80.0f, 0.0f, 80.5f, 15.0f);
 
-
+		//Plataformas
 		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.0f, 17.0f, 2.5f);
 		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);
 		factory_p.Crear(Pared::SALTO, plataformas, 20.0f, 6.5f, 30.0f, 6.0f);

@@ -62,37 +62,41 @@ template<class T, int ind, Objeto::objetos tip> class ListaDisparos :public Obje
 private:
 	T *lista[MAX_DISPAROS];
 	int numero;
-	int municion;
+
+	int GetMunicion() {
+		if (tip == Objeto::TIRACHINAS)
+			return Global::municion;
+		if (tip == Objeto::TIRACHINAS_LENTO)
+			return Global::municionlenta;
+		if (tip == Objeto::TIRACHINAS_RAPIDO)
+			return Global::municionrapida;
+	}
+
+	void SetMunicion(int m) {
+		if (tip == Objeto::TIRACHINAS)
+			Global::municion = m;
+		if (tip == Objeto::TIRACHINAS_LENTO)
+			Global::municionlenta = m;
+		if (tip == Objeto::TIRACHINAS_RAPIDO)
+			Global::municionrapida = m;
+	}
+
 public:
 	ListaDisparos() :Objeto(tip) {
 		numero = 0;
 		for (int i = 0; i < MAX_DISPAROS; i++)
 			lista[i] = 0;
 		index = ind;
-		municion = 0;
-		
 	}
 
 	virtual ~ListaDisparos() {}
 
 	bool Agregar(T* d) {		
-		if (tip == Objeto::TIRACHINAS)
-			municion = Global::municion;
-		if (tip == Objeto::TIRACHINAS_LENTO)
-			municion = Global::municionlenta;
-		if (tip == Objeto::TIRACHINAS_RAPIDO)
-			municion = Global::municionrapida;
-		if (numero < municion) {				
+		if (numero < GetMunicion()) {				
 			lista[numero] = d;			
 			numero++;		
-			municion--;
 			ETSIDI::play("bin/sonidos/shoot.wav");
-			if (tip == Objeto::TIRACHINAS)
-				Global::municion = municion;
-			if (tip == Objeto::TIRACHINAS_LENTO)
-				Global::municionlenta = municion;
-			if (tip == Objeto::TIRACHINAS_RAPIDO)
-				Global::municionrapida = municion;
+			SetMunicion(GetMunicion() - 1);		
 			return true;
 		}
 		else
@@ -103,7 +107,6 @@ public:
 		for (int i = 0; i < numero; i++)
 			delete lista[i];
 		numero = 0;
-		municion = 0;
 	}
 
 	void Eliminar(int index) {
@@ -159,9 +162,9 @@ public:
 		T* d = new T();
 		d->SetPos(p.GetPos().x, p.GetPos().y);
 		if (p.GetOrientacion())
-			d->SetVel(7.0f, 0.0f);
+			d->SetVel(d->GetRapidez(), 0.0f);
 		else
-			d->SetVel(-7.0f, 0.0f);
+			d->SetVel(-d->GetRapidez(), 0.0f);
 		Agregar(d);
 		Inicializa();		
 	}
@@ -171,7 +174,7 @@ public:
 			for (int j = 0; j < numero; j++) {
 				if (Interaccion::Colision(*lista[j], *l[i])) {
 					if (l[i]->GetVida() > 0) {
-						l[i]->SetVida(-1);
+						l[i]->SetVida(lista[j]->GetDamage());
 					}
 					else {
 						l.Eliminar(l[i]);

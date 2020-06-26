@@ -9,5 +9,5 @@ B_TirachinasLento::B_TirachinasLento() {
 }
 
 void B_TirachinasLento::Accion(Personaje& p) {
-	Global::municionlenta += 3;
+	Global::municionlenta += 2;
 }

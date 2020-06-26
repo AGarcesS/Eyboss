@@ -6,6 +6,8 @@ class Disparo {
 protected:	
 	float radio;
 	float longitud;
+	int damage;
+	float rapidez;
 	Vector2D origen;
 	Vector2D posicion;
 	Vector2D velocidad;
@@ -17,6 +19,8 @@ public:
 	virtual ~Disparo() {}
 
 	float GetRadio();
+	int GetDamage();
+	float GetRapidez();
 	Vector2D GetPos();
 	void SetPos(float ix, float iy);
 	void SetVel (float vx, float vy);
