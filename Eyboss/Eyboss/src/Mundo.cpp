@@ -219,6 +219,7 @@ bool Mundo::CargarNivel() {
 		o_index[i] = 0;
 	}
 	protagonista.SetPos(10, 0);
+	protagonista.SetVel(0, 0);
 	enemigos.DestruirContenido();
 	objetos.DestruirContenido();
 	plataformas.DestruirContenido();
