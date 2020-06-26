@@ -78,3 +78,8 @@ void ListaObjetos::Mueve(float t) {
 	for (int i = 0; i < numero; i++)
 		lista[i]->Mueve(t);
 }
+
+void ListaObjetos::Seguir(Personaje& p) {
+	for (int i = 0; i < numero; i++)
+		lista[i]->Seguir(p);
+}

@@ -288,17 +288,23 @@ bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 }
 
 bool Interaccion::Colision(O_Espada& e, Personaje& p) {
-	if ((p.posicion.x - p.ancho / 2) > (e.posicion.x + e.ancho / 2))
-		return 0;
-	else if ((p.posicion.x + p.ancho / 2) < (e.posicion.x - e.ancho / 2))
-		return 0;
-	else if ((p.posicion.y - p.altura / 2) > (e.posicion.y + e.altura / 2))
-		return 0;
-	else if ((p.posicion.y + p.altura / 2) < (e.posicion.y - e.altura / 2))
-		return 0;
-	else
-		return 1;
+
+	if ((Global::tiempo - e.tiempo0) / 40 < 0.5 && Global::tiempo / 40 > 0.5) {
+		if ((p.posicion.x - p.ancho / 2) > (e.posicion.x + e.ancho / 2))
+			return 0;
+		else if ((p.posicion.x + p.ancho / 2) < (e.posicion.x - e.ancho / 2))
+			return 0;
+		else if ((p.posicion.y - p.altura / 2) > (e.posicion.y + e.altura / 2))
+			return 0;
+		else if ((p.posicion.y + p.altura / 2) < (e.posicion.y - e.altura / 2))
+			return 0;
+		else
+			return 1;
+	}
+
+	return 0;
 }
+
 
 bool Interaccion::Colision(DisparoGancho& dg, Pared pa) {
 

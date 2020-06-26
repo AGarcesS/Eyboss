@@ -47,6 +47,7 @@ void Mundo::Mueve()
 	protagonista.Mueve(0.025f);	
 	enemigos.Mueve(0.025f);
 	objetos.Mueve(0.025f);
+	objetos.Seguir(protagonista);
 
 	objetos.Colision(enemigos);
 	objetos.Colision(plataformas);

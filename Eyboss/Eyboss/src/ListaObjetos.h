@@ -2,6 +2,7 @@
 #include "Objeto.h"
 #include "ListaPlataformas.h"
 #include "ListaEnemigos.h"
+#include "Personajes.h"
 
 class ListaObjetos {
 public:
@@ -23,6 +24,7 @@ public:
 	void Colision(ListaEnemigos& p);
 	void Colision(Caja& c);
 	void Mueve(float t);
+	void Seguir(Personaje& p);
 
 	Objeto* operator[] (int i);
 

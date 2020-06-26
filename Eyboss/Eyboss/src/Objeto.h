@@ -14,6 +14,8 @@ protected:
 	float altura;
 	Vector2D posicion;
 	bool orientacion;		//marca de orientacion
+	float tiempo0;
+	bool m_tiempo;
 	ETSIDI::Sprite* sprite;
 	const char* textura;
 public:
@@ -27,6 +29,7 @@ public:
 	virtual void Dibuja() {}
 	virtual void Inicializa() {}
 	virtual void Mueve(float t) {}
+	virtual void Seguir(Personaje& p) {}
 	virtual void DestruirContenido() {}
 	virtual void Ataca(Personaje& p) {}
 	virtual void Colision(ListaEnemigos& p) {}
