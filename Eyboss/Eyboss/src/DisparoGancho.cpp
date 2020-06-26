@@ -3,7 +3,9 @@
 
 
 void DisparoGancho::Dibuja() {
-    glColor3f(0.0f, 1.0f, 1.0f);
+    GLfloat thickness = 5.0;
+    glLineWidth(thickness);
+    glColor3f(0.2f, 0.2f, 0.2f);
     glDisable(GL_LIGHTING);
     glBegin(GL_LINES);
     glVertex2f(posorigen.x, posorigen.y);
@@ -32,14 +34,10 @@ void DisparoGancho::SetPosOr(float ix, float iy) {
     posorigen.y = iy;
 }
 
-
-
 void DisparoGancho::Mueve(float t) {
     posicion = posicion + velocidad * t + aceleracion * (0.5 * t * t);
     velocidad = velocidad + aceleracion * t;
 }
-
-
 
 bool DisparoGancho::Limite() {
     Vector2D pos = posicion - posorigen;
@@ -49,17 +47,12 @@ bool DisparoGancho::Limite() {
         return false;
 }
 
-
-
 void DisparoGancho::SetF(bool f) {
     feuer = f;
 }
 bool DisparoGancho::GetF() {
     return feuer;
 }
-
-
-
 Vector2D DisparoGancho::GetOr() {
     return posorigen;
 }

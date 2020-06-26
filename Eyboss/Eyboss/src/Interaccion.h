@@ -26,7 +26,7 @@ public:
 	static bool Colision(Bonus& b, Personaje& p);
 
 	static bool Colision(O_Espada& e, Personaje& p);
-	static bool Colision(DisparoGancho& dg, Pared& p);
+	static bool Colision(DisparoGancho& dg, Pared p);
 
 	static bool Colision(Personaje& p1, Personaje& p2);
 	static bool Cercania(Personaje& p1, Personaje& p2);

@@ -2,7 +2,7 @@
 #define MAX_GANCHOS 1
 #include "DisparoGancho.h"
 #include "Objeto.h"
-#include "Personaje.h"
+#include "Protagonista.h"
 #include "ListaEnemigos.h"
 #include "ListaPlataformas.h"
 #include "Interaccion.h"
@@ -10,7 +10,7 @@
 
 class O_Gancho :public Objeto {
 private:
-	Disparo* lista[MAX_GANCHOS];
+	DisparoGancho* lista[MAX_GANCHOS];
 	int numero;
 public:
 
@@ -22,20 +22,20 @@ public:
 	}
 	virtual ~O_Gancho() {}
 
-	bool Agregar(Disparo* d);
+	bool Agregar(DisparoGancho* d);
 	void DestruirContenido();
 	void Eliminar(int index);
-	void Eliminar(Disparo* d);
-	Disparo* operator [] (int i);
+	void Eliminar(DisparoGancho* d);
+	DisparoGancho* operator [] (int i);
 	void Inicializa();
 	void Mueve(float t);
 	void Dibuja();
 
-	Disparo* Colision(Pared p);
+	DisparoGancho* Colision(Pared p);
 
 	int getNumero() { return numero; }
 
-	void Ataca(Personaje &p);
+	void Ataca(Personaje&p);
 	void Colision(ListaPlataformas& l);
 	void Colision(Caja &c);	
 };

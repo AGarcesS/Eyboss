@@ -300,12 +300,13 @@ bool Interaccion::Colision(O_Espada& e, Personaje& p) {
 		return 1;
 }
 
-bool Interaccion::Colision(DisparoGancho& dg, Pared& pa) {
+bool Interaccion::Colision(DisparoGancho& dg, Pared pa) {
 
-	if (Colision(pa, dg.posicion, 0))
+	if (Colision(pa, dg.posicion, 0.1))
 	{
 		dg.velocidad.x = 0.0f;
 		dg.velocidad.y = 0.0f;
+		
 		return true;
 	}
 	else

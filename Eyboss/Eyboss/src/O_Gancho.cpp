@@ -3,7 +3,7 @@
 #include "Interaccion.h"
 
 
-bool O_Gancho::Agregar(Disparo* d) {
+bool O_Gancho::Agregar(DisparoGancho* d) {
 	if (numero < MAX_GANCHOS) {
 		lista[numero] = d;
 		numero++;
@@ -34,7 +34,7 @@ void O_Gancho::Eliminar(int index) {
 		lista[i] = lista[i + 1];
 }
 
-void O_Gancho::Eliminar(Disparo* d) {
+void O_Gancho::Eliminar(DisparoGancho* d) {
 	for (int i = 0; i < numero; i++) {
 		if (lista[i] == d) {
 			Eliminar(i);
@@ -67,7 +67,7 @@ Disparo* O_Gancho::Colision(Pared p) {
 }
 */
 
-Disparo* O_Gancho::operator [] (int i) {
+DisparoGancho* O_Gancho::operator [] (int i) {
 	if (i >= numero)
 		i = numero - 1;
 	if (i < 0)
@@ -78,6 +78,7 @@ Disparo* O_Gancho::operator [] (int i) {
 void O_Gancho::Ataca(Personaje& p) {
 	DisparoGancho* dg = new DisparoGancho();
 	dg->SetPosOr(p.GetPos().x, p.GetPos().y);
+	dg->SetPos(p.GetPos().x, p.GetPos().y);
 	if (p.GetOrientacion())
 		dg->SetVel(7.0f, 7.0f);
 	else
@@ -85,25 +86,10 @@ void O_Gancho::Ataca(Personaje& p) {
 	Agregar(dg);
 	Inicializa();
 	ETSIDI::play("bin/sonidos/shoot.wav");
+	p.SetMovimiento(false);
+	p.SetVel(0, 0);
+	
 }
-
-
-/*
-void O_Gancho::Ataca(Personaje& p) {
-	orientacion = p.GetOrientacion();
-
-	if (orientacion)
-		velocidad.x = 7;
-	else
-		velocidad.x = -7;
-
-	velocidad.y = 7;
-
-	posorigen.x = posicion.x = p.GetPos().x;
-	posorigen.y = posicion.y = p.GetPos().y;
-
-}
-*/
 
 void O_Gancho::Colision(Caja &c) {
 	for (int i = 0; i < numero; i++) {
@@ -113,9 +99,11 @@ void O_Gancho::Colision(Caja &c) {
 }
 
 void O_Gancho::Colision(ListaPlataformas& l) {
-    for (int i = 0; i < l.getNumero(); i++) {
-		for(int j=0; j<numero;j++){
-			Interaccion::Colision(*lista[j], *l[i]);
-        }
-    }
+	int col;
+	for (int i = 0; i < l.getNumero(); i++) {
+		for (int j = 0; j < numero;j++) {
+			col=Interaccion::Colision(*lista[j], *l[i]);
+		}
+	}
+
 }

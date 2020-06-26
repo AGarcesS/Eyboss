@@ -174,26 +174,30 @@ void Mundo::Tecla(unsigned char key)
 }
 
 void Mundo::TeclaEspecial(unsigned char key) {
+	if (protagonista.GetMovimiento()) {
 	switch (key) {
-	case GLUT_KEY_LEFT:	
+	case GLUT_KEY_LEFT:
 		protagonista.SetVel(-5.0f, protagonista.GetVel().y);
 		protagonista.SetOrientacion(false);
 		break;
-	case GLUT_KEY_RIGHT:		
-		protagonista.SetVel(5.0f,protagonista.GetVel().y);		
+	case GLUT_KEY_RIGHT:
+		protagonista.SetVel(5.0f, protagonista.GetVel().y);
 		protagonista.SetOrientacion(true);
-		break;	
+		break;
+		}
 	}
 }
 
 void Mundo::TeclaMantenida(unsigned char key) { //Si se deja de pulsar la tecla
-	switch (key) {
-	case GLUT_KEY_RIGHT:
-		protagonista.SetVel(0.0f, protagonista.GetVel().y);
-		break;
-	case GLUT_KEY_LEFT:
-		protagonista.SetVel(0.0f, protagonista.GetVel().y);
-		break;
+	if (protagonista.GetMovimiento()) {
+		switch (key) {
+		case GLUT_KEY_RIGHT:
+			protagonista.SetVel(0.0f, protagonista.GetVel().y);
+			break;
+		case GLUT_KEY_LEFT:
+			protagonista.SetVel(0.0f, protagonista.GetVel().y);
+			break;
+		}
 	}
 }
 
@@ -224,7 +228,8 @@ bool Mundo::CargarNivel() {
 
 
 		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.0f, 17.0f, 2.5f);
-		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);		
+		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);
+		factory_p.Crear(Pared::SALTO, plataformas, 20.0f, 6.5f, 30.0f, 6.0f);
 
 		Corazon* e = new Corazon();
 		B_Espada* f = new B_Espada();

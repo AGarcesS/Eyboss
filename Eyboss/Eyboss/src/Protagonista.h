@@ -14,6 +14,7 @@ public:
 		salto = 8.0f;
 		on = false;
 		orientacion = false;
+		nogancho = true;
 		vida = 10;
 		textura = "bin/texturas/eris_der2.png";
 		col = 6;

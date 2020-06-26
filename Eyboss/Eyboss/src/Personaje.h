@@ -22,6 +22,7 @@ protected:
 	int col;
 	ETSIDI::SpriteSequence* animacion;                //Sprites
 	bool detencion;
+	bool nogancho;
 public:
 	Personaje(enemigos e) :tipo(e) {}
 	enemigos GetTipo() { return tipo; }
@@ -52,6 +53,9 @@ public:
 
 	bool GetDetencion() { return detencion; }
 	void SetDetencion(bool on) { detencion = on; }
+
+	bool GetMovimiento() { return nogancho; }
+	void SetMovimiento(bool d) { nogancho = d; }
 
 	void SetTextura(const char* t);
 
