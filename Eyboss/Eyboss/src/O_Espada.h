@@ -5,7 +5,7 @@
 
 class O_Espada : public Objeto {
 public:
-	O_Espada() :Objeto(ESPADA) {
+	O_Espada() :Objeto(Objeto::ESPADA) {
 		altura = 1;
 		ancho = 1;
 		posicion.x = 0;
