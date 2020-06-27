@@ -17,6 +17,7 @@ public:
 		nogancho = true;
 		m_daño = false;
 		m_tiempo = false;
+		m_parpadeo = false;
 		vida = 10;
 		textura = "bin/texturas/eris_der2.png";
 		col = 6;

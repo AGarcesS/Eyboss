@@ -26,6 +26,7 @@ protected:
 	bool nogancho;
 
 	bool m_daño;
+	bool m_parpadeo;
 	bool m_tiempo;
 	float tiempo0;
 public:

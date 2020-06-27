@@ -208,8 +208,9 @@ bool Interaccion::Colision(Personaje& p1, Personaje& p2) {			//p1 enemigo, p2 pr
 			return 0;
 		else
 		{
-			p2.m_daño = true;
 			p2.tiempo0 = Global::tiempo;
+			p2.m_daño = true;
+			p2.m_parpadeo = true;
 			return 1;
 		}
 	}
@@ -217,6 +218,7 @@ bool Interaccion::Colision(Personaje& p1, Personaje& p2) {			//p1 enemigo, p2 pr
 	{
 		p2.tiempo0 = 0;
 		p2.m_daño = false;
+		p2.m_parpadeo = false;
 	}
 
 	return 0;
