@@ -37,5 +37,4 @@ public:
 
 	void Ataca(Personaje&p);
 	void Colision(ListaPlataformas& l);
-	void Colision(Caja &c);	
 };

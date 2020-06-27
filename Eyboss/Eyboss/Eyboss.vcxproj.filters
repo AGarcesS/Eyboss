@@ -18,9 +18,6 @@
     <ClCompile Include="src\Bonus.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\Caja.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="src\Disparo.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -132,9 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bonus.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Caja.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\Disparo.h">

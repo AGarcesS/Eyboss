@@ -121,45 +121,11 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 	return colision;
 }
 
-bool Interaccion::Colision(Personaje& p, Caja &c) {
-
-	bool colision = false;
-
-	if ((p.posicion.y - p.altura / 2) < c.suelo.limite2.y) {
-		p.posicion.y = c.suelo.limite2.y + p.altura / 2;
-		p.on = true;
-		colision = true;
-	}
-	if ((p.posicion.y + p.altura / 2) > c.techo.limite1.y) {
-		p.posicion.y = c.techo.limite1.y - p.altura / 2;
-		colision = true;
-	}
-	if ((p.posicion.x + p.ancho / 2) > c.pared_dcha.limite1.x) {
-		p.posicion.x = c.pared_dcha.limite1.x - p.ancho / 2;
-		p.velocidad.x *= -1;
-		colision = true;
-	}
-
-	if ((p.posicion.x - p.ancho / 2) < c.pared_izq.limite2.x) {
-		p.posicion.x = c.pared_izq.limite2.x + p.ancho / 2;
-		p.velocidad.x *= -1;
-		colision = true;
-	}		
-	return colision;
-}
-
 bool Interaccion::Colision(Disparo &d, Pared &pa) {
 
 	if (Colision(pa, d.posicion, d.radio)) {
 		return true;
 	}		
-	else
-		return false;
-}
-
-bool Interaccion::Colision(Disparo &d, Caja &c) {
-	if (Colision(d, c.techo) || Colision(d, c.suelo) || Colision(d, c.pared_izq) || Colision(d, c.pared_dcha))
-		return true;
 	else
 		return false;
 }
@@ -232,12 +198,13 @@ bool Interaccion::Colision(Personaje& p1, Personaje& p2) {			//p1 enemigo, p2 pr
 }
 
 bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
+	
+	bool derecha = false;
+
+	if ((p2.posicion.x - p1.posicion.x) > 0)
+		derecha = true;							// p2 a la derecha de p1
 
 	if (Distancia(p2.posicion, p1.posicion) < 7) {
-		bool derecha = false;
-
-		if ((p2.posicion.x - p1.posicion.x) > 0)
-			derecha = true;							// p1 a la derecha de p2
 
 		if (derecha) {
 			switch (p1.GetTipo()) {
@@ -257,7 +224,6 @@ bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 				break;
 			}
 			}
-			return true;
 		}
 		else {
 			switch (p1.GetTipo()) {
@@ -277,10 +243,11 @@ bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 				break;
 			}
 			}
-			return true;
 		}
 
+		return true;
 	}
+
 	if (p1.velocidad.x * p1.vel_ini.x >= 0)		//Signos iguales o si una de ellas es 0
 		p1.velocidad.x = p1.vel_ini.x;
 	if (p1.velocidad.x * p1.vel_ini.x < 0)

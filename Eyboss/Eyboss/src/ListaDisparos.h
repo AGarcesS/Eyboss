@@ -1,7 +1,6 @@
 #pragma once
 #define MAX_DISPAROS 50
 #include "Disparo.h"
-#include "Caja.h"
 #include "Pared.h"
 #include "Objeto.h"
 #include "Personaje.h"

@@ -69,11 +69,6 @@ void ListaObjetos::Colision(ListaEnemigos& p) {
 	}
 }
 
-void ListaObjetos::Colision(Caja& c) {
-	for (int i = 0; i < numero; i++)
-		lista[i]->Colision(c);
-}
-
 void ListaObjetos::Mueve(float t) {
 	for (int i = 0; i < numero; i++)
 		lista[i]->Mueve(t);

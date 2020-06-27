@@ -91,13 +91,6 @@ void O_Gancho::Ataca(Personaje& p) {
 	
 }
 
-void O_Gancho::Colision(Caja &c) {
-	for (int i = 0; i < numero; i++) {
-		if (Interaccion::Colision(*lista[i], c))
-			Eliminar(lista[i]);
-	}
-}
-
 void O_Gancho::Colision(ListaPlataformas& l) {
 	int col;
 	for (int i = 0; i < l.getNumero(); i++) {

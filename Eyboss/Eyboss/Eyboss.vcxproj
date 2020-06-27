@@ -25,7 +25,6 @@
     <ClCompile Include="src\B_Tirachinas.cpp" />
     <ClCompile Include="src\B_TirachinasLento.cpp" />
     <ClCompile Include="src\B_TirachinasRapido.cpp" />
-    <ClCompile Include="src\Caja.cpp" />
     <ClCompile Include="src\Corazon.cpp" />
     <ClCompile Include="src\Disparo.cpp" />
     <ClCompile Include="src\DisparoGancho.cpp" />
@@ -65,7 +64,6 @@
     <ClInclude Include="src\B_Tirachinas.h" />
     <ClInclude Include="src\B_TirachinasLento.h" />
     <ClInclude Include="src\B_TirachinasRapido.h" />
-    <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\Corazon.h" />
     <ClInclude Include="src\Disparo.h" />
     <ClInclude Include="src\DisparoGancho.h" />
