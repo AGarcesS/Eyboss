@@ -22,7 +22,6 @@ public:
 	void Ataca(Personaje& p);
 	void Colision(ListaPlataformas& p);
 	void Colision(ListaEnemigos& p);
-	void Colision(Caja& c);
 	void Mueve(float t);
 	void Seguir(Personaje& p);
 

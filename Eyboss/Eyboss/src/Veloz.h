@@ -15,7 +15,7 @@ public:
 		posicion.x = 0;
 		posicion.y = 5;
 		orientacion = orien_ini = false;
-		salto = 0;
+		salto = 6.0f;
 		on = false;
 		vida = 8;
 		daño = 1;

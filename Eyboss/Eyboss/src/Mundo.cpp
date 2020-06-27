@@ -33,10 +33,9 @@ void Mundo::Dibuja()
 
 	//aqui es donde hay que poner el codigo de dibujo
 
-	protagonista.Dibuja();	
-	enemigos.Dibuja();	
-	caja.Dibuja();	
 	plataformas.Dibuja();
+	protagonista.Dibuja();	
+	enemigos.Dibuja();
 	bonus.Dibuja();	
 	objetos.Dibuja();
 	interfaz.ImprimeJuego(protagonista);
@@ -51,9 +50,6 @@ void Mundo::Mueve()
 
 	objetos.Colision(enemigos);
 	objetos.Colision(plataformas);
-	//objetos.Colision(caja);
-	
-	Interaccion::Colision(protagonista, caja);
 
 	for (int i = 0; i < plataformas.getNumero(); i++) {
 		Interaccion::Colision(protagonista, *plataformas[i]);
@@ -104,8 +100,6 @@ void Mundo::Mueve()
 			}
 		}
 	}
-
-	enemigos.Colision(caja);
 
 	Global::tiempo++;
 	if (Global::reset)
@@ -234,7 +228,7 @@ bool Mundo::CargarNivel() {
 	for (int i = 0; i < 6; i++) {
 		o_index[i] = 0;
 	}
-	protagonista.SetPos(10, 0);
+	protagonista.SetPos(10, protagonista.GetAltura()/2);
 	protagonista.SetVel(0, 0);
 	enemigos.DestruirContenido();
 	objetos.DestruirContenido();
@@ -244,10 +238,10 @@ bool Mundo::CargarNivel() {
 	if (nivel == 1) {
 
 		// Enemigos
-		factory_e.Crear(Personaje::PURK, enemigos, 0, 0, 2, 3);
+		factory_e.Crear(Personaje::PURK, enemigos, 0, 8, 2, 3);
 		factory_e.Crear(Personaje::PURK, enemigos, 5, 3, 2, 5);
 		factory_e.Crear(Personaje::VELOZ, enemigos, 30, 2, -4, 0);
-		factory_e.Crear(Personaje::TROLL, enemigos, 40, 0, -2, 3);
+		factory_e.Crear(Personaje::TROLL, enemigos, 40, 4, -2, 3);
 
 		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada enemigo)
 

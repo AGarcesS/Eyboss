@@ -1,4 +1,3 @@
-#include "Caja.h"
 #include "Bonus.h"
 #include "Corazon.h"
 #include "ListaDisparos.h"
@@ -30,7 +29,6 @@ private:
 	float z_ojo;
 
 	Protagonista protagonista;
-	Caja caja;
 	Interfaz interfaz;
 	ListaEnemigos enemigos;
 	ListaPlataformas plataformas;

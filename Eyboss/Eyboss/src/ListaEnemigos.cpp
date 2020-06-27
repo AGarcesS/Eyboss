@@ -45,12 +45,6 @@ void ListaEnemigos::Colision(Pared pa) {
 	}
 }
 
-void ListaEnemigos::Colision(Caja c) {
-	for (int i = 0; i < numero; i++) {
-		Interaccion::Colision(*lista[i], c);
-	}
-}
-
 Personaje* ListaEnemigos::Colision(Personaje& p) {
 	for (int i = 0; i < numero; i++) {
 		if (Interaccion::Colision(*lista[i], p))

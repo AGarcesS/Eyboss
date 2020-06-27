@@ -2,7 +2,6 @@
 #define MAX_ENEMIGOS 50
 #include "Personaje.h"
 #include "Pared.h"
-#include "Caja.h"
 
 class ListaEnemigos {
 private:
@@ -21,7 +20,6 @@ public:
 	void Inicializa();
 
 	void Colision(Pared pa);
-	void Colision(Caja c);
 	Personaje* Colision(Personaje& p);
 
 	Personaje* operator [] (int i);
