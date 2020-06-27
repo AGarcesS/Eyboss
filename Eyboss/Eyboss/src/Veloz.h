@@ -18,6 +18,7 @@ public:
 		salto = 0;
 		on = false;
 		vida = 8;
+		daño = 1;
 	}
 	virtual ~Veloz() {}
 };

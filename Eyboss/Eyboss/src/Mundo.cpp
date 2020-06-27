@@ -85,7 +85,23 @@ void Mundo::Mueve()
 
 	for (int i = 0; i < enemigos.getNumero(); i++) {
 		if (Interaccion::Colision(*enemigos[i], protagonista)) {
-			enemigos.Eliminar(enemigos[i]);
+			switch (enemigos[i]->GetTipo()) {
+			case Personaje::PURK:
+			{
+				protagonista.SetVida(-enemigos[i]->GetDaño());
+				break;
+			}
+			case Personaje::TROLL:
+			{
+				protagonista.SetVida(-enemigos[i]->GetDaño());
+				break;
+			}
+			case Personaje::VELOZ:
+			{
+				protagonista.SetVida(-enemigos[i]->GetDaño());
+				break;
+			}
+			}
 		}
 	}
 

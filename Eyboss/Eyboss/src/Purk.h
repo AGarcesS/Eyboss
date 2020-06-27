@@ -20,6 +20,7 @@ public:
 		salto = 0;
 		on = false;
 		vida = 4;
+		daño = 2;
 	}
 	virtual ~Purk() {}
 };
