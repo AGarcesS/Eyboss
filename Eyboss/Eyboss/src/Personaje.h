@@ -18,11 +18,16 @@ protected:
 	Vector2D vel_ini;
 	Vector2D aceleracion;
 	const char* textura;
-	int vida;	 
+	int vida;
+	int daño;
 	int col;
 	ETSIDI::SpriteSequence* animacion;                //Sprites
 	bool detencion;
 	bool nogancho;
+
+	bool m_daño;
+	bool m_tiempo;
+	float tiempo0;
 public:
 	Personaje(enemigos e) :tipo(e) {}
 	enemigos GetTipo() { return tipo; }
@@ -39,6 +44,7 @@ public:
 	bool GetOrientacion();
 	bool GetOrienini();
 	int GetVida();
+	int GetDaño();
 	virtual void GetDamage() {} //Depende de cada enemigo (para el protagonista depende del objeto)
 
 	void SetPos(float px, float py);

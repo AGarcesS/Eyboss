@@ -55,10 +55,6 @@ void Mundo::Mueve()
 	
 	Interaccion::Colision(protagonista, caja);
 
-	for (int i = 0; i < enemigos.getNumero(); i++) {
-		Interaccion::Cercania(protagonista, *enemigos[i]);
-	}
-
 	for (int i = 0; i < plataformas.getNumero(); i++) {
 		Interaccion::Colision(protagonista, *plataformas[i]);
 		enemigos.Colision(*plataformas[i]);
@@ -84,6 +80,10 @@ void Mundo::Mueve()
 	}		
 
 	for (int i = 0; i < enemigos.getNumero(); i++) {
+		Interaccion::Cercania(*enemigos[i], protagonista);
+	}
+
+	for (int i = 0; i < enemigos.getNumero(); i++) {
 		if (Interaccion::Colision(*enemigos[i], protagonista)) {
 			enemigos.Eliminar(enemigos[i]);
 		}
@@ -100,7 +100,7 @@ void Mundo::Mueve()
 
 void Mundo::Inicializa()
 {
-	protagonista.ResetVida();
+	protagonista.Reset();
 	protagonista.Inicializa();
 	interfaz.Inicializa();
 	Global::tiempo = 0;

@@ -90,6 +90,10 @@ void Personaje::SetVida(int v) {
 	vida += v;
 }
 
+int Personaje::GetDaño() {
+	return daño;
+}
+
 void Personaje::Dibuja() {
 	glTranslatef(posicion.x, posicion.y, 0);
 	if (velocidad.x < 0)

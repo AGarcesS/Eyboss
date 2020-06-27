@@ -219,60 +219,47 @@ bool Interaccion::Colision(Personaje& p1, Personaje& p2) {
 
 bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 
-	if (Distancia(p1.posicion, p2.posicion) < 7) {
-		bool derecha = false;						// p1 a la izquierda de p2
-		/*
-		if ((p1.posicion.x - p2.posicion.x) > 1.6) {
-			p2.velocidad.x = 3.5;
-			return true;
-		}
-		if ((p1.posicion.x - p2.posicion.x) < -1.6) {
-			p2.velocidad.x = -3.5;
-			return true;
-		}
-		if (-1.6 <= (p1.posicion.x - p2.posicion.x) <= 1.6) {
-			p2.velocidad.x = 0;
-			return true;
-		}
-		*/
-		if ((p1.posicion.x - p2.posicion.x) > 0)
+	if (Distancia(p2.posicion, p1.posicion) < 7) {
+		bool derecha = false;
+
+		if ((p2.posicion.x - p1.posicion.x) > 0)
 			derecha = true;							// p1 a la derecha de p2
 
 		if (derecha) {
-			switch (p2.GetTipo()) {
+			switch (p1.GetTipo()) {
 			case Personaje::PURK:
 			{
-				p2.velocidad.x = 3.5;
+				p1.velocidad.x = 3.5;
 				break;
 			}
 			case Personaje::VELOZ:
 			{
-				p2.velocidad.x = 6.0;
+				p1.velocidad.x = 4.0;
 				break;
 			}
 			case Personaje::TROLL:
 			{
-				p2.velocidad.x = 1.5;
+				p1.velocidad.x = 1.5;
 				break;
 			}
 			}
 			return true;
 		}
 		else {
-			switch (p2.GetTipo()) {
+			switch (p1.GetTipo()) {
 			case Personaje::PURK:
 			{
-				p2.velocidad.x = -3.5;
+				p1.velocidad.x = -3.5;
 				break;
 			}
 			case Personaje::VELOZ:
 			{
-				p2.velocidad.x = -6.0;
+				p1.velocidad.x = -4.0;
 				break;
 			}
 			case Personaje::TROLL:
 			{
-				p2.velocidad.x = -1.5;
+				p1.velocidad.x = -1.5;
 				break;
 			}
 			}
@@ -280,10 +267,10 @@ bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 		}
 
 	}
-	if (p2.velocidad.x * p2.vel_ini.x >= 0)		//Signos iguales o si una de ellas es 0
-		p2.velocidad.x = p2.vel_ini.x;
-	if (p2.velocidad.x * p2.vel_ini.x < 0)
-		p2.velocidad.x = -p2.vel_ini.x;			//Signos opuestos
+	if (p1.velocidad.x * p1.vel_ini.x >= 0)		//Signos iguales o si una de ellas es 0
+		p1.velocidad.x = p1.vel_ini.x;
+	if (p1.velocidad.x * p1.vel_ini.x < 0)
+		p1.velocidad.x = -p1.vel_ini.x;			//Signos opuestos
 	return false;
 }
 

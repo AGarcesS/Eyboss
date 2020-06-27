@@ -28,6 +28,8 @@ void Protagonista::Dibuja() {
 	glPopMatrix();
 }
 
-void Protagonista::ResetVida() {
+void Protagonista::Reset() {
 	vida = 10;
+	tiempo0 = 0;
+	m_daño = false;
 }

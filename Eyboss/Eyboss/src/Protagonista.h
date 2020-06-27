@@ -15,6 +15,8 @@ public:
 		on = false;
 		orientacion = false;
 		nogancho = true;
+		m_daño = false;
+		m_tiempo = false;
 		vida = 10;
 		textura = "bin/texturas/eris_der2.png";
 		col = 6;
@@ -22,5 +24,5 @@ public:
 	virtual ~Protagonista() {}
 
 	void Dibuja();	
-	void ResetVida();
+	void Reset();
 };
