@@ -62,16 +62,4 @@ void Disparo::Dibuja() {
 void Disparo::Mueve(float t) {
 	posicion = posicion + velocidad * t + aceleracion * (0.5 * t * t);
 	velocidad = velocidad + aceleracion * t;
-	
-	
-	if (velocidad.x > 0) {
-		origen = origen - velocidad * t;
-		if (origen.x < -longitud)
-			origen.x = -longitud;
-	}
-	else if (velocidad.x < 0) {
-		origen = origen - velocidad * t;
-		if (origen.x > longitud)
-			origen.x = longitud;
-	}	
 }

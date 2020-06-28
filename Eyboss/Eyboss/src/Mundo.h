@@ -15,7 +15,7 @@
 #include "B_TirachinasLento.h"
 #include "B_TirachinasRapido.h"
 #include "O_Espada.h"
-#include "O_GAncho.h"
+#include "O_Gancho.h"
 #include "ListaObjetos.h"
 #include "FactoryObjetos.h"
 #include "FactoryPlataforma.h"
@@ -34,12 +34,14 @@ private:
 	ListaPlataformas plataformas;
 	ListaBonus bonus;
 	ListaObjetos objetos;
+	ListaObjetos e_objetos;
 	FactoryObjetos factory;	
 	FactoryPlataforma factory_p;
 	FactoryEnemigos factory_e;
+	float tiempo0;
 
 	int nivel;
-	int o_index[4];
+	int o_index[ListaObjetos::n_objetos];
 
 public:
 	Mundo();

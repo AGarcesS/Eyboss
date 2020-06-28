@@ -18,7 +18,6 @@ public:
 		salto = 1.5f;
 		on = false;
 		vida = 8;
-		daño = 4;
 	}
 	virtual ~Troll() {}
 };

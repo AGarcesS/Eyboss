@@ -6,7 +6,7 @@
 
 class ListaObjetos {
 public:
-	static const int n_objetos = 6;
+	static const int n_objetos = 20;
 private:
 	Objeto* lista[n_objetos];
 	int numero;
@@ -21,6 +21,7 @@ public:
 	void Dibuja();
 	void Ataca(Personaje& p);
 	void Colision(ListaPlataformas& p);
+	void Colision(Personaje& p);
 	void Colision(ListaEnemigos& p);
 	void Mueve(float t);
 	void Seguir(Personaje& p);

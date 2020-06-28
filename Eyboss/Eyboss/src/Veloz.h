@@ -17,7 +17,7 @@ public:
 		orientacion = orien_ini = false;
 		salto = 6.0f;
 		on = false;
-		vida = 8;
+		vida = 1;
 		daño = 1;
 	}
 	virtual ~Veloz() {}

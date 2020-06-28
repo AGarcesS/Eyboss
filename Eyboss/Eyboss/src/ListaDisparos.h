@@ -9,54 +9,6 @@
 #include "Interaccion.h"
 #include "Global.h"
 
-//class ListaDisparos :public Objeto {
-//private:
-//	Disparo* lista[MAX_DISPAROS];
-//	int numero;
-//public:
-//
-//	ListaDisparos(Disparo &d) :Objeto(TIRACHINAS) {
-//		numero = 0;
-//		for (int i = 0; i < MAX_DISPAROS; i++)
-//			lista[i] = 0;
-//		index = 1;
-//	}
-//
-//	/*ListaDisparos(){
-//		numero = 0;
-//		for (int i = 0; i < MAX_DISPAROS; i++)
-//			lista[i] = 0;
-//		index = 1;
-//	}*/
-//
-//	/*ListaDisparos(){
-//		numero = 0;
-//		for (int i = 0; i < MAX_DISPAROS; i++)
-//			lista[i] = 0;
-//		index = 1;
-//	}*/
-//
-//	virtual ~ListaDisparos() {}
-//
-//	bool Agregar(Disparo* d);
-//	void DestruirContenido();
-//	void Eliminar(int index);
-//	void Eliminar(Disparo* d);
-//	Disparo* operator [] (int i);
-//	void Inicializa();
-//	void Mueve(float t);
-//	void Dibuja();
-//
-//	Disparo* Colision(Pared p);
-//
-//	int getNumero() { return numero; }
-//
-//	void Ataca(Personaje &p);
-//	void Colision(ListaPlataformas& l);
-//	void Colision(ListaEnemigos& l);
-//	void Colision(Caja &c);	
-//};
-
 template<class T, int ind, Objeto::objetos tip> class ListaDisparos :public Objeto {
 private:
 	T *lista[MAX_DISPAROS];
@@ -91,11 +43,10 @@ public:
 	virtual ~ListaDisparos() {}
 
 	bool Agregar(T* d) {		
-		if (numero < GetMunicion()) {				
+		if (numero < MAX_DISPAROS) {				
 			lista[numero] = d;			
 			numero++;		
-			ETSIDI::play("bin/sonidos/shoot.wav");
-			SetMunicion(GetMunicion() - 1);		
+			ETSIDI::play("bin/sonidos/shoot.wav");	
 			return true;
 		}
 		else
@@ -157,15 +108,42 @@ public:
 		return lista[i];
 	}
 
-	void Ataca(Personaje& p) {			
-		T* d = new T();
-		d->SetPos(p.GetPos().x, p.GetPos().y);
-		if (p.GetOrientacion())
-			d->SetVel(d->GetRapidez(), 0.0f);
-		else
-			d->SetVel(-d->GetRapidez(), 0.0f);
-		Agregar(d);
-		Inicializa();		
+	void Ataca(Personaje& p) {
+		if (p.GetTipo() == Personaje::PROTAGONISTA) {
+			if (numero < GetMunicion()) {
+				SetMunicion(GetMunicion() - 1);
+				T* d = new T();
+				d->SetPos(p.GetPos().x, p.GetPos().y);
+				if (p.GetOrientacion())
+					d->SetVel(d->GetRapidez(), 0.0f);
+				else
+					d->SetVel(-d->GetRapidez(), 0.0f);
+				Agregar(d);
+				Inicializa();
+			}
+		}
+		else {
+			T* d = new T();
+			d->SetPos(p.GetPos().x, p.GetPos().y);
+			if (p.GetVel().x > 0)
+				d->SetVel(d->GetRapidez(), 0.0f);
+			else
+				d->SetVel(-d->GetRapidez(), 0.0f);
+			Agregar(d);
+			Inicializa();
+		}
+	}
+
+	void Colision(Personaje& p) {
+		for (int i = 0; i < numero; i++) {
+			if (Interaccion::Colision(*lista[i], p)) {
+				if (p.GetVida() > 0) {
+					p.SetVida(-lista[i]->GetDamage());
+				}
+				Eliminar(lista[i]);
+				break;
+			}
+		}
 	}
 
 	void Colision(ListaEnemigos& l) {
@@ -173,7 +151,7 @@ public:
 			for (int j = 0; j < numero; j++) {
 				if (Interaccion::Colision(*lista[j], *l[i])) {
 					if (l[i]->GetVida() > 0) {
-						l[i]->SetVida(lista[j]->GetDamage());
+						l[i]->SetVida(-lista[j]->GetDamage());
 					}
 					else {
 						l.Eliminar(l[i]);

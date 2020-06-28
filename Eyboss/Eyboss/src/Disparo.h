@@ -22,6 +22,7 @@ public:
 	int GetDamage();
 	float GetRapidez();
 	Vector2D GetPos();
+	Vector2D GetVel();
 	void SetPos(float ix, float iy);
 	void SetVel (float vx, float vy);
 

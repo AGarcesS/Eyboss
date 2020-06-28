@@ -46,6 +46,14 @@ int Personaje::GetVida() {
 	return vida;
 }
 
+int Personaje::GetDaño() {
+	return daño;
+}
+
+int Personaje::GetAtaque() {
+	return señal_ataque;
+}
+
 void Personaje::SetPos(float px, float py) {
 	posicion.x = px;
 	posicion.y = py;
@@ -90,8 +98,8 @@ void Personaje::SetVida(int v) {
 	vida += v;
 }
 
-int Personaje::GetDaño() {
-	return daño;
+void Personaje::SetAtaque(int a) {
+	señal_ataque = a;
 }
 
 void Personaje::Dibuja() {

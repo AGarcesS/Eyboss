@@ -15,7 +15,6 @@ public:
 		{
 			ListaDisparos<Disparo, 1, Objeto::TIRACHINAS> *obj;
 			obj = new ListaDisparos<Disparo, 1, Objeto::TIRACHINAS>();
-			//ListaDisparos* obj = new ListaDisparos();
 			l.Agregar(obj);
 			obj->Inicializa();
 			break;
@@ -29,22 +28,64 @@ public:
 		}
 		case 4:
 		{
-			ListaDisparos<DisparoLento, 5, Objeto::TIRACHINAS_LENTO>* obj;
-			obj = new ListaDisparos<DisparoLento, 5, Objeto::TIRACHINAS_LENTO>();
+			ListaDisparos<DisparoLento, 4, Objeto::TIRACHINAS_LENTO>* obj;
+			obj = new ListaDisparos<DisparoLento, 4, Objeto::TIRACHINAS_LENTO>();
 			l.Agregar(obj);
 			obj->Inicializa();
 			break;
 		}
 		case 5:
 		{
-			ListaDisparos<DisparoRapido, 4, Objeto::TIRACHINAS_RAPIDO>* obj;
-			obj = new ListaDisparos<DisparoRapido, 4, Objeto::TIRACHINAS_RAPIDO>();	
+			ListaDisparos<DisparoRapido, 5, Objeto::TIRACHINAS_RAPIDO>* obj;
+			obj = new ListaDisparos<DisparoRapido, 5, Objeto::TIRACHINAS_RAPIDO>();	
 			l.Agregar(obj);
 			obj->Inicializa();
 			break;
 		}
 		case 6:
 			O_Gancho * aux = new O_Gancho();
+			l.Agregar(aux);
+			aux->Inicializa();
+			break;
+		}
+	}
+
+	void Crear(Objeto::objetos n, ListaObjetos& l) {
+		switch (n) {
+		case Objeto::TIRACHINAS:
+		{
+			ListaDisparos<Disparo, 1, Objeto::TIRACHINAS>* obj;
+			obj = new ListaDisparos<Disparo, 1, Objeto::TIRACHINAS>();
+			//ListaDisparos* obj = new ListaDisparos();
+			l.Agregar(obj);
+			obj->Inicializa();
+			break;
+		}
+		case Objeto::ESPADA:
+		{
+			O_Espada* aux = new O_Espada();
+			l.Agregar(aux);
+			aux->Inicializa();
+			break;
+		}
+		case Objeto::TIRACHINAS_LENTO:
+		{
+			ListaDisparos<DisparoLento, 5, Objeto::TIRACHINAS_LENTO>* obj;
+			obj = new ListaDisparos<DisparoLento, 5, Objeto::TIRACHINAS_LENTO>();
+			l.Agregar(obj);
+			obj->Inicializa();
+			break;
+		}
+		case Objeto::TIRACHINAS_RAPIDO:
+		{
+			ListaDisparos<DisparoRapido, 4, Objeto::TIRACHINAS_RAPIDO>* obj;
+			obj = new ListaDisparos<DisparoRapido, 4, Objeto::TIRACHINAS_RAPIDO>();
+			l.Agregar(obj);
+			obj->Inicializa();
+			break;
+		}
+		case Objeto::GANCHO:
+			O_Gancho* aux = new O_Gancho();
 			l.Agregar(aux);
 			aux->Inicializa();
 			break;

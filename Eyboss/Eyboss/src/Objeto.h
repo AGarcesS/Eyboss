@@ -32,6 +32,7 @@ public:
 	virtual void Seguir(Personaje& p) {}
 	virtual void DestruirContenido() {}
 	virtual void Ataca(Personaje& p) {}
+	virtual void Colision(Personaje& p) {}
 	virtual void Colision(ListaEnemigos& p) {}
 	virtual void Colision(ListaPlataformas& p) {}
 };

@@ -29,6 +29,8 @@ protected:
 	bool m_parpadeo;
 	bool m_tiempo;
 	float tiempo0;
+
+	int señal_ataque;
 public:
 	Personaje(enemigos e) :tipo(e) {}
 	enemigos GetTipo() { return tipo; }
@@ -46,7 +48,7 @@ public:
 	bool GetOrienini();
 	int GetVida();
 	int GetDaño();
-	virtual void GetDamage() {} //Depende de cada enemigo (para el protagonista depende del objeto)
+	int GetAtaque();
 
 	void SetPos(float px, float py);
 	void SetVel(float vx, float vy);
@@ -57,6 +59,7 @@ public:
 	void SetOrientacion(bool ori);
 	void SetOrienini(bool oriini);
 	void SetVida(int v);
+	void SetAtaque(int a);
 
 	bool GetDetencion() { return detencion; }
 	void SetDetencion(bool on) { detencion = on; }

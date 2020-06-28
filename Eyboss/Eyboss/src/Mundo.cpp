@@ -6,8 +6,9 @@
 #include "glut.h"
 
 Mundo::Mundo() {
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < ListaObjetos::n_objetos; i++) {
 		o_index[i] = 0;
+		tiempo0 = 0;
 	}
 }
 
@@ -16,6 +17,7 @@ Mundo::~Mundo() {
 	plataformas.DestruirContenido();
 	bonus.DestruirContenido();
 	objetos.DestruirContenido();
+	e_objetos.DestruirContenido();
 }
 
 Vector2D Mundo::GetOjo() {
@@ -38,6 +40,7 @@ void Mundo::Dibuja()
 	enemigos.Dibuja();
 	bonus.Dibuja();	
 	objetos.Dibuja();
+	e_objetos.Dibuja();
 	interfaz.ImprimeJuego(protagonista);
 }
 
@@ -46,10 +49,18 @@ void Mundo::Mueve()
 	protagonista.Mueve(0.025f);	
 	enemigos.Mueve(0.025f);
 	objetos.Mueve(0.025f);
+	e_objetos.Mueve(0.025f);
 	objetos.Seguir(protagonista);
 
+	for (int i = 0; i < enemigos.getNumero(); i++) {
+		e_objetos.Seguir(*enemigos[i]);
+	}
+
 	objetos.Colision(enemigos);
+	e_objetos.Colision(protagonista);
+
 	objetos.Colision(plataformas);
+	e_objetos.Colision(plataformas);
 
 	for (int i = 0; i < plataformas.getNumero(); i++) {
 		Interaccion::Colision(protagonista, *plataformas[i]);
@@ -76,7 +87,19 @@ void Mundo::Mueve()
 	}		
 
 	for (int i = 0; i < enemigos.getNumero(); i++) {
-		Interaccion::Cercania(*enemigos[i], protagonista);
+		if (Interaccion::Cercania(*enemigos[i], protagonista) && enemigos[i]->GetAtaque() != 0) {
+			tiempo0++;
+			if (tiempo0 == 60) {
+				for (int j = 0; j < e_objetos.getNumero(); j++)
+				{
+					if (enemigos[i]->GetAtaque() == e_objetos[j]->GetTipo()) {
+						e_objetos[j]->Ataca(*enemigos[i]);
+						break;
+					}
+				}
+				tiempo0 = 0;
+			}
+		}
 	}
 
 	for (int i = 0; i < enemigos.getNumero(); i++) {
@@ -225,7 +248,7 @@ void Mundo::TeclaMantenida(unsigned char key) { //Si se deja de pulsar la tecla
 
 bool Mundo::CargarNivel() {
 	nivel++;
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < ListaObjetos::n_objetos; i++) {
 		o_index[i] = 0;
 	}
 	protagonista.SetPos(10, protagonista.GetAltura()/2);
@@ -238,10 +261,10 @@ bool Mundo::CargarNivel() {
 	if (nivel == 1) {
 
 		// Enemigos
-		factory_e.Crear(Personaje::PURK, enemigos, 0, 8, 2, 3);
+		factory_e.Crear(Personaje::PURK, enemigos, 0, 8, 2, 3, Objeto::TIRACHINAS_LENTO, &e_objetos);
 		factory_e.Crear(Personaje::PURK, enemigos, 5, 3, 2, 5);
 		factory_e.Crear(Personaje::VELOZ, enemigos, 30, 2, -4, 0);
-		factory_e.Crear(Personaje::TROLL, enemigos, 40, 4, -2, 3);
+		factory_e.Crear(Personaje::TROLL, enemigos, 40, 4, -2, 3, Objeto::TIRACHINAS, &e_objetos);
 
 		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada enemigo)
 

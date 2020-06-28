@@ -63,6 +63,12 @@ void ListaObjetos::Colision(ListaPlataformas& p) {
 		lista[i]->Colision(p);
 }
 
+void ListaObjetos::Colision(Personaje& p) {
+	for (int i = 0; i < numero; i++) {
+		lista[i]->Colision(p);
+	}
+}
+
 void ListaObjetos::Colision(ListaEnemigos& p) {
 	for (int i = 0; i < numero; i++) {
 		lista[i]->Colision(p);
