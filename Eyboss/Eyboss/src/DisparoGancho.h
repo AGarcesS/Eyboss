@@ -1,14 +1,14 @@
+
 #pragma once
 #include "Vector2D.h"
 #include "Disparo.h"
-
-
 
 class DisparoGancho : public Disparo {
 private:
     bool feuer;
     Vector2D posorigen;
     bool orientacion;
+    bool pared;
 public:
     DisparoGancho() {
         radio = 1;
@@ -18,6 +18,7 @@ public:
         posorigen.x = posicion.x = 0;
         posorigen.y = posicion.y = 0;
         orientacion = true;
+        pared = false;
         textura = "bin/texturas/gancho.png";
     }
     virtual ~DisparoGancho() {}
@@ -30,6 +31,8 @@ public:
     void SetF(bool f);
     bool GetF();
     Vector2D GetOr();
+    void SetPared(bool f) { pared = f; };
+    bool GetPared() { return pared; };
 
     friend class Interaccion;
 };

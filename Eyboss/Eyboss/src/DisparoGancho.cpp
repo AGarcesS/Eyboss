@@ -12,11 +12,6 @@ void DisparoGancho::Dibuja() {
     glVertex2f(posicion.x, posicion.y);
     glEnd();
     glEnable(GL_LIGHTING);
-    /*   glPushMatrix();
-       glTranslatef(posicion.x, posicion.y, 0);
-       glutSolidSphere(altura, 20, 20);
-       glPopMatrix();
-   */
     glPushMatrix();
     glTranslatef(posicion.x, posicion.y, 0);
     if (orientacion)
@@ -24,7 +19,6 @@ void DisparoGancho::Dibuja() {
     else
         sprite->flip(true, false);;
     sprite->draw();
-    //glTranslatef(-posicion.x, -posicion.y, 0);
     glPopMatrix();
 }
 

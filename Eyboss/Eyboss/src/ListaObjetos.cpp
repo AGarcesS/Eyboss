@@ -58,9 +58,9 @@ void ListaObjetos::Ataca(Personaje& p) {
 		lista[i]->Ataca(p);
 }
 
-void ListaObjetos::Colision(ListaPlataformas& p) {
+void ListaObjetos::Colision(ListaPlataformas& p, Personaje* pe) {
 	for (int i = 0; i < numero; i++)
-		lista[i]->Colision(p);
+		lista[i]->Colision(p, pe);
 }
 
 void ListaObjetos::Colision(Personaje& p) {

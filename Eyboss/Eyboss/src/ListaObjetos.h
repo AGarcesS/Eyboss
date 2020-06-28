@@ -20,7 +20,7 @@ public:
 	void Eliminar(Objeto* o);
 	void Dibuja();
 	void Ataca(Personaje& p);
-	void Colision(ListaPlataformas& p);
+	void Colision(ListaPlataformas& p, Personaje* pe=NULL);
 	void Colision(Personaje& p);
 	void Colision(ListaEnemigos& p);
 	void Mueve(float t);

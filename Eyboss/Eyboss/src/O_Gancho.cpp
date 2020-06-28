@@ -57,15 +57,6 @@ void O_Gancho::Dibuja() {
 	for (int i = 0; i < numero; i++)
 		lista[i]->Dibuja();
 }
-/*
-Disparo* O_Gancho::Colision(Pared p) {
-	for (int i = 0; i < numero; i++) {
-		if (Interaccion::Colision(*lista[i], p))
-			return lista[i];
-	}		
-	return 0;
-}
-*/
 
 DisparoGancho* O_Gancho::operator [] (int i) {
 	if (i >= numero)
@@ -86,16 +77,29 @@ void O_Gancho::Ataca(Personaje& p) {
 	Agregar(dg);
 	Inicializa();
 	ETSIDI::play("bin/sonidos/shoot.wav");
+	dg->SetF(true);
 	p.SetMovimiento(false);
 	p.SetVel(0, 0);
-	
+	p.SetAcel(0, 0);
 }
 
-void O_Gancho::Colision(ListaPlataformas& l) {
+void O_Gancho::Colision(ListaPlataformas& l, Personaje* nyes) {
 	int col;
 	for (int i = 0; i < l.getNumero(); i++) {
 		for (int j = 0; j < numero;j++) {
-			col=Interaccion::Colision(*lista[j], *l[i]);
+			col = Interaccion::Colision(*lista[j], *l[i], *nyes);
+			if (col = 2 && Interaccion::Distancia(nyes->GetPos(), lista[j]->GetPos()) < 1 && !lista[j]->GetF() && !lista[j]->GetPared()) {
+				lista[j]->SetVel(0, 0);
+				nyes->SetMovimiento(true);
+				Eliminar(lista[j]);
+
+			}
+			if (col = 1 && Interaccion::Distancia(nyes->GetPos(), lista[j]->GetPos()) < 1 && !lista[j]->GetF() && lista[j]->GetPared()) {
+				nyes->SetMovimiento(true);
+				nyes->SetPos(lista[j]->GetPos().x, lista[j]->GetPos().y + 2.5);
+				nyes->SetVel(0, 0);
+				Eliminar(lista[j]);
+			}
 		}
 	}
 

@@ -31,10 +31,10 @@ public:
 	void Mueve(float t);
 	void Dibuja();
 
-	DisparoGancho* Colision(Pared p);
+	//DisparoGancho* Colision(Pared p);
 
 	int getNumero() { return numero; }
 
 	void Ataca(Personaje&p);
-	void Colision(ListaPlataformas& l);
+	void Colision(ListaPlataformas& l, Personaje* nyes);
 };

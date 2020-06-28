@@ -34,5 +34,5 @@ public:
 	virtual void Ataca(Personaje& p) {}
 	virtual void Colision(Personaje& p) {}
 	virtual void Colision(ListaEnemigos& p) {}
-	virtual void Colision(ListaPlataformas& p) {}
+	virtual void Colision(ListaPlataformas& p, Personaje* pe = NULL) {}
 };

@@ -59,7 +59,7 @@ void Mundo::Mueve()
 	objetos.Colision(enemigos);
 	e_objetos.Colision(protagonista);
 
-	objetos.Colision(plataformas);
+	objetos.Colision(plataformas, &protagonista);
 	e_objetos.Colision(plataformas);
 
 	for (int i = 0; i < plataformas.getNumero(); i++) {
@@ -153,15 +153,17 @@ void Mundo::Tecla(unsigned char key)
 	switch (key) {
 	
 	case ' ': //Salto
-	{
-		if (protagonista.GetOn()) {
-			protagonista.SetVel(protagonista.GetVel().x, protagonista.GetSalto());
-			protagonista.SetAcel(protagonista.GetAcel().x, -9.8f);
-			protagonista.SetOn(false);
-			ETSIDI::play("bin/sonidos/jump.wav");
+		if (protagonista.GetMovimiento()) {
+			{
+				if (protagonista.GetOn()) {
+					protagonista.SetVel(protagonista.GetVel().x, protagonista.GetSalto());
+					protagonista.SetAcel(protagonista.GetAcel().x, -9.8f);
+					protagonista.SetOn(false);
+					ETSIDI::play("bin/sonidos/jump.wav");
+				}
+				break;
+			}
 		}
-		break;
-	}
 	case 'q': //Tirachinas
 	{
 		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
@@ -207,12 +209,13 @@ void Mundo::Tecla(unsigned char key)
 		break;
 	}
 	case 't': //Gancho
-		for (int i = 0; i < ListaObjetos::n_objetos; i++) {
-			if (objetos[i] != NULL)
-				if (objetos[i]->GetTipo() == Objeto::GANCHO) {
-					objetos[i]->Ataca(protagonista);
-					break;
-				}					
+		if (protagonista.GetOn() && protagonista.GetVel().y >= 0) {
+			for (int i = 0; i < ListaObjetos::n_objetos; i++) {
+				if (objetos[i] != NULL)
+					if (objetos[i]->GetTipo() == Objeto::GANCHO)
+						objetos[i]->Ataca(protagonista);
+			}
+			break;				
 		}
 		break;
 	}
