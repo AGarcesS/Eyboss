@@ -252,8 +252,8 @@ bool Mundo::CargarNivel() {
 		factory_p.Crear(Pared::NORMAL, plataformas, 80.0f, 0.0f, 80.5f, 15.0f);
 
 		//Plataformas
-		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.0f, 17.0f, 2.5f);
-		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.0f, 5.0f, 2.5f);
+		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.5f, 17.0f, 3.0f);
+		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.5f, 5.0f, 3.0f);
 		factory_p.Crear(Pared::SALTO, plataformas, 20.0f, 6.5f, 30.0f, 6.0f);
 
 		Corazon* e = new Corazon();
