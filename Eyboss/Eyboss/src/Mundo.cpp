@@ -263,11 +263,11 @@ bool Mundo::CargarNivel() {
 		B_TirachinasLento* i = new B_TirachinasLento();
 		B_TirachinasRapido* j = new B_TirachinasRapido();
 		B_Gancho* k = new B_Gancho();
-		e->SetPos(12, 3);
-		f->SetPos(0, 3);
+		e->SetPos(12, 3.5);
+		f->SetPos(0, 3.5);
 		g->SetPos(15, 1);
 		h->SetPos(18, 1);
-		i->SetPos(5, 3);
+		i->SetPos(5, 3.5);
 		j->SetPos(-4, 1);
 		k->SetPos(3, 1);
 		bonus.Agregar(e);
