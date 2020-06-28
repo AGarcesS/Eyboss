@@ -7,7 +7,12 @@ private:
 	int curacion;
 	ETSIDI::Sprite* corazon;
 public:
-	Corazon();
+	Corazon() :Bonus(CORAZON) {
+		curacion = 3;
+		lado = 0.8f;
+		textura = "bin/texturas/clleno.png";
+		audio = "bin/sonidos/vida.wav";
+	}
 	virtual ~Corazon() {}
 	void Accion(Personaje &p);
 };

@@ -20,6 +20,7 @@
 #include "FactoryObjetos.h"
 #include "FactoryPlataforma.h"
 #include "FactoryEnemigos.h"
+#include "FactoryBonus.h"
 
 class Mundo
 {
@@ -38,6 +39,7 @@ private:
 	FactoryObjetos factory;	
 	FactoryPlataforma factory_p;
 	FactoryEnemigos factory_e;
+	FactoryBonus factory_b;
 	float tiempo0;
 
 	int nivel;

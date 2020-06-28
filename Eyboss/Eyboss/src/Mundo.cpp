@@ -7,9 +7,9 @@
 
 Mundo::Mundo() {
 	for (int i = 0; i < ListaObjetos::n_objetos; i++) {
-		o_index[i] = 0;
-		tiempo0 = 0;
+		o_index[i] = 0;		
 	}
+	tiempo0 = 0;
 }
 
 Mundo::~Mundo() {
@@ -71,14 +71,14 @@ void Mundo::Mueve()
 		if (Interaccion::Colision(*bonus[i], protagonista)) {
 			bonus[i]->Audio();
 			bonus[i]->Accion(protagonista);
-			for (int j = 0; j < 6; j++) {
-				if (o_index[j] == bonus[i]->GetIndex()) { //Si ese índice ya está en el vector se sale
+			for (int j = 0; j < ListaObjetos::n_objetos; j++) {
+				if (o_index[j] == bonus[i]->GetTipo()) { //Si ese índice ya está en el vector se sale
 					bonus.Eliminar(bonus[i]);
 					return;
 				}
 				if (o_index[j] == 0) { //Si hay una posición vacía (0), se escribe ahí ese índice
-					o_index[j] = bonus[i]->GetIndex();
-					factory.Crear(bonus[i]->GetIndex(), objetos);
+					o_index[j] = bonus[i]->GetTipo();
+					factory.Crear(bonus[i]->GetTipo(), objetos);
 					bonus.Eliminar(bonus[i]);
 					return;
 				}
@@ -282,28 +282,13 @@ bool Mundo::CargarNivel() {
 		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.5f, 5.0f, 3.0f);
 		factory_p.Crear(Pared::SALTO, plataformas, 20.0f, 6.5f, 30.0f, 6.0f);
 
-		Corazon* e = new Corazon();
-		B_Espada* f = new B_Espada();
-		B_Tirachinas* g = new B_Tirachinas();
-		B_Tirachinas* h = new B_Tirachinas();
-		B_TirachinasLento* i = new B_TirachinasLento();
-		B_TirachinasRapido* j = new B_TirachinasRapido();
-		B_Gancho* k = new B_Gancho();
-		e->SetPos(12, 3.5);
-		f->SetPos(0, 3.5);
-		g->SetPos(15, 1);
-		h->SetPos(18, 1);
-		i->SetPos(5, 3.5);
-		j->SetPos(-4, 1);
-		k->SetPos(3, 1);
-		bonus.Agregar(e);
-		bonus.Agregar(f);
-		bonus.Agregar(g);
-		bonus.Agregar(h);
-		bonus.Agregar(i);
-		bonus.Agregar(j);
-		bonus.Agregar(k);
-		bonus.Inicializa();
+		factory_b.Crear(Bonus::CORAZON, bonus, 12, 3.5);
+		factory_b.Crear(Bonus::ESPADA, bonus, 0, 3.5);
+		factory_b.Crear(Bonus::TIRACHINAS, bonus, 15, 1);
+		factory_b.Crear(Bonus::TIRACHINAS, bonus, 18, 1);
+		factory_b.Crear(Bonus::TIRACHINAS_LENTO, bonus, 5, 3.5);
+		factory_b.Crear(Bonus::TIRACHINAS_RAPIDO, bonus, -4, 1);
+		factory_b.Crear(Bonus::GANCHO, bonus, 3, 1);		
 	}
 
 	if (nivel == 2) {

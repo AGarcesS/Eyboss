@@ -1,15 +1,6 @@
 #include "Bonus.h"
 #include "glut.h"
 
-Bonus::Bonus() {
-	lado = 1;
-	posicion.x = posicion.y = 0;
-}
-
-int Bonus::GetIndex() {
-	return index;
-}
-
 void Bonus::SetPos(float ix, float iy) {
 	posicion.x = ix;
 	posicion.y = iy;

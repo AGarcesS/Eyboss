@@ -4,18 +4,20 @@
 #include "Personaje.h"
 
 class Bonus {
+public:
+	enum bonus { BONUS = 0, TIRACHINAS, ESPADA, CORAZON, TIRACHINAS_LENTO, TIRACHINAS_RAPIDO, GANCHO };
 protected:	
+	bonus tipo;
 	float lado;
 	Vector2D posicion;
 	ETSIDI::Sprite* sprite;
 	const char* textura;
 	const char* audio;	
-	int index; //índice de cada arma
 public:
-	Bonus();
+	Bonus(bonus b = BONUS) :tipo(b) { }
 	virtual ~Bonus() {}
 
-	int GetIndex();
+	bonus GetTipo() { return tipo; }
 	void SetPos(float ix, float iy);
 
 	void Inicializa();

@@ -69,6 +69,7 @@
     <ClInclude Include="src\DisparoGancho.h" />
     <ClInclude Include="src\DisparoLento.h" />
     <ClInclude Include="src\DisparoRapido.h" />
+    <ClInclude Include="src\FactoryBonus.h" />
     <ClInclude Include="src\FactoryEnemigos.h" />
     <ClInclude Include="src\FactoryObjetos.h" />
     <ClInclude Include="src\FactoryPlataforma.h" />
