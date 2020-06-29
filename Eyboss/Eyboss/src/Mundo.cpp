@@ -41,7 +41,7 @@ void Mundo::Dibuja()
 	bonus.Dibuja();	
 	objetos.Dibuja();
 	e_objetos.Dibuja();
-	interfaz.ImprimeJuego(protagonista);
+	interfaz.ImprimeJuego(protagonista, objetos);
 }
 
 void Mundo::Mueve()

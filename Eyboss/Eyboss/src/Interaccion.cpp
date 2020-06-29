@@ -103,10 +103,9 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 	}
 	
 	if (pa.GetTipo() == Pared::SALTO) {
-		if (colisionarriba)
-			p.SetSalto(p.GetSalto() + 2);
-		else {
-			p.SetSalto(8.0f);
+		if (colisionarriba) {
+			p.velocidad.y = 10;
+			p.aceleracion.y = -9.8f;
 		}
 	}	
 
