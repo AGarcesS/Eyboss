@@ -163,7 +163,7 @@ public:
 		}
 	}
 
-	void Colision(ListaPlataformas& l) {
+	void Colision(ListaPlataformas& l, Personaje* pe) {
 		for (int i = 0; i < l.getNumero(); i++) {
 			T* aux = Colision(*l[i]);
 			if (aux != 0)

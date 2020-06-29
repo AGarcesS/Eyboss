@@ -258,6 +258,7 @@ bool Mundo::CargarNivel() {
 	protagonista.SetVel(0, 0);
 	enemigos.DestruirContenido();
 	objetos.DestruirContenido();
+	e_objetos.DestruirContenido();
 	plataformas.DestruirContenido();
 	bonus.DestruirContenido();
 
@@ -269,8 +270,6 @@ bool Mundo::CargarNivel() {
 		factory_e.Crear(Personaje::VELOZ, enemigos, 30, 2, -4, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 40, 4, -2, 3, Objeto::TIRACHINAS, &e_objetos);
 
-		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada enemigo)
-
 		//Caja
 		factory_p.Crear(Pared::NORMAL, plataformas, -10.0f, -0.5f, 80.0f, 0.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, -10.0f, 15.0f, 80.0f, 15.5f);
@@ -280,8 +279,9 @@ bool Mundo::CargarNivel() {
 		//Plataformas
 		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.5f, 17.0f, 3.0f);
 		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.5f, 5.0f, 3.0f);
-		factory_p.Crear(Pared::SALTO, plataformas, 20.0f, 6.5f, 30.0f, 6.0f);
+		factory_p.Crear(Pared::SALTO, plataformas, 20.0f, 6.0f, 30.0f, 6.5f);
 
+		//Bonus
 		factory_b.Crear(Bonus::CORAZON, bonus, 12, 3.5);
 		factory_b.Crear(Bonus::ESPADA, bonus, 0, 3.5);
 		factory_b.Crear(Bonus::TIRACHINAS, bonus, 15, 1);

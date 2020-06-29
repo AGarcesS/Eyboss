@@ -41,15 +41,15 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 	Vector2D punto2(pa.limite2.x, pa.limite1.y);
 
 	if (p.velocidad.y < -10 && p.velocidad.y > -15 && p.GetMovimiento()) {
-		d_caida = 1;
+		d_caida = 2;
 	}
 	else if (p.velocidad.y < -15 && p.GetMovimiento()) {
-		d_caida = 2;
+		d_caida = 5;
 	}
 
 	Vector2D dir1;
 	float d1 = pa.distanciap_r(punto1, pa.limite2, p.posicion, &dir1) - p.altura / 2;
-	if ((d1 <= 0) && (pa.limite1.x + -p.ancho / 2 < p.posicion.x < pa.limite2.x + p.ancho / 2) && ((p.posicion.y - p.altura / 2 + 0.2 > pa.limite2.y) || (p.velocidad.y < -6))) {
+	if ((d1 <= 0) && (pa.limite1.x - p.ancho / 2 < p.posicion.x < pa.limite2.x + p.ancho / 2) && ((p.posicion.y - p.altura / 2 + 0.2 > pa.limite2.y) || (p.velocidad.y < -5))) {
 		p.posicion.y = pa.limite2.y + p.altura / 2;
 		if (p.GetMovimiento()) {
 			p.velocidad.y = 0.0f;
@@ -73,6 +73,7 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 		p.posicion.y = pa.limite1.y - p.altura / 2;
 		p.velocidad.y = 0.0f;
 		p.aceleracion.y = -9.8f;
+		p.on = false;
 		colision = true;
 		colisionarriba = false;
 	}
@@ -84,6 +85,7 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 		p.velocidad.x *= -1;
 		p.aceleracion.x = 0.0f;
 		p.aceleracion.y = -9.8f;
+		p.on = false;
 		colision = true;
 		colisionarriba = false;
 	}
@@ -95,10 +97,10 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 		p.velocidad.x *= -1;
 		p.aceleracion.x = 0.0f;
 		p.aceleracion.y = -9.8f;
+		p.on = false;
 		colision = true;
 		colisionarriba = false;
 	}
-
 	
 	if (pa.GetTipo() == Pared::SALTO) {
 		if (colisionarriba)
@@ -106,8 +108,7 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 		else {
 			p.SetSalto(8.0f);
 		}
-	}
-	
+	}	
 
 	if (pa.GetTipo() == Pared::VELOCIDAD) {
 		if (colisionarriba) {
@@ -118,15 +119,9 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 		}
 	}
 
-	if (d_caida == 1 && colision) {
-		p.vida -= 2;
-		d_caida = 0;
-	}
-	else if (d_caida == 2 && colision) {
-		p.vida -= 5;
-		d_caida = 0;
-	}
-
+	if (colision)
+		p.vida -= d_caida;
+	
 	return colision;
 }
 
@@ -140,12 +135,16 @@ bool Interaccion::Colision(Disparo &d, Pared &pa) {
 }
 
 bool Interaccion::Colision(Disparo& d, Personaje& p) {
+
+	if (abs(d.posicion.x - p.posicion.x) < (d.radio * 1.5 + p.ancho) / 2 && abs(d.posicion.y - p.posicion.y) < (d.radio + p.ancho) / 2)
+		return true;
+	return false;
 	
-	if (d.posicion.x - p.posicion.x < (d.radio * 1.5 + p.ancho) / 2 && d.posicion.x - p.posicion.x > 0 && abs(d.posicion.y - p.posicion.y) < (d.radio + p.ancho) / 2)
+	/*if (d.posicion.x - p.posicion.x < (d.radio * 1.5 + p.ancho) / 2 && d.posicion.x - p.posicion.x > 0 && abs(d.posicion.y - p.posicion.y) < (d.radio + p.ancho) / 2)
 		return true;
 	if (d.posicion.x - p.posicion.x > -(d.radio * 1.5 + p.ancho) / 2 && d.posicion.x - p.posicion.x < 0 && abs(d.posicion.y - p.posicion.y) < (d.radio + p.ancho) / 2)
 		return true;
-	return false;
+	return false;*/
 
 	/*  CON PARED AUXILIAR
 	Pared pa;

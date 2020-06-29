@@ -21,6 +21,7 @@ public:
 				purk->SetAtaque(o);
 				objetos.Crear(o, *l1);
 			}
+			purk->Inicializa();
 			break;
 		}
 		case Personaje::VELOZ:
@@ -33,6 +34,7 @@ public:
 				veloz->SetAtaque(o);
 				objetos.Crear(o, *l1);
 			}
+			veloz->Inicializa();
 			break;
 		}
 		case Personaje::TROLL:
@@ -44,6 +46,7 @@ public:
 				troll->SetAtaque(o);
 				objetos.Crear(o, *l1);
 			}
+			troll->Inicializa();
 			break;
 		}
 	}
