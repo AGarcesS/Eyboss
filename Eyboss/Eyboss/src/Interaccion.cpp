@@ -49,7 +49,7 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 
 	Vector2D dir1;
 	float d1 = pa.distanciap_r(punto1, pa.limite2, p.posicion, &dir1) - p.altura / 2;
-	if ((d1 <= 0) && (pa.limite1.x + -p.ancho / 2 < p.posicion.x < pa.limite2.x + p.ancho / 2) && ((p.posicion.y - p.altura / 2 + 0.1 > pa.limite2.y) || (p.velocidad.y < -7))) {
+	if ((d1 <= 0) && (pa.limite1.x + -p.ancho / 2 < p.posicion.x < pa.limite2.x + p.ancho / 2) && ((p.posicion.y - p.altura / 2 + 0.2 > pa.limite2.y) || (p.velocidad.y < -6))) {
 		p.posicion.y = pa.limite2.y + p.altura / 2;
 		if (p.GetMovimiento()) {
 			p.velocidad.y = 0.0f;
