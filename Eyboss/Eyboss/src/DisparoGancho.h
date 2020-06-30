@@ -33,6 +33,8 @@ public:
     Vector2D GetOr();
     void SetPared(bool f) { pared = f; };
     bool GetPared() { return pared; };
+    void SetOrientacion(bool f) { orientacion = f; };
+    bool GetOrientacion() { return orientacion; };
 
     friend class Interaccion;
 };
