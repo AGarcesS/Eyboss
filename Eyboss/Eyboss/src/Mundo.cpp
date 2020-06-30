@@ -265,33 +265,77 @@ bool Mundo::CargarNivel() {
 
 	if (nivel == 1) {
 
-		// Enemigos
-		factory_e.Crear(Personaje::PURK, enemigos, 0, 8, 2, 3, Objeto::TIRACHINAS_LENTO, &e_objetos);
-		factory_e.Crear(Personaje::PURK, enemigos, 5, 3, 2, 5);
-		factory_e.Crear(Personaje::VELOZ, enemigos, 30, 2, -4, 0);
-		factory_e.Crear(Personaje::TROLL, enemigos, 40, 4, -2, 3, Objeto::TIRACHINAS, &e_objetos);
-		factory_e.Crear(Personaje::HADA, enemigos, 50, 8, 2.5, 3);
+		factory_e.Crear(Personaje::PURK, enemigos, 0, 27.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
+		factory_e.Crear(Personaje::PURK, enemigos, 56, 35.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
+		factory_e.Crear(Personaje::PURK, enemigos, 17, 2, 2, 5);
+		factory_e.Crear(Personaje::VELOZ, enemigos, 17, 21, 0, 0);
+		factory_e.Crear(Personaje::VELOZ, enemigos, 42, 32.5, 0, 0);
+		factory_e.Crear(Personaje::TROLL, enemigos, 23, 22, -2, 0);
+		factory_e.Crear(Personaje::TROLL, enemigos, 25, 22, 2, 0);
+		factory_e.Crear(Personaje::TROLL, enemigos, 27, 22, -2, 0);
+		factory_e.Crear(Personaje::TROLL, enemigos, 46, 25.5, 3, 0);
+		factory_e.Crear(Personaje::PURK, enemigos, 48, 28.5, 0, 0, Objeto::TIRACHINAS, &e_objetos);
+
+		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada enemigo)
 
 		//Caja
-		factory_p.Crear(Pared::NORMAL, plataformas, -10.0f, -0.5f, 80.0f, 0.0f);
-		factory_p.Crear(Pared::NORMAL, plataformas, -10.0f, 15.0f, 80.0f, 15.5f);
-		factory_p.Crear(Pared::NORMAL, plataformas, -10.5f, 0.0f, -10.0f, 15.0f);
-		factory_p.Crear(Pared::NORMAL, plataformas, 80.0f, 0.0f, 80.5f, 15.0f);
-		factory_p.Crear(Pared::FONDO, plataformas, -10.5f, -0.5f, 80.5f, 15.5f, 0.05f, -0.001f); //Fondo
+		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, -2.5f, 22.5f, 0.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, -2.0f, 40.0f, 60.0f, 42.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, 0.0f, -2.0f, 42.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 0.0f, 22.5f, 20.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 17.5f, 60.0f, 20.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 60.0f, 17.5f, 62.5f, 42.5f);
 
 		//Plataformas
-		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.5f, 17.0f, 3.0f);
-		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.5f, 5.0f, 3.0f);
-		factory_p.Crear(Pared::SALTO, plataformas, 20.0f, 6.0f, 30.0f, 6.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, -2.0f, 2.5f, 1.0f, 3.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 4.0f, 5.5f, 7.0f, 6.0f);
+
+		factory_p.Crear(Pared::NORMAL, plataformas, 11.0f, 4.0f, 20.0f, 4.5f);
+
+		factory_p.Crear(Pared::NORMAL, plataformas, 13.0f, 7.5f, 16.5f, 8.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 16.0, 9.75f, 16.5f, 10.1f);//Pared compleja
+		factory_p.Crear(Pared::NORMAL, plataformas, 16.0f, 10.0f, 16.5f, 7.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 13.0, 9.75f, 13.5f, 10.1f);//Pared compleja
+		factory_p.Crear(Pared::NORMAL, plataformas, 13.0f, 10.0f, 13.5f, 7.5f);
+
+		factory_p.Crear(Pared::NORMAL, plataformas, 4.0f, 13.5f, 8.5f, 14.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 18.75f, 12.25f, 20.0f, 12.75f);
+		factory_p.Crear(Pared::NORMAL, plataformas, -2.0, 16.0f, 0.5f, 16.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 20.0f, 20.5f, 36.0f);//Pared compleja
+		factory_p.Crear(Pared::NORMAL, plataformas, 5.25f, 19.0f, 20.0f, 19.5f);
+
+		factory_p.Crear(Pared::SALTO, plataformas, 13.0f, 21.5f, 20.0f, 22.0f);
+		factory_p.Crear(Pared::SALTO, plataformas, -2.0f, 7.5f, 2.0f, 8.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, -2.0f, 26.0f, 6.0f, 26.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 18.0f, 24.0f, 20.0f, 24.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 11.0f, 29.0f, 15.0f, 29.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 17.0f, 32.0f, 20.0f, 32.5f);
+
+		factory_p.Crear(Pared::NORMAL, plataformas, 35.0f, 29.0f, 40.5f, 29.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 40.0f, 20.0f, 40.5f, 35.0f);
+		factory_p.Crear(Pared::SALTO, plataformas, -2.0f, 28.5f, 1.0f, 29.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 4.0f, 34.5f, 6.0f, 35.0f);
+		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 36.0f, 15.0f, 36.5f);
+		factory_p.Crear(Pared::SALTO, plataformas, 38.5f, 31.5f, 40.0f, 32.0f);
+
+		factory_p.Crear(Pared::NORMAL, plataformas, 42.0f, 37.0f, 46.0f, 37.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 47.0f, 34.0f, 60.0f, 34.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 40.0f, 31.0f, 56.0f, 31.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 55.0f, 27.0f, 58.0f, 27.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 45.0f, 27.0f, 49.0f, 27.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 44.0f, 24.0f, 60.0f, 24.5f);
 
 		//Bonus
-		factory_b.Crear(Bonus::CORAZON, bonus, 12, 3.5);
-		factory_b.Crear(Bonus::ESPADA, bonus, 0, 3.5);
-		factory_b.Crear(Bonus::TIRACHINAS, bonus, 15, 1);
-		factory_b.Crear(Bonus::TIRACHINAS, bonus, 18, 1);
-		factory_b.Crear(Bonus::TIRACHINAS_LENTO, bonus, 5, 3.5);
-		factory_b.Crear(Bonus::TIRACHINAS_RAPIDO, bonus, -4, 1);
-		factory_b.Crear(Bonus::GANCHO, bonus, 3, 1);		
+		factory_b.Crear(Bonus::ESPADA, bonus, 19, 25.5);
+		factory_b.Crear(Bonus::TIRACHINAS, bonus, 19, 33.5);
+		factory_b.Crear(Bonus::TIRACHINAS, bonus, 57, 28.5);
+		factory_b.Crear(Bonus::TIRACHINAS_LENTO, bonus, -1, 17);
+		factory_b.Crear(Bonus::TIRACHINAS_RAPIDO, bonus, 15, 8.5);
+		factory_b.Crear(Bonus::GANCHO, bonus, 19.25, 13.25);
+		factory_b.Crear(Bonus::CORAZON, bonus, 5, 21);
+		factory_b.Crear(Bonus::CORAZON, bonus, 5, 36);
+		factory_b.Crear(Bonus::CORAZON, bonus, 37, 30);
+		factory_b.Crear(Bonus::CORAZON, bonus, 56, 21);
 	}
 
 	if (nivel == 2) {
