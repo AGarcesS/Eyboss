@@ -266,10 +266,10 @@ bool Mundo::CargarNivel() {
 	if (nivel == 1) {
 
 		// Enemigos
-		factory_e.Crear(Personaje::PURK, enemigos, 0, 8, 2, 3, Objeto::TIRACHINAS_LENTO, &e_objetos);
+		/*factory_e.Crear(Personaje::PURK, enemigos, 0, 8, 2, 1, Objeto::TIRACHINAS_LENTO, &e_objetos);
 		factory_e.Crear(Personaje::PURK, enemigos, 5, 3, 2, 5);
 		factory_e.Crear(Personaje::VELOZ, enemigos, 30, 2, -4, 0);
-		factory_e.Crear(Personaje::TROLL, enemigos, 40, 4, -2, 3, Objeto::TIRACHINAS, &e_objetos);
+		factory_e.Crear(Personaje::TROLL, enemigos, 40, 4, -2, 3, Objeto::TIRACHINAS, &e_objetos);*/
 
 		//Caja
 		factory_p.Crear(Pared::NORMAL, plataformas, -10.0f, -0.5f, 80.0f, 0.0f);
@@ -278,18 +278,18 @@ bool Mundo::CargarNivel() {
 		factory_p.Crear(Pared::NORMAL, plataformas, 80.0f, 0.0f, 80.5f, 15.0f);
 
 		//Plataformas
-		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.5f, 17.0f, 3.0f);
-		factory_p.Crear(Pared::SALTO, plataformas, -5.0f, 2.5f, 5.0f, 3.0f);
-		factory_p.Crear(Pared::SALTO, plataformas, 20.0f, 6.0f, 30.0f, 6.5f);
+		/*factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.5f, 17.0f, 3.0f);*/
+		factory_p.Crear(Pared::VELOCIDAD, plataformas, -5.0f, 2.5f, 5.0f, 3.0f);
+		/*factory_p.Crear(Pared::SALTO, plataformas, 20.0f, 6.0f, 30.0f, 6.5f);*/
 
 		//Bonus
-		factory_b.Crear(Bonus::CORAZON, bonus, 12, 3.5);
+		/*factory_b.Crear(Bonus::CORAZON, bonus, 12, 3.5);
 		factory_b.Crear(Bonus::ESPADA, bonus, 0, 3.5);
 		factory_b.Crear(Bonus::TIRACHINAS, bonus, 15, 1);
 		factory_b.Crear(Bonus::TIRACHINAS, bonus, 18, 1);
 		factory_b.Crear(Bonus::TIRACHINAS_LENTO, bonus, 5, 3.5);
 		factory_b.Crear(Bonus::TIRACHINAS_RAPIDO, bonus, -4, 1);
-		factory_b.Crear(Bonus::GANCHO, bonus, 3, 1);		
+		factory_b.Crear(Bonus::GANCHO, bonus, 3, 1);		*/
 	}
 
 	if (nivel == 2) {
