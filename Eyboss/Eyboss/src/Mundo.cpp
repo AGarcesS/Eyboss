@@ -279,19 +279,18 @@ bool Mundo::CargarNivel() {
 
 		//Plataformas
 		/*factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.5f, 17.0f, 3.0f);*/
-		factory_p.Crear(Pared::VELOCIDAD, plataformas, -5.0f, 2.5f, 5.0f, 3.0f);
+		//factory_p.Crear(Pared::VELOCIDAD, plataformas, -5.0f, 2.5f, 5.0f, 3.0f);
 		/*factory_p.Crear(Pared::SALTO, plataformas, 20.0f, 6.0f, 30.0f, 6.5f);*/
 
 		//Bonus
-		/*factory_b.Crear(Bonus::CORAZON, bonus, 12, 3.5);
+		factory_b.Crear(Bonus::GANCHO, bonus, 12, 3.5);
 		factory_b.Crear(Bonus::ESPADA, bonus, 0, 3.5);
 		factory_b.Crear(Bonus::TIRACHINAS, bonus, 15, 1);
 		factory_b.Crear(Bonus::TIRACHINAS, bonus, 18, 1);
 		factory_b.Crear(Bonus::TIRACHINAS_LENTO, bonus, 5, 3.5);
 		factory_b.Crear(Bonus::TIRACHINAS_RAPIDO, bonus, -4, 1);
-		factory_b.Crear(Bonus::GANCHO, bonus, 3, 1);		*/
+		factory_b.Crear(Bonus::GANCHO, bonus, 3, 1);
 	}
-
 	if (nivel == 2) {
 	
 	}
