@@ -270,6 +270,7 @@ bool Mundo::CargarNivel() {
 		factory_e.Crear(Personaje::PURK, enemigos, 5, 3, 2, 5);
 		factory_e.Crear(Personaje::VELOZ, enemigos, 30, 2, -4, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 40, 4, -2, 3, Objeto::TIRACHINAS, &e_objetos);
+		factory_e.Crear(Personaje::HADA, enemigos, 50, 8, 2.5, 3);
 
 		//Caja
 		factory_p.Crear(Pared::NORMAL, plataformas, -10.0f, -0.5f, 80.0f, 0.0f);

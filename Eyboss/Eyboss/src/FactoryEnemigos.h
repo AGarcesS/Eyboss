@@ -3,6 +3,7 @@
 #include "Purk.h"
 #include "Troll.h"
 #include "Veloz.h"
+#include "Hada.h"
 #include "ListaEnemigos.h"
 #include "FactoryObjetos.h"
 
@@ -38,6 +39,7 @@ public:
 			break;
 		}
 		case Personaje::TROLL:
+		{
 			Troll* troll = new Troll();
 			troll->SetPos(px, py);
 			troll->SetVelIni(vix, viy);
@@ -48,6 +50,15 @@ public:
 			}
 			troll->Inicializa();
 			break;
+		}
+		case Personaje::HADA:
+		{
+			Hada* hada = new Hada();
+			hada->SetPos(px, py);
+			hada->SetVelIni(vix, viy);
+			l.Agregar(hada);
+			break;
+		}
 		}
 	}
 

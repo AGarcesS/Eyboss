@@ -34,6 +34,7 @@
     <ClCompile Include="src\FactoryObjetos.cpp" />
     <ClCompile Include="src\Fondo.cpp" />
     <ClCompile Include="src\Global.cpp" />
+    <ClCompile Include="src\Hada.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\Interfaz.cpp" />
     <ClCompile Include="src\ListaBonus.cpp" />
@@ -76,6 +77,7 @@
     <ClInclude Include="src\FactoryPlataforma.h" />
     <ClInclude Include="src\Fondo.h" />
     <ClInclude Include="src\Global.h" />
+    <ClInclude Include="src\Hada.h" />
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\Interfaz.h" />
     <ClInclude Include="src\ListaBonus.h" />

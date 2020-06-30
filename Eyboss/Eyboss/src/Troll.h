@@ -9,6 +9,10 @@ public:
 		textura = "bin/texturas/troll.png";
 		velocidad.x = 0;
 		velocidad.y = 0;
+		vel_seguimiento.x = 1.5f;
+		vel_seguimiento.y = 0;
+		dist_seguimiento = 7.0f;
+		dist_disparo = 12.0f;
 		aceleracion.x = 0.0f;
 		aceleracion.y = -9.8f;
 		col = 4;

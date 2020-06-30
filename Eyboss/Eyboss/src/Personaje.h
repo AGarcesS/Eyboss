@@ -4,7 +4,7 @@
 
 class Personaje {
 public:
-	enum enemigos { PROTAGONISTA = 0, PURK, VELOZ, TROLL };
+	enum enemigos { PROTAGONISTA = 0, PURK, VELOZ, TROLL, HADA };
 protected:
 	enemigos tipo;
 	float altura;                                  
@@ -16,11 +16,14 @@ protected:
 	Vector2D posicion;                             
 	Vector2D velocidad;
 	Vector2D vel_ini;
+	Vector2D vel_seguimiento;
 	Vector2D aceleracion;
 	const char* textura;
 	int vida;
 	int daño;
 	int col;
+	float dist_seguimiento;
+	float dist_disparo;
 	ETSIDI::SpriteSequence* animacion;                //Sprites
 	bool detencion;
 	bool nogancho;
