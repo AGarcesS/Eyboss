@@ -135,6 +135,7 @@ void Mundo::Inicializa()
 {
 	protagonista.Reset();
 	protagonista.Inicializa();
+	protagonista.SetMovimiento(true);
 	interfaz.Inicializa();
 	Global::tiempo = 0;
 	Global::bajas = 0;	

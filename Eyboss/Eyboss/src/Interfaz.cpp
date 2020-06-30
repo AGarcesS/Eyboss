@@ -7,15 +7,39 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	std::stringstream sstr_tiempo, sstr_vida, sstr_bajas, sstr_municion, sstr_municionlenta, sstr_municionrapida;
 	std::string str_tiempo, str_vida, str_bajas, str_municion, str_municionlenta, str_municionrapida;
 
-	bool m1 = false, m2 = false, m3 = false, m4 = false, m5 = false;
+	bool m1 = false, m2 = false, m3 = false, m4 = false, m5 = false;	
 
 	glPushMatrix();
 	glTranslatef(p.GetPos().x, p.GetPos().y, 0.9);
-	glColor3ub(0, 26, 255);
-	glRectd(-5, -11, 5, -7);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/texturas/wood1.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0, 1); glVertex2f(-13.5, -7);
+	glTexCoord2d(1, 1); glVertex2f(-7.5, -7);
+	glTexCoord2d(1, 0); glVertex2f(-7.5, -11);
+	glTexCoord2d(0, 0); glVertex2f(-13.5, -11);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 
-	glTranslatef(p.GetPos().x, p.GetPos().y, 1);
+	glPushMatrix();
+	glTranslatef(p.GetPos().x, p.GetPos().y, 0.9);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/texturas/wood1.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0, 1); glVertex2f(7.5, -7);
+	glTexCoord2d(1, 1); glVertex2f(13.5, -7);
+	glTexCoord2d(1, 0); glVertex2f(13.5, -11);
+	glTexCoord2d(0, 0); glVertex2f(7.5, -11);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();	
 
 	for (int i = 0; i < ListaObjetos::n_objetos; i++) {
 		if (l[i] != 0) {
@@ -41,6 +65,26 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 
 		}
 	}
+
+	if (m1 || m2 || m3 || m4 || m5) {
+		glPushMatrix();
+		glTranslatef(p.GetPos().x, p.GetPos().y, 0.9);
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/texturas/wood1.png").id);
+		glDisable(GL_LIGHTING);
+		glBegin(GL_POLYGON);
+		glColor3f(1, 1, 1);
+		glTexCoord2d(0, 1); glVertex2f(-5, -7);
+		glTexCoord2d(1, 1); glVertex2f(5, -7);
+		glTexCoord2d(1, 0); glVertex2f(5, -11);
+		glTexCoord2d(0, 0); glVertex2f(-5, -11);
+		glEnd();
+		glEnable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
+		glPopMatrix();
+	}
+
+	glTranslatef(p.GetPos().x, p.GetPos().y, 1);
 
 	if (m1) {
 		sstr_municion << Global::municion;
@@ -102,7 +146,8 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	const char* t_tiempo = str_tiempo.c_str();
 	ETSIDI::setTextColor(1, 1, 1);
 	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
-	ETSIDI::printxy(t_tiempo, -13.8, -8);
+	ETSIDI::printxy(t_tiempo, -12, -8);
+	tiempo->draw();
 
 	if (p.GetVida() == 10) {
 		corazon1->draw(); corazon2->draw(); corazon3->draw(); corazon4->draw(); corazon5->draw();
@@ -144,30 +189,34 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	ETSIDI::setTextColor(1, 1, 1);
 	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 	ETSIDI::printxy(t_bajas, 10, -8);
+	bajas->draw();
 }
 
 void Interfaz::Inicializa() {
-	corazon1 = new ETSIDI::Sprite("bin/texturas/clleno.png", -13, -9, 0.8, 0.8);
-	corazon2 = new ETSIDI::Sprite("bin/texturas/clleno.png", -12, -9, 0.8, 0.8);
-	corazon3 = new ETSIDI::Sprite("bin/texturas/clleno.png", -11, -9, 0.8, 0.8);
-	corazon4 = new ETSIDI::Sprite("bin/texturas/clleno.png", -10, -9, 0.8, 0.8);
-	corazon5 = new ETSIDI::Sprite("bin/texturas/clleno.png", -9, -9, 0.8, 0.8);
+	corazon1 = new ETSIDI::Sprite("bin/texturas/clleno.png", -12.5, -9, 0.8, 0.8);
+	corazon2 = new ETSIDI::Sprite("bin/texturas/clleno.png", -11.5, -9, 0.8, 0.8);
+	corazon3 = new ETSIDI::Sprite("bin/texturas/clleno.png", -10.5, -9, 0.8, 0.8);
+	corazon4 = new ETSIDI::Sprite("bin/texturas/clleno.png", -9.5, -9, 0.8, 0.8);
+	corazon5 = new ETSIDI::Sprite("bin/texturas/clleno.png", -8.5, -9, 0.8, 0.8);
 
-	corazon_v1 = new ETSIDI::Sprite("bin/texturas/cvacio.png", -13, -9, 0.8, 0.8);
-	corazon_v2 = new ETSIDI::Sprite("bin/texturas/cvacio.png", -12, -9, 0.8, 0.8);
-	corazon_v3 = new ETSIDI::Sprite("bin/texturas/cvacio.png", -11, -9, 0.8, 0.8);
-	corazon_v4 = new ETSIDI::Sprite("bin/texturas/cvacio.png", -10, -9, 0.8, 0.8);
-	corazon_v5 = new ETSIDI::Sprite("bin/texturas/cvacio.png", -9, -9, 0.8, 0.8);
+	corazon_v1 = new ETSIDI::Sprite("bin/texturas/cvacio.png", -12.5, -9, 0.8, 0.8);
+	corazon_v2 = new ETSIDI::Sprite("bin/texturas/cvacio.png", -11.5, -9, 0.8, 0.8);
+	corazon_v3 = new ETSIDI::Sprite("bin/texturas/cvacio.png", -10.5, -9, 0.8, 0.8);
+	corazon_v4 = new ETSIDI::Sprite("bin/texturas/cvacio.png", -9.5, -9, 0.8, 0.8);
+	corazon_v5 = new ETSIDI::Sprite("bin/texturas/cvacio.png", -8.5, -9, 0.8, 0.8);
 
-	corazon_m1 = new ETSIDI::Sprite("bin/texturas/cmitad.png", -13, -9, 0.8, 0.8);
-	corazon_m2 = new ETSIDI::Sprite("bin/texturas/cmitad.png", -12, -9, 0.8, 0.8);
-	corazon_m3 = new ETSIDI::Sprite("bin/texturas/cmitad.png", -11, -9, 0.8, 0.8);
-	corazon_m4 = new ETSIDI::Sprite("bin/texturas/cmitad.png", -10, -9, 0.8, 0.8);
-	corazon_m5 = new ETSIDI::Sprite("bin/texturas/cmitad.png", -9, -9, 0.8, 0.8);
+	corazon_m1 = new ETSIDI::Sprite("bin/texturas/cmitad.png", -12.5, -9, 0.8, 0.8);
+	corazon_m2 = new ETSIDI::Sprite("bin/texturas/cmitad.png", -11.5, -9, 0.8, 0.8);
+	corazon_m3 = new ETSIDI::Sprite("bin/texturas/cmitad.png", -10.5, -9, 0.8, 0.8);
+	corazon_m4 = new ETSIDI::Sprite("bin/texturas/cmitad.png", -9.5, -9, 0.8, 0.8);
+	corazon_m5 = new ETSIDI::Sprite("bin/texturas/cmitad.png", -8.5, -9, 0.8, 0.8);
 
 	tirachinas = new ETSIDI::Sprite("bin/texturas/tirachinas.png", -4, -9, 0.8, 0.8);
 	tirachinas_lento = new ETSIDI::Sprite("bin/texturas/tirachinasLento.png", -2, -9, 0.8, 0.8);
 	tirachinas_rapido = new ETSIDI::Sprite("bin/texturas/tirachinasRapido.png", 0, -9, 0.8, 0.8);
 	espada = new ETSIDI::Sprite("bin/texturas/espada.png", 2, -9, 0.8, 0.8);
 	gancho = new ETSIDI::Sprite("bin/texturas/gancho.png", 4, -9, 0.8, 0.8);
+
+	tiempo = new ETSIDI::Sprite("bin/texturas/reloj.png", -12.5, -7.8, 0.8, 0.8);
+	bajas = new ETSIDI::Sprite("bin/texturas/skull.png", 9, -8, 0.8, 0.8);
 }
