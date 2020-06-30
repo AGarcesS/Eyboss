@@ -70,10 +70,14 @@ void O_Gancho::Ataca(Personaje& p) {
 	DisparoGancho* dg = new DisparoGancho();
 	dg->SetPosOr(p.GetPos().x, p.GetPos().y);
 	dg->SetPos(p.GetPos().x, p.GetPos().y);
-	if (p.GetOrientacion())
+	if (p.GetOrientacion()) {
+		dg->SetOrientacion(true);
 		dg->SetVel(7.0f, 7.0f);
-	else
+	}
+	else {
+		dg->SetOrientacion(false);
 		dg->SetVel(-7.0f, 7.0f);
+	}
 	Agregar(dg);
 	Inicializa();
 	ETSIDI::play("bin/sonidos/shoot.wav");
