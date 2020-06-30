@@ -3,7 +3,7 @@
 
 class Pared {
 public:
-	enum plataformas { NORMAL = 0, SALTO, VELOCIDAD };
+	enum plataformas { NORMAL = 0, SALTO, VELOCIDAD, FONDO };
 protected:
 	plataformas tipo;	
 	unsigned char rojo;
@@ -12,7 +12,8 @@ protected:
 	Vector2D limite1;
 	Vector2D limite2;
 	const char* textura;
-	float z; //zoom
+	float z;
+	float k; //zoom
 	
 	Vector2D CPlano1;
 	Vector2D CPlano2;
@@ -27,7 +28,8 @@ public:
 	virtual ~Pared() {}
 
 	void SetColor(unsigned char r, unsigned char v, unsigned char a);
-	void SetPos(float x1, float y1, float x2, float y2);
+	void SetPos(float x1, float y1, float x2, float y2, float f);
+	void SetK(float k);
 	void SetTextura(const char* text);
 	void Dibuja(float k = 1);
 	float distanciap_r(Vector2D recta1, Vector2D recta2, Vector2D punto, Vector2D* dir = 0);

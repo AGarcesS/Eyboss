@@ -32,6 +32,7 @@
     <ClCompile Include="src\DisparoRapido.cpp" />
     <ClCompile Include="src\FactoryEnemigos.cpp" />
     <ClCompile Include="src\FactoryObjetos.cpp" />
+    <ClCompile Include="src\Fondo.cpp" />
     <ClCompile Include="src\Global.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\Interfaz.cpp" />
@@ -73,6 +74,7 @@
     <ClInclude Include="src\FactoryEnemigos.h" />
     <ClInclude Include="src\FactoryObjetos.h" />
     <ClInclude Include="src\FactoryPlataforma.h" />
+    <ClInclude Include="src\Fondo.h" />
     <ClInclude Include="src\Global.h" />
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\Interfaz.h" />

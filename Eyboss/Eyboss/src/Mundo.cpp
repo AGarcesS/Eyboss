@@ -276,6 +276,7 @@ bool Mundo::CargarNivel() {
 		factory_p.Crear(Pared::NORMAL, plataformas, -10.0f, 15.0f, 80.0f, 15.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, -10.5f, 0.0f, -10.0f, 15.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 80.0f, 0.0f, 80.5f, 15.0f);
+		factory_p.Crear(Pared::FONDO, plataformas, -10.5f, -0.5f, 80.5f, 15.5f, 0.05f, -0.001f); //Fondo
 
 		//Plataformas
 		factory_p.Crear(Pared::VELOCIDAD, plataformas, 7.0f, 2.5f, 17.0f, 3.0f);

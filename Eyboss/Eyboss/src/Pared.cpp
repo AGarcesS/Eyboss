@@ -10,13 +10,17 @@ void Pared::SetColor(unsigned char r, unsigned char v, unsigned char a){
 	azul = a;
 }
 
-void Pared::SetPos(float x1, float y1, float x2, float y2) {
+void Pared::SetPos(float x1, float y1, float x2, float y2, float f) {
 	limite1.x = x1;
 	limite1.y = y1;
 	limite2.x = x2;
 	limite2.y = y2;
+	z = f;
 }
 
+void Pared::SetK(float k) {
+	this->k = k;
+}
 
 void Pared::SetTextura(const char* text) {
 	textura = text;
