@@ -42,6 +42,7 @@ void ListaEnemigos::Inicializa() {
 void ListaEnemigos::Colision(Pared pa) {
 	for (int i = 0; i < numero; i++) {
 		Interaccion::Colision(*lista[i], pa);
+		Interaccion::NoCaer(*lista[i], pa);
 	}
 }
 

@@ -57,6 +57,11 @@ public:
 			hada->SetPos(px, py);
 			hada->SetVelIni(vix, viy);
 			l.Agregar(hada);
+			if (l1 != 0 && o != Objeto::OBJETO) {
+				hada->SetAtaque(o);
+				objetos.Crear(o, *l1);
+			}
+			hada->Inicializa();
 			break;
 		}
 		}

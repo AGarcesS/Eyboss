@@ -205,61 +205,60 @@ bool Interaccion::Colision(Personaje& p1, Personaje& p2) {			//p1 enemigo, p2 pr
 }
 
 bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
-	
+
 	bool derecha = false;
 
 	if ((p2.posicion.x - p1.posicion.x) > 0)
 		derecha = true;							// p2 a la derecha de p1
+	
+	if (Distancia(p2.posicion, p1.posicion) </*=*/ p1.dist_seguimiento) {
 
-	if (Distancia(p2.posicion, p1.posicion) < 7) {
+		if (derecha)
+			p1.velocidad.x = p1.vel_seguimiento.x;
+		else
+			p1.velocidad.x = -p1.vel_seguimiento.x;
 
-		if (derecha) {
-			switch (p1.GetTipo()) {
-			case Personaje::PURK:
-			{
-				p1.velocidad.x = 3.5;
-				break;
-			}
-			case Personaje::VELOZ:
-			{
-				p1.velocidad.x = 4.0;
-				break;
-			}
-			case Personaje::TROLL:
-			{
-				p1.velocidad.x = 1.5;
-				break;
-			}
-			}
-		}
-		else {
-			switch (p1.GetTipo()) {
-			case Personaje::PURK:
-			{
-				p1.velocidad.x = -3.5;
-				break;
-			}
-			case Personaje::VELOZ:
-			{
-				p1.velocidad.x = -4.0;
-				break;
-			}
-			case Personaje::TROLL:
-			{
-				p1.velocidad.x = -1.5;
-				break;
-			}
-			}
-		}
 
 		return true;
 	}
+	/*
+	if (Distancia(p2.posicion, p1.posicion) <= p1.dist_disparo && Distancia(p2.posicion, p1.posicion) > p1.dist_seguimiento && p1.señal_ataque > 0) {
+		p1.velocidad.x = 0;
+		if (derecha)
+			p1.orientacion = false;
+		else
+			p1.orientacion = true;
+	}
 
-	if (p1.velocidad.x * p1.vel_ini.x >= 0)		//Signos iguales o si una de ellas es 0
-		p1.velocidad.x = p1.vel_ini.x;
-	if (p1.velocidad.x * p1.vel_ini.x < 0)
-		p1.velocidad.x = -p1.vel_ini.x;			//Signos opuestos
+	if ((Distancia(p2.posicion, p1.posicion) > p1.dist_disparo && p1.señal_ataque > 0) || (Distancia(p2.posicion, p1.posicion) > p1.dist_seguimiento && p1.señal_ataque < 0)) {
+*/	
+		if (p1.velocidad.x * p1.vel_ini.x >= 0)		//Signos iguales o si una de ellas es 0
+			p1.velocidad.x = p1.vel_ini.x;
+		if (p1.velocidad.x * p1.vel_ini.x < 0)
+			p1.velocidad.x = -p1.vel_ini.x;			//Signos opuestos
+/*
+		return true;
+	}
+	*/
+
 	return false;
+}
+
+bool Interaccion::NoCaer(Personaje& p, Pared& pa) {
+	Vector2D punto1(pa.limite1.x, pa.limite2.y);
+	Vector2D dir1;
+	float d1 = pa.distanciap_r(punto1, pa.limite2, p.posicion, &dir1) - p.altura / 2;
+
+	if ((d1 <= 0) && (pa.limite1.x + -p.ancho / 2 < p.posicion.x < pa.limite2.x + p.ancho / 2) && ((p.posicion.y - p.altura / 2 + 0.1 > pa.limite2.y) || (p.velocidad.y < -5))) {
+		if (abs(p.posicion.x - (pa.limite2.x + pa.limite1.x) / 2) > (pa.limite2.x - pa.limite1.x) / 2 - p.ancho / 2)
+		{
+			p.velocidad.x = -p.velocidad.x;
+			return 1;
+		}
+		return 0;
+	}
+
+	return 0;
 }
 
 bool Interaccion::Colision(O_Espada& e, Personaje& p) {
