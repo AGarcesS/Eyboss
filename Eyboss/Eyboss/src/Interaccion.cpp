@@ -210,37 +210,21 @@ bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 
 	if ((p2.posicion.x - p1.posicion.x) > 0)
 		derecha = true;							// p2 a la derecha de p1
-	
-	if (Distancia(p2.posicion, p1.posicion) </*=*/ p1.dist_seguimiento) {
+
+	if (Distancia(p2.posicion, p1.posicion) < p1.dist_seguimiento) {
 
 		if (derecha)
 			p1.velocidad.x = p1.vel_seguimiento.x;
 		else
 			p1.velocidad.x = -p1.vel_seguimiento.x;
 
-
 		return true;
 	}
-	/*
-	if (Distancia(p2.posicion, p1.posicion) <= p1.dist_disparo && Distancia(p2.posicion, p1.posicion) > p1.dist_seguimiento && p1.señal_ataque > 0) {
-		p1.velocidad.x = 0;
-		if (derecha)
-			p1.orientacion = false;
-		else
-			p1.orientacion = true;
-	}
 
-	if ((Distancia(p2.posicion, p1.posicion) > p1.dist_disparo && p1.señal_ataque > 0) || (Distancia(p2.posicion, p1.posicion) > p1.dist_seguimiento && p1.señal_ataque < 0)) {
-*/	
-		if (p1.velocidad.x * p1.vel_ini.x >= 0)		//Signos iguales o si una de ellas es 0
-			p1.velocidad.x = p1.vel_ini.x;
-		if (p1.velocidad.x * p1.vel_ini.x < 0)
-			p1.velocidad.x = -p1.vel_ini.x;			//Signos opuestos
-/*
-		return true;
-	}
-	*/
-
+	if (p1.velocidad.x * p1.vel_ini.x >= 0)		//Signos iguales o si una de ellas es 0
+		p1.velocidad.x = p1.vel_ini.x;
+	if (p1.velocidad.x * p1.vel_ini.x < 0)
+		p1.velocidad.x = -p1.vel_ini.x;			//Signos opuestos
 	return false;
 }
 

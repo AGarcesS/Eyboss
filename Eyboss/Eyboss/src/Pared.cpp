@@ -26,7 +26,7 @@ void Pared::SetTextura(const char* text) {
 	textura = text;
 }
 
-void Pared::Dibuja(float k) {                                                       //Implementar texturas
+void Pared::Dibuja() {                                                       //Implementar texturas
 	glPushMatrix();
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture(textura).id);

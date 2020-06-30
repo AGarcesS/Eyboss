@@ -23,7 +23,6 @@ protected:
 	int daño;
 	int col;
 	float dist_seguimiento;
-	float dist_disparo;
 	ETSIDI::SpriteSequence* animacion;                //Sprites
 	bool detencion;
 	bool nogancho;

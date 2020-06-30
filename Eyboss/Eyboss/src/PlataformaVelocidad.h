@@ -10,7 +10,6 @@ public:
 		z = 0;
 	}
 	virtual ~PlataformaVelocidad() {}
-	void Dibuja(float k = 1);
 
 
 	friend class Interaccion;

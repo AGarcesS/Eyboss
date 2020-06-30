@@ -15,7 +15,6 @@ public:
 		aceleracion.x = 0.0f;
 		aceleracion.y = -9.8f;
 		dist_seguimiento = 7.0f;
-		dist_disparo = 12.0f;
 		col = 4;
 		posicion.x = 0;
 		posicion.y = 5;

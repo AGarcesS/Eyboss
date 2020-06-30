@@ -13,6 +13,7 @@ public:
 		{
 			Pared* obj = new Pared(Pared::NORMAL);
 			obj->SetPos(lim1, p1, lim2, p2, f);
+			obj->SetK(k);
 			l.Agregar(obj);
 			break;
 		}
@@ -20,6 +21,7 @@ public:
 		{
 			PlataformaSalto* obj = new PlataformaSalto();
 			obj->SetPos(lim1, p1, lim2, p2, f);
+			obj->SetK(k);
 			l.Agregar(obj);
 			break;
 		}
@@ -27,6 +29,7 @@ public:
 		{
 			PlataformaVelocidad* obj = new PlataformaVelocidad();
 			obj->SetPos(lim1, p1, lim2, p2, f);
+			obj->SetK(k);
 			l.Agregar(obj);
 			break;
 		}
