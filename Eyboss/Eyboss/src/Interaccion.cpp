@@ -40,12 +40,8 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 	Vector2D punto1(pa.limite1.x, pa.limite2.y);
 	Vector2D punto2(pa.limite2.x, pa.limite1.y);
 
-	if (p.velocidad.y < -10 && p.velocidad.y > -15 && p.GetMovimiento()) {
-		d_caida = 2;
-	}
-	else if (p.velocidad.y < -15 && p.GetMovimiento()) {
-		d_caida = 5;
-	}
+	if (p.velocidad.y < -15 && p.GetMovimiento())
+		d_caida = -p.velocidad.y * 0.2;
 
 	Vector2D dir1;
 	float d1 = pa.distanciap_r(punto1, pa.limite2, p.posicion, &dir1) - p.altura / 2;
@@ -106,6 +102,8 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 		if (colisionarriba) {
 			p.velocidad.y = 10;
 			p.aceleracion.y = -9.8f;
+			p.on = false;
+			d_caida = 0;
 		}
 	}	
 
