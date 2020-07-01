@@ -268,7 +268,7 @@ bool Mundo::CargarNivel() {
 
 	if (nivel == 1) {
 
-		factory_e.Crear(Personaje::PURK, enemigos, 0, 27.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
+		/*factory_e.Crear(Personaje::PURK, enemigos, 0, 27.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
 		factory_e.Crear(Personaje::PURK, enemigos, 56, 35.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
 		factory_e.Crear(Personaje::PURK, enemigos, 17, 2, 2, 5);
 		factory_e.Crear(Personaje::VELOZ, enemigos, 17, 21, 0, 0);
@@ -277,7 +277,7 @@ bool Mundo::CargarNivel() {
 		factory_e.Crear(Personaje::TROLL, enemigos, 25, 22, 2, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 27, 22, -2, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 46, 25.5, 3, 0);
-		factory_e.Crear(Personaje::PURK, enemigos, 48, 28.5, 0, 0, Objeto::TIRACHINAS, &e_objetos);
+		factory_e.Crear(Personaje::PURK, enemigos, 48, 28.5, 0, 0, Objeto::TIRACHINAS, &e_objetos);*/
 
 		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada enemigo)
 
