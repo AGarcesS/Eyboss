@@ -354,12 +354,32 @@ bool Mundo::CargarNivel() {
 		factory_p.Crear(Pared::NORMAL, plataformas, 15.5f, -2.5f, 16.5f, 6.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 16.5f, -2.5f, 23.0f, 4.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 23.0f, -2.5f, 36.0f, 5.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 75.0f, -2.5f, 77.5f, 50.0f);
 
 		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, 0.0f, -2.0f, 30.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 9.0f, 32.0f, 30.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 32.0f, 12.0f, 44.0f, 30.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 17.0f, 10.5f, 20.0f, 50.0f);
 
 		factory_p.Crear(Pared::NORMAL, plataformas, 36.0f, -2.5f, 49.0f, 8.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 49.0f, -2.5f, 80.0f, 7.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 44.0f, 14.0f, 47.0f, 14.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 48.0f, 11.0f, 52.0f, 11.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 51.5f, 17.0f, 58.0f, 17.5f);
+		factory_p.Crear(Pared::SALTO, plataformas, 59.5f, 19.5f, 62, 20.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 72.0f, 18.0f, 75.0, 18.5f);
+		factory_p.Crear(Pared::SALTO, plataformas, 69.5f, 24.0f, 73.0f, 24.5f);
+		factory_p.Crear(Pared::SALTO, plataformas, 64.5f, 30.0f, 67.0f, 30.5f);
+		factory_p.Crear(Pared::VELOCIDAD, plataformas, 57.0f, 36.0f, 61.0f, 36.5f);
+
+
+
+		factory_e.Crear(Personaje::TROLL, enemigos, 52, 8.5, -2, 0);
+		factory_e.Crear(Personaje::TROLL, enemigos, 59, 8.5, -2, 0);
+		factory_e.Crear(Personaje::VELOZ, enemigos, 18, 6, 3, 0);
+
+
+		factory_b.Crear(Bonus::ESPADA, bonus, 12, 4);
 	}
 
 	if (nivel == 3) {
