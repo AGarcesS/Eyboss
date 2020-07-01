@@ -60,10 +60,13 @@ void Mundo::Mueve()
 	e_objetos.Colision(protagonista);
 
 	objetos.Colision(plataformas, &protagonista);
+
 	e_objetos.Colision(plataformas);
 
 	for (int i = 0; i < plataformas.getNumero(); i++) {
-		Interaccion::Colision(protagonista, *plataformas[i]);
+		if (protagonista.GetMovimiento()) {
+			Interaccion::Colision(protagonista, *plataformas[i]);
+		}		
 		enemigos.Colision(*plataformas[i]);
 	}
 
