@@ -348,7 +348,18 @@ bool Mundo::CargarNivel() {
 	}
 
 	if (nivel == 2) {
-	
+		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, -2.5f, 12.5f, 0.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 10.0f, -2.5f, 12.5f, 3.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 10.0f, -2.5f, 15.5f, 3.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 15.5f, -2.5f, 16.5f, 6.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 16.5f, -2.5f, 23.0f, 4.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 23.0f, -2.5f, 36.0f, 5.5f);
+
+		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, 0.0f, -2.0f, 30.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 9.0f, 32.0f, 30.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 32.0f, 12.0f, 44.0f, 30.0f);
+
+		factory_p.Crear(Pared::NORMAL, plataformas, 36.0f, -2.5f, 49.0f, 8.5f);
 	}
 
 	if (nivel == 3) {
