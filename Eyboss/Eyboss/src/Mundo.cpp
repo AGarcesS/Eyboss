@@ -290,7 +290,7 @@ bool Mundo::CargarNivel() {
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 0.0f, 22.5f, 20.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 17.5f, 60.0f, 20.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 60.0f, 17.5f, 62.5f, 42.5f);
-		factory_p.Crear(Pared::PUERTA, plataformas, 8, 6, 10.5, 9, 0.45);
+		factory_p.Crear(Pared::PUERTA, plataformas, 56, 20, 59, 23);
 		
 
 		//Plataformas
@@ -330,9 +330,7 @@ bool Mundo::CargarNivel() {
 		factory_p.Crear(Pared::NORMAL, plataformas, 40.0f, 31.0f, 56.0f, 31.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 55.0f, 27.0f, 58.0f, 27.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 45.0f, 27.0f, 49.0f, 27.5f);
-		factory_p.Crear(Pared::NORMAL, plataformas, 44.0f, 24.0f, 60.0f, 24.5f);
-
-		
+		factory_p.Crear(Pared::NORMAL, plataformas, 44.0f, 24.0f, 60.0f, 24.5f);		
 
 		//Bonus
 		factory_b.Crear(Bonus::ESPADA, bonus, 19, 25.5);

@@ -117,10 +117,11 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 		}
 	}
 
-	if (pa.GetTipo() == Pared::PUERTA && colision) {
-		Global::cambio_nivel = true;
+	if (pa.GetTipo() == Pared::PUERTA) {
+		if (p.GetTipo() == Personaje::PROTAGONISTA && colision)
+			Global::cambio_nivel = true;	
 	}
-
+		
 
 	if (colision)
 		p.vida -= d_caida;
