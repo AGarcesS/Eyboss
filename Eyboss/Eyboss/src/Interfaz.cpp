@@ -95,7 +95,6 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 		ETSIDI::printxy(t_municion, -4, -8.5);
 		ETSIDI::printxy("Q", -4, -10);
-
 	}
 
 	if (m2) {
@@ -147,40 +146,65 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	ETSIDI::setTextColor(1, 1, 1);
 	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 	ETSIDI::printxy(t_tiempo, -12, -8);
-	tiempo->draw();
+	tiempo->draw();	
 
-	if (p.GetVida() == 10) {
+	switch (p.GetVida()) {
+
+	case 10:
+	{
 		corazon1->draw(); corazon2->draw(); corazon3->draw(); corazon4->draw(); corazon5->draw();
+		break;
 	}
-	if (p.GetVida() == 9) {
+	case 9:
+	{
 		corazon1->draw(); corazon2->draw(); corazon3->draw(); corazon4->draw(); corazon_m5->draw();
+		break;
 	}
-	if (p.GetVida() == 8) {
+	case 8:
+	{
 		corazon1->draw(); corazon2->draw(); corazon3->draw(); corazon4->draw(); corazon_v5->draw();
+		break;
 	}
-	if (p.GetVida() == 7) {
+	case 7:
+	{
 		corazon1->draw(); corazon2->draw(); corazon3->draw(); corazon_m4->draw(); corazon_v5->draw();
+		break;
 	}
-	if (p.GetVida() == 6) {
+	case 6:
+	{
 		corazon1->draw(); corazon2->draw(); corazon3->draw(); corazon_v4->draw(); corazon_v5->draw();
+		break;
 	}
-	if (p.GetVida() == 5) {
+	case 5:
+	{
 		corazon1->draw(); corazon2->draw(); corazon_m3->draw(); corazon_v4->draw(); corazon_v5->draw();
+		break;
 	}
-	if (p.GetVida() == 4) {
+	case 4:
+	{
 		corazon1->draw(); corazon2->draw(); corazon_v3->draw(); corazon_v4->draw(); corazon_v5->draw();
+		break;
 	}
-	if (p.GetVida() == 3) {
+	case 3:
+	{
 		corazon1->draw(); corazon_m2->draw(); corazon_v3->draw(); corazon_v4->draw(); corazon_v5->draw();
+		break;
 	}
-	if (p.GetVida() == 2) {
+	case 2:
+	{
 		corazon1->draw(); corazon_v2->draw(); corazon_v3->draw(); corazon_v4->draw(); corazon_v5->draw();
+		break;
 	}
-	if (p.GetVida() == 1) {
+	case 1:
+	{
 		corazon_m1->draw(); corazon_v2->draw(); corazon_v3->draw(); corazon_v4->draw(); corazon_v5->draw();
+		break;
 	}
-	if (p.GetVida() == 0) {
+	case 0:
+	{
 		corazon_v1->draw(); corazon_v2->draw(); corazon_v3->draw(); corazon_v4->draw(); corazon_v5->draw();
+		break;
+	}
 	}
 
 	sstr_bajas << Global::bajas;

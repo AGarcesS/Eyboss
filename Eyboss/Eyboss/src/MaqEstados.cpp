@@ -1,3 +1,5 @@
+#include <sstream>
+#include <iostream>
 #include "MaqEstados.h"
 #include "ETSIDI.h"
 #include "glut.h"
@@ -32,12 +34,29 @@ void MaqEstados::Dibuja() {
 			0.0, mundo.GetOjo().y, 0.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glTranslatef(mundo.GetOjo().x, mundo.GetOjo().y, 0);
+		std::stringstream sstr_tiempo, sstr_bajas;
+		std::string str_tiempo, str_bajas;
+		int minutos = Global::tiempo / (40 * 60);
+		int segundos = (Global::tiempo / 40) - minutos * 60;
+		if (segundos > 9)
+			sstr_tiempo << "Has tardado " << minutos << ":" << segundos;
+		else
+			sstr_tiempo << "Has tardado " << minutos << ":0" << segundos;
+		str_tiempo = sstr_tiempo.str();
+		const char* t_tiempo = str_tiempo.c_str();
+		sstr_bajas << "Has eliminado " << Global::bajas << " enemigos";
+		str_bajas = sstr_bajas.str();
+		const char* t_bajas = str_bajas.c_str();
 		ETSIDI::setTextColor(1, 0, 0);
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 16);
 		ETSIDI::printxy("ENHORABUENA", -5, 1);
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 		ETSIDI::printxy("Has ganado", -5, 0);
-		ETSIDI::printxy("Pulsa la tecla C para continuar", -5, -1);
+		ETSIDI::setTextColor(1, 1, 1);
+		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
+		ETSIDI::printxy(t_tiempo, -5, -2);
+		ETSIDI::printxy(t_bajas, -5, -3);
+		ETSIDI::printxy("Pulsa la tecla C para continuar", -5, -5);
 	}
 	else if (estado == GAMEOVER) {
 		mundo.Dibuja();
@@ -46,12 +65,29 @@ void MaqEstados::Dibuja() {
 			0.0, mundo.GetOjo().y, 0.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glTranslatef(mundo.GetOjo().x, mundo.GetOjo().y, 0);
+		std::stringstream sstr_tiempo, sstr_bajas;
+		std::string str_tiempo, str_bajas;
+		int minutos = Global::tiempo / (40 * 60);
+		int segundos = (Global::tiempo / 40) - minutos * 60;		
+		if (segundos > 9)
+			sstr_tiempo << "Has tardado " << minutos << ":" << segundos;
+		else
+			sstr_tiempo << "Has tardado " << minutos << ":0" << segundos;
+		str_tiempo = sstr_tiempo.str();
+		const char* t_tiempo = str_tiempo.c_str();
+		sstr_bajas << "Has eliminado " << Global::bajas << " enemigos";
+		str_bajas = sstr_bajas.str();
+		const char* t_bajas = str_bajas.c_str();
 		ETSIDI::setTextColor(1, 0, 0);
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 16);
 		ETSIDI::printxy("GAMEOVER", -5, 1);
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
-		ETSIDI::printxy("Has perdido", -5, 0);
-		ETSIDI::printxy("Pulsa la tecla C para continuar", -5, -1);
+		ETSIDI::printxy("Has perdido", -5, 0);		
+		ETSIDI::setTextColor(1, 1, 1);
+		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
+		ETSIDI::printxy(t_tiempo, -5, -2);
+		ETSIDI::printxy(t_bajas, -5, -3);
+		ETSIDI::printxy("Pulsa la tecla C para continuar", -5, -5);
 	}
 	else if (estado == PAUSA) {
 		mundo.Dibuja();
