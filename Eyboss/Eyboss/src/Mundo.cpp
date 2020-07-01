@@ -268,7 +268,7 @@ bool Mundo::CargarNivel() {
 
 	if (nivel == 1) {
 
-		/*factory_e.Crear(Personaje::PURK, enemigos, 0, 27.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
+		factory_e.Crear(Personaje::PURK, enemigos, 0, 27.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
 		factory_e.Crear(Personaje::PURK, enemigos, 56, 35.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
 		factory_e.Crear(Personaje::PURK, enemigos, 17, 2, 2, 5);
 		factory_e.Crear(Personaje::VELOZ, enemigos, 17, 21, 0, 0);
@@ -277,22 +277,18 @@ bool Mundo::CargarNivel() {
 		factory_e.Crear(Personaje::TROLL, enemigos, 25, 22, 2, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 27, 22, -2, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 46, 25.5, 3, 0);
-		factory_e.Crear(Personaje::PURK, enemigos, 48, 28.5, 0, 0, Objeto::TIRACHINAS, &e_objetos);*/
+		factory_e.Crear(Personaje::PURK, enemigos, 48, 28.5, 0, 0, Objeto::TIRACHINAS, &e_objetos);
 
-		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada enemigo)
-
-		//Caja
-
-		
+		//Caja		
 		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, -2.5f, 22.5f, 0.0f); // primer suelo
 		factory_p.Crear(Pared::NORMAL, plataformas, -2.0f, 40.0f, 60.0f, 42.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, 0.0f, -2.0f, 42.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 0.0f, 22.5f, 20.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 17.5f, 60.0f, 20.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 60.0f, 17.5f, 62.5f, 42.5f);
-		/*factory_p.Crear(Pared::PUERTA, plataformas, 56, 20, 59, 23);*/
+		factory_p.Crear(Pared::PUERTA, plataformas, 56, 20, 59, 23);
 
-		factory_p.Crear(Pared::PUERTA, plataformas, 10, 2, 12, 4);
+		/*factory_p.Crear(Pared::PUERTA, plataformas, 10, 2, 12, 4);*/
 		
 
 		//Plataformas
