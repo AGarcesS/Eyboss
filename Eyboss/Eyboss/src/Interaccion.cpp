@@ -78,7 +78,8 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 	float d3 = pa.distanciap_r(punto1, pa.limite1, p.posicion, &dir3) - p.ancho / 2;
 	if ((d3 <= 0) && (p.posicion.x > pa.limite1.x - p.ancho / 2)) {
 		p.posicion.x = pa.limite1.x - p.ancho / 2;
-		p.velocidad.x *= -1;
+		if (p.GetTipo() != Personaje::PROTAGONISTA)
+			p.velocidad.x *= -1;		
 		p.aceleracion.x = 0.0f;
 		p.aceleracion.y = -9.8f;
 		p.on = false;
@@ -91,7 +92,8 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 	float d4 = pa.distanciap_r(pa.limite2, punto2, p.posicion, &dir4) - p.ancho / 2;
 	if ((d4 <= 0) && (p.posicion.x < pa.limite2.x + p.ancho / 2)){
 		p.posicion.x = pa.limite2.x + p.ancho / 2;
-		p.velocidad.x *= -1;
+		if (p.GetTipo() != Personaje::PROTAGONISTA)
+			p.velocidad.x *= -1;
 		p.aceleracion.x = 0.0f;
 		p.aceleracion.y = -9.8f;
 		p.on = false;
