@@ -4,6 +4,7 @@
 #include "PlataformaSalto.h"
 #include "PlataformaVelocidad.h"
 #include "Fondo.h"
+#include "ParedPuerta.h"
 
 class FactoryPlataforma {
 public:
@@ -36,6 +37,14 @@ public:
 		case Pared::FONDO:
 		{
 			Fondo* obj = new Fondo();
+			obj->SetPos(lim1, p1, lim2, p2, f);
+			obj->SetK(k);
+			l.Agregar(obj);
+			break;
+		}
+		case Pared::PUERTA:
+		{
+			ParedPuerta* obj = new ParedPuerta();
 			obj->SetPos(lim1, p1, lim2, p2, f);
 			obj->SetK(k);
 			l.Agregar(obj);

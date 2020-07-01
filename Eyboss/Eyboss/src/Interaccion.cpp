@@ -84,6 +84,7 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 		p.on = false;
 		colision = true;
 		colisionarriba = false;
+		
 	}
 
 	Vector2D dir4;
@@ -115,6 +116,11 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 				p.SetVel(p.GetVel().x - 1, p.GetVel().y);
 		}
 	}
+
+	if (pa.GetTipo() == Pared::PUERTA && colision) {
+		Global::cambio_nivel = true;
+	}
+
 
 	if (colision)
 		p.vida -= d_caida;

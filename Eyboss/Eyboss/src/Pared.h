@@ -3,7 +3,7 @@
 
 class Pared {
 public:
-	enum plataformas { NORMAL = 0, SALTO, VELOCIDAD, FONDO };
+	enum plataformas { NORMAL = 0, SALTO, VELOCIDAD, FONDO, PUERTA };
 protected:
 	plataformas tipo;	
 	unsigned char rojo;

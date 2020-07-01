@@ -49,6 +49,7 @@
     <ClCompile Include="src\O_Espada.cpp" />
     <ClCompile Include="src\O_Gancho.cpp" />
     <ClCompile Include="src\Pared.cpp" />
+    <ClCompile Include="src\ParedPuerta.cpp" />
     <ClCompile Include="src\Personaje.cpp" />
     <ClCompile Include="src\PlataformaSalto.cpp" />
     <ClCompile Include="src\PlataformaVelocidad.cpp" />
@@ -91,6 +92,7 @@
     <ClInclude Include="src\O_Espada.h" />
     <ClInclude Include="src\O_Gancho.h" />
     <ClInclude Include="src\Pared.h" />
+    <ClInclude Include="src\ParedPuerta.h" />
     <ClInclude Include="src\Personaje.h" />
     <ClInclude Include="src\PlataformaSalto.h" />
     <ClInclude Include="src\PlataformaVelocidad.h" />

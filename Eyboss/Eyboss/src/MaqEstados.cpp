@@ -119,6 +119,11 @@ void MaqEstados::Mueve() {
 			estado = FIN;
 		}*/
 
+		if (Global::cambio_nivel) {
+			Global::cambio_nivel = false;
+			mundo.CargarNivel();
+		}
+
 		if (Global::vida < 0)
 			estado = GAMEOVER;
 	}	

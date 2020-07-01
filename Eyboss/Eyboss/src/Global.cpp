@@ -7,3 +7,4 @@ int Global::vida = 0;
 int Global::municion = 0;
 int Global::municionlenta = 0;
 int Global::municionrapida = 0;
+bool Global::cambio_nivel = false;

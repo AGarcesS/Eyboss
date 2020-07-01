@@ -282,12 +282,16 @@ bool Mundo::CargarNivel() {
 		enemigos.Inicializa(); //Se crea el sprite (solo una vez, válido para cada enemigo)
 
 		//Caja
-		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, -2.5f, 22.5f, 0.0f);
+
+		
+		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, -2.5f, 22.5f, 0.0f); // primer suelo
 		factory_p.Crear(Pared::NORMAL, plataformas, -2.0f, 40.0f, 60.0f, 42.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, 0.0f, -2.0f, 42.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 0.0f, 22.5f, 20.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 17.5f, 60.0f, 20.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 60.0f, 17.5f, 62.5f, 42.5f);
+		factory_p.Crear(Pared::PUERTA, plataformas, 8, 6, 10,9);
+		
 
 		//Plataformas
 		factory_p.Crear(Pared::NORMAL, plataformas, -2.0f, 2.5f, 1.0f, 3.0f);
@@ -327,6 +331,8 @@ bool Mundo::CargarNivel() {
 		factory_p.Crear(Pared::NORMAL, plataformas, 55.0f, 27.0f, 58.0f, 27.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 45.0f, 27.0f, 49.0f, 27.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 44.0f, 24.0f, 60.0f, 24.5f);
+
+		
 
 		//Bonus
 		factory_b.Crear(Bonus::ESPADA, bonus, 19, 25.5);
