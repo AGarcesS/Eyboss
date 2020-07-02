@@ -4,8 +4,8 @@
 #include "glut.h"
 
 void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
-	std::stringstream sstr_tiempo, sstr_vida, sstr_bajas, sstr_municion, sstr_municionlenta, sstr_municionrapida;
-	std::string str_tiempo, str_vida, str_bajas, str_municion, str_municionlenta, str_municionrapida;
+	std::stringstream sstr_tiempo, sstr_vida, sstr_bajas, sstr_municion, sstr_municionlenta, sstr_municionrapida, sstr_llave;
+	std::string str_tiempo, str_vida, str_bajas, str_municion, str_municionlenta, str_municionrapida, str_llave;
 
 	bool m1 = false, m2 = false, m3 = false, m4 = false, m5 = false;	
 
@@ -214,6 +214,31 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 	ETSIDI::printxy(t_bajas, 10, -8);
 	bajas->draw();
+
+	switch (Global::nivel) {
+	case 1:
+	{
+		ETSIDI::setTextColor(1, 1, 1);
+		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
+		ETSIDI::printxy("Busca la puerta", 8, -9);
+	}
+	case 2:
+	{
+		
+	}
+	case 3:
+	{
+		sstr_llave << Global::llave;
+		str_llave = sstr_llave.str();
+		const char* t_llave = str_llave.c_str();
+		ETSIDI::setTextColor(1, 1, 1);
+		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
+		ETSIDI::printxy(t_llave, 10, -9);
+		ETSIDI::printxy("/3", 11, -9);
+		llave->draw();
+	}
+
+	}
 }
 
 void Interfaz::Inicializa() {
@@ -243,4 +268,5 @@ void Interfaz::Inicializa() {
 
 	tiempo = new ETSIDI::Sprite("bin/texturas/reloj.png", -12.5, -7.8, 0.8, 0.8);
 	bajas = new ETSIDI::Sprite("bin/texturas/skull.png", 9, -8, 0.8, 0.8);
+	llave = new ETSIDI::Sprite("bin/texturas/key.png", 9, -9, 0.8, 0.8);
 }

@@ -148,7 +148,7 @@ void Mundo::Inicializa()
 	y_ojo = protagonista.GetPos().y;
 	z_ojo = 30;
 
-	nivel = 0;
+	Global::nivel = 0;
 	CargarNivel();	
 }
 
@@ -254,7 +254,7 @@ void Mundo::TeclaMantenida(unsigned char key) { //Si se deja de pulsar la tecla
 }
 
 bool Mundo::CargarNivel() {
-	nivel++;
+	Global::nivel++;
 	for (int i = 0; i < ListaObjetos::n_objetos; i++) {
 		o_index[i] = 0;
 	}
@@ -266,7 +266,7 @@ bool Mundo::CargarNivel() {
 	plataformas.DestruirContenido();
 	bonus.DestruirContenido();
 
-	if (nivel == 1) {
+	if (Global::nivel == 1) {
 
 		factory_e.Crear(Personaje::PURK, enemigos, 0, 27.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
 		factory_e.Crear(Personaje::PURK, enemigos, 56, 35.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
@@ -343,7 +343,7 @@ bool Mundo::CargarNivel() {
 		factory_b.Crear(Bonus::CORAZON, bonus, 56, 21);
 	}
 
-	if (nivel == 2) {
+	if (Global::nivel == 2) {
 		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, -2.5f, 12.5f, 0.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 10.0f, -2.5f, 12.5f, 3.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 10.0f, -2.5f, 15.5f, 3.0f);
@@ -378,11 +378,11 @@ bool Mundo::CargarNivel() {
 		factory_b.Crear(Bonus::ESPADA, bonus, 12, 4);
 	}
 
-	if (nivel == 3) {
+	if (Global::nivel == 3) {
 	
 	}
 
-	if (nivel <= 3)
+	if (Global::nivel <= 3)
 		return true;
 	else
 		return false;

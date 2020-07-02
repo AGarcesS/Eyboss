@@ -13,5 +13,8 @@ public:
 	static int municionlenta;
 	static int municionrapida;
 
+	static int nivel;
 	static bool cambio_nivel;
+
+	static int llave;
 };

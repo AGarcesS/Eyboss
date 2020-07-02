@@ -9,7 +9,7 @@ private:
 		* corazon_m1, * corazon_m2, * corazon_m3, * corazon_m4, * corazon_m5,
 		* corazon_v1, * corazon_v2, * corazon_v3, * corazon_v4, * corazon_v5,
 		* tirachinas, * tirachinas_rapido, * tirachinas_lento, * espada, * gancho,
-		* bajas, * tiempo;
+		* bajas, * tiempo, * llave;
 
 public:
 	void ImprimeJuego(Protagonista& p, ListaObjetos& l);
