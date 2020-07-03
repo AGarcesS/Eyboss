@@ -15,36 +15,31 @@ void MaqEstados::Dibuja() {
 			0.0, 7.5, 0.0,
 			0.0, 1.0, 0.0);
 
-		glPushMatrix();
 		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/texturas/fondo.png").id);
+		glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/texturas/fondo2.png").id);
 		glDisable(GL_LIGHTING);
-
-		//glTranslatef(0, 0, -0.01); //Se dibuja en un plano un poco por atrás del resto de objetos
-
 		glBegin(GL_POLYGON);
 		glColor3f(1, 1, 1);
-		glTexCoord2d(0, 0); glVertex2f(-15, 10);
-		glTexCoord2d(1, 0); glVertex2f(15, 10);
-		glTexCoord2d(1, 1); glVertex2f(15, -10);
-		glTexCoord2d(0, 1); glVertex2f(-15, -10);
+		glTexCoord2d(0, 1); glVertex3f(-20, -10, -0.1);
+		glTexCoord2d(1, 1); glVertex3f(20, -10, -0.1);
+		glTexCoord2d(1, 0); glVertex3f(20, 25, -0.1);
+		glTexCoord2d(0, 0); glVertex3f(-20, 25, -0.1);
 		glEnd();
-
 		glEnable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
-		glPopMatrix();
+
 		ETSIDI::setTextColor(1, 1, 0);
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 16);
-		ETSIDI::printxy("The Last Chance", -5, 8);
+		ETSIDI::printxy("The Last Chance", -5, 10);
 
 		ETSIDI::setTextColor(1, 1, 1);
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
-		ETSIDI::printxy("Pulsa la tecla E para empezar", -5, 7);
-		ETSIDI::printxy("Pulsa la tecla S para salir", -5, 6);
-		ETSIDI::printxy("Andrea Garcés Sánchez, 53951", -5, 4);
-		ETSIDI::printxy("Matías Diego Guichón Gaggiolo, 54000", -5, 3);
-		ETSIDI::printxy("Javier Jiménez Wisnes, 54025", -5, 2);
-		ETSIDI::printxy("Sandra Rebollo Malvar, 54167", -5, 1);
+		ETSIDI::printxy("Pulsa la tecla E para empezar", -5, 9);
+		ETSIDI::printxy("Pulsa la tecla S para salir", -5, 8);
+		ETSIDI::printxy("Andrea Garcés Sánchez, 53951", -5, 6);
+		ETSIDI::printxy("Matías Diego Guichón Gaggiolo, 54000", -5, 5);
+		ETSIDI::printxy("Javier Jiménez Wisnes, 54025", -5, 4);
+		ETSIDI::printxy("Sandra Rebollo Malvar, 54167", -5, 3);
 	}
 	else if (estado == JUEGO) {
 		mundo.Dibuja();
