@@ -380,7 +380,77 @@ bool Mundo::CargarNivel() {
 	}
 
 	if (Global::nivel == 3) {
-	
+
+		//nv1
+		//pared izq
+		factory_p.Crear(Pared::NORMAL, plataformas, -35.0f, -2.5f, -1.0f, 15.0f);
+		//pared dch
+		factory_p.Crear(Pared::NORMAL, plataformas, 50.0f, -2.5f, 70.0f, 27.0f);
+
+		factory_p.Crear(Pared::NORMAL, plataformas, -1.5f, -2.5f, 20.5f, 0.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 25.5f, -2.5f, 50.0f, 0.0f);
+
+		//nv2
+		factory_p.Crear(Pared::NORMAL, plataformas, 5.0f, -10.5f, 30.0f, -8.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 35.0f, -10.5f, 50.0f, -8.5f);
+		//bonus entre medias
+		factory_b.Crear(Bonus::GANCHO, bonus, 52.25, -11.5);
+		factory_p.Crear(Pared::NORMAL, plataformas, 55.0f, -10.5f, 90.0f, -8.5f);
+		factory_p.Crear(Pared::SALTO, plataformas, 70.0f, -8.5f, 80.0f, -7.5f);
+
+		//trampa
+		factory_p.Crear(Pared::NORMAL, plataformas, -15.0f, -50.5f, 5.0f, -35.5f);
+		factory_e.Crear(Personaje::TROLL, enemigos, 2.0f, -30.0f, 2, 0);
+		factory_e.Crear(Personaje::TROLL, enemigos, 1.0f, -30.0f, 2, 0);
+		//Trampa pared izq
+		factory_p.Crear(Pared::NORMAL, plataformas, -15.0f, -40.5f, 0.0f, -1.0f);
+		//Trampa pared dch
+		factory_p.Crear(Pared::NORMAL, plataformas, 5.0f, -40.5f, 10.0f, -8.5f);
+
+
+		//juego plataformas
+		//pared derecha
+		factory_p.Crear(Pared::NORMAL, plataformas, 80.0f, -8.5f, 100.0f, 45.5f);
+		factory_p.Crear(Pared::SALTO, plataformas, 70.0f, -2.5f, 72.0f, -1.5f);
+		factory_p.Crear(Pared::SALTO, plataformas, 75.5f, 2.0f, 76.5f, 3.0f);
+		factory_p.Crear(Pared::SALTO, plataformas, 78.0f, 7.0f, 79.0f, 8.0f);
+		factory_p.Crear(Pared::SALTO, plataformas, 71.0f, 11.0f, 71.5f, 12.0f);
+		factory_p.Crear(Pared::SALTO, plataformas, 77.0f, 16.0f, 77.5f, 17.0f);
+		factory_p.Crear(Pared::SALTO, plataformas, 73.0f, 20.0f, 73.5f, 21.0f);
+		//Salida
+		factory_p.Crear(Pared::NORMAL, plataformas, 46.0f, -2.5f, 50.0f, 20.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 42.0f, -2.5f, 46.0f, 10.0f);
+
+
+		//pared que divide nv2 y nv3
+		factory_p.Crear(Pared::NORMAL, plataformas, 40.0f, -15.5f, 45.0f, -10.5f);
+
+
+		//nv3
+		factory_p.Crear(Pared::NORMAL, plataformas, 5.0f, -18.5f, 60.0f, -15.5f);
+		//Salto izq para volver nv2
+		factory_p.Crear(Pared::SALTO, plataformas, 30.0f, -15.5f, 35.0f, -14.5f);
+
+
+		//nv4
+		//pared izq
+		factory_p.Crear(Pared::NORMAL, plataformas, 10.0f, -26.5f, 40.0f, -18.5f);
+		//plataformas
+		factory_p.Crear(Pared::NORMAL, plataformas, 5.0f, -170.5f, 70.0f, -26.5f);
+		factory_p.Crear(Pared::NORMAL, plataformas, 77.0f, -19.5f, 80.0f, -18.5f);
+		factory_p.Crear(Pared::VELOCIDAD, plataformas, 80.0f, -19.5f, 100.0f, -18.5f);
+		factory_p.Crear(Pared::VELOCIDAD, plataformas, 120.0f, -18.5f, 127.5f, -17.5f);
+		factory_p.Crear(Pared::VELOCIDAD, plataformas, 130.0f, -17.5f, 132.0f, -16.5f);
+		factory_p.Crear(Pared::VELOCIDAD, plataformas, 145.0f, -23.5f, 150.0f, -22.5f);
+		factory_p.Crear(Pared::VELOCIDAD, plataformas, 155.0f, -22.5f, 157.0f, -21.5f);
+		//pared dch
+		factory_p.Crear(Pared::NORMAL, plataformas, 165.0f, -36.5f, 200.0f, -18.5f);
+
+
+
+
+		//plataforma muerte
+		factory_p.Crear(Pared::NORMAL, plataformas, 10.0f, -170.5f, 220.0f, -169.5f);
 	}
 
 	if (Global::nivel <= 3)
