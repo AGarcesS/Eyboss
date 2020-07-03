@@ -289,7 +289,7 @@ bool Mundo::CargarNivel() {
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 0.0f, 22.5f, 19.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 17.5f, 60.0f, 20.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 60.0f, 17.5f, 62.5f, 60.0f);
-		factory_p.Crear(Pared::FONDO, plataformas, -15.0f, -12.0f, 80.0f, 60.0f, Global::nivel, -0.1);  // 16/9 de relacion (el fondo)
+		factory_p.Crear(Pared::FONDO, plataformas, -34.0f, -12.0f, 94.0f, 60.0f, Global::nivel, -0.1);  // 16/9 de relacion (el fondo)
 		factory_p.Crear(Pared::PUERTA, plataformas, 56, 20, 59, 23);
 
 		/*factory_p.Crear(Pared::PUERTA, plataformas, 10, 2, 12, 4);*/
@@ -350,7 +350,7 @@ bool Mundo::CargarNivel() {
 	if (Global::nivel == 2) {
 		ETSIDI::playMusica("bin/musica/Cancion2.mp3", true);
 
-		factory_p.Crear(Pared::FONDO, plataformas, -20.0f, -50.0f, 200.0f, 100.0f, Global::nivel, -0.1);  // 16/9 de relacion (el fondo)
+		factory_p.Crear(Pared::FONDO, plataformas, -43.0f, -50.0f, 223.0f, 100.0f, Global::nivel, -0.1);  // 16/9 de relacion (el fondo)
 
 		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, -2.5f, 12.5f, 0.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 10.0f, -2.5f, 12.5f, 3.0f);

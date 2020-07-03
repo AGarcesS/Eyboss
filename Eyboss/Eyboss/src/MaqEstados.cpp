@@ -40,6 +40,7 @@ void MaqEstados::Dibuja() {
 		ETSIDI::printxy("Matías Diego Guichón Gaggiolo, 54000", -5, 5);
 		ETSIDI::printxy("Javier Jiménez Wisnes, 54025", -5, 4);
 		ETSIDI::printxy("Sandra Rebollo Malvar, 54167", -5, 3);
+		ETSIDI::stopMusica();
 	}
 	else if (estado == JUEGO) {
 		mundo.Dibuja();
@@ -178,7 +179,10 @@ void MaqEstados::Mueve() {
 			mundo.CargarNivel();
 		}
 
-		if (Global::vida < 0)
+		if (Global::vida < 0) {
+			ETSIDI::stopMusica();
+			ETSIDI::play("bin/sonidos/Muerte.wav");
 			estado = GAMEOVER;
+		}	
 	}	
 }

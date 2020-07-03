@@ -9,8 +9,10 @@ bool O_Gancho::Agregar(DisparoGancho* d) {
 		numero++;
 		for (int i = 0; i < numero; i++)
 		{
-			if (lista[i] == d)
+			if (lista[i] == d) {
+				ETSIDI::play("bin/sonidos/shoot.wav");
 				return false;
+			}
 			else
 				return true;
 		}
@@ -80,7 +82,7 @@ void O_Gancho::Ataca(Personaje& p) {
 	}
 	Agregar(dg);
 	Inicializa();
-	ETSIDI::play("bin/sonidos/shoot.wav");
+//	ETSIDI::play("bin/sonidos/shoot.wav");
 	dg->SetF(true);
 	p.SetMovimiento(false);
 	p.SetVel(0, 0);
