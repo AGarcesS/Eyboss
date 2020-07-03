@@ -43,7 +43,7 @@ public:
 				break;
 			}
 			case 2: {
-				obj->SetTextura("bin/texturas/fondo4.png");
+				obj->SetTextura("bin/texturas/fondo5.png");
 				break;
 			}
 			case 3: {
