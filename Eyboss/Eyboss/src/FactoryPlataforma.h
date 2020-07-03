@@ -8,7 +8,7 @@
 
 class FactoryPlataforma {
 public:
-	void Crear(Pared::plataformas n, ListaPlataformas& l, float lim1, float p1, float lim2, float p2, float k = 1, float f = 0.0f) {
+	void Crear(Pared::plataformas n, ListaPlataformas& l, float lim1, float p1, float lim2, float p2, float f = 0.0f, float k = 1) {
 		switch (n) {
 		case Pared::NORMAL:
 		{
@@ -38,7 +38,6 @@ public:
 		{
 			Fondo* obj = new Fondo();
 			obj->SetPos(lim1, p1, lim2, p2, f);
-			obj->SetK(k);
 			l.Agregar(obj);
 			break;
 		}

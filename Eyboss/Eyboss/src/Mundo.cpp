@@ -286,6 +286,7 @@ bool Mundo::CargarNivel() {
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 0.0f, 22.5f, 20.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 17.5f, 60.0f, 20.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 60.0f, 17.5f, 62.5f, 42.5f);
+		factory_p.Crear(Pared::FONDO, plataformas, -15.0f, -12.0f, 80.0f, 60.0f, -0.1);  // 16/9 de relacion (el fondo)
 		factory_p.Crear(Pared::PUERTA, plataformas, 56, 20, 59, 23);
 
 		/*factory_p.Crear(Pared::PUERTA, plataformas, 10, 2, 12, 4);*/
