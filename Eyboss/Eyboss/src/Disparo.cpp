@@ -1,22 +1,6 @@
 #include "Disparo.h"
 #include "glut.h"
 
-Disparo::Disparo() {
-	radio = 0.5;
-	damage = 2;
-	rapidez = 7.0f;
-	posicion.x = 0;
-	posicion.y = 0;
-	velocidad.x = 6;
-	velocidad.y = 0;
-	aceleracion.x = 0;
-	aceleracion.y = 0;
-	origen.x = 0;
-	origen.y = 0;
-	longitud = 0;
-	textura = "bin/texturas/bolitahada.png";
-}
-
 float Disparo::GetRadio() {
 	return radio;
 }

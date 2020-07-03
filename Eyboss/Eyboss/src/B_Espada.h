@@ -3,10 +3,6 @@
 
 class B_Espada :public Bonus {
 public:
-	B_Espada() :Bonus(Bonus::ESPADA) {
-		lado = 0.8;
-		textura = "bin/texturas/espada.png";
-		audio = "bin/sonidos/recogida.wav";
-	}
+	B_Espada() :Bonus(0.8, "bin/texturas/espada.png", "bin/sonidos/recogida.wav", Bonus::ESPADA) {}
 	virtual ~B_Espada() {}
 };

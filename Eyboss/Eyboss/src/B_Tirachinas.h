@@ -6,12 +6,7 @@ class B_Tirachinas :public Bonus {
 private:
 	int municion;
 public:
-	B_Tirachinas() :Bonus(TIRACHINAS) {
-		lado = 0.8;
-		municion = 5;
-		textura = "bin/texturas/tirachinas.png";
-		audio = "bin/sonidos/recogida.wav";
-	}
+	B_Tirachinas() :Bonus(0.8, "bin/texturas/tirachinas.png", "bin/sonidos/recogida.wav",TIRACHINAS), municion(5) {}
 	virtual ~B_Tirachinas() {}
 	
 	void Accion(Personaje& p);

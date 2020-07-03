@@ -2,7 +2,7 @@
 
 void Corazon::Accion(Personaje& p) {
 	if (p.GetVida() <= 8) {
-		p.SetVida(2);
+		p.SetVida(curacion);
 		return;
 	}
 	if (p.GetVida() < 10) {

@@ -3,10 +3,6 @@
 
 class B_Gancho :public Bonus {
 public:
-	B_Gancho() :Bonus(GANCHO) {
-		lado = 0.8;
-		textura = "bin/texturas/gancho.png";
-		audio = "bin/sonidos/recogida.wav";
-	}
+	B_Gancho() :Bonus(0.8, "bin/texturas/gancho.png", "bin/sonidos/recogida.wav", GANCHO) {}
 	virtual ~B_Gancho() {}
 };

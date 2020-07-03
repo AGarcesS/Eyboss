@@ -14,7 +14,7 @@ protected:
 	const char* textura;
 	const char* audio;	
 public:
-	Bonus(bonus b = BONUS) :tipo(b) { }
+	Bonus(float lad, const char* text, const char* aud, bonus b = BONUS) : lado(lad), textura(text), audio(aud), tipo(b) { }
 	virtual ~Bonus() {}
 
 	bonus GetTipo() { return tipo; }
