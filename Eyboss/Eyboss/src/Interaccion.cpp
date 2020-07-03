@@ -127,6 +127,8 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 
 	if (colision)
 		p.vida -= d_caida;
+	if (!colision && p.velocidad.y < 0)
+		p.on = false;
 	
 	return colision;
 }
