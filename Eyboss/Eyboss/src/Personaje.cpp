@@ -120,7 +120,10 @@ void Personaje::Mueve(float t) {
 		animacion->pause(false);
 	else
 		animacion->setState(0, true);
-	animacion->loop();		
+	animacion->loop();
+
+	if (velocidad.y != 0)
+		on = false;
 }
 
 void Personaje::Inicializa() {
