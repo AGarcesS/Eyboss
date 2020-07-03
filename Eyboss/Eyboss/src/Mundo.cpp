@@ -254,6 +254,7 @@ void Mundo::TeclaMantenida(unsigned char key) { //Si se deja de pulsar la tecla
 }
 
 bool Mundo::CargarNivel() {
+	ETSIDI::stopMusica();
 	Global::nivel++;
 	for (int i = 0; i < ListaObjetos::n_objetos; i++) {
 		o_index[i] = 0;
@@ -267,6 +268,7 @@ bool Mundo::CargarNivel() {
 	bonus.DestruirContenido();
 
 	if (Global::nivel == 1) {
+		ETSIDI::playMusica("bin/musica/Cancion1.mp3", true);
 
 		factory_e.Crear(Personaje::PURK, enemigos, 0, 27.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
 		factory_e.Crear(Personaje::PURK, enemigos, 56, 35.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
@@ -345,6 +347,8 @@ bool Mundo::CargarNivel() {
 	}
 
 	if (Global::nivel == 2) {
+		ETSIDI::playMusica("bin/musica/Cancion2.mp3", true);
+
 		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, -2.5f, 12.5f, 0.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 10.0f, -2.5f, 12.5f, 3.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 10.0f, -2.5f, 15.5f, 3.0f);
