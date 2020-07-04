@@ -1,2 +1,0 @@
-#include "Troll.h"
-

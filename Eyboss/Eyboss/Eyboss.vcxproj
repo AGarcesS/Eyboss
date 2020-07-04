@@ -30,7 +30,6 @@
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\Interfaz.cpp" />
     <ClCompile Include="src\ListaBonus.cpp" />
-    <ClCompile Include="src\ListaDisparos.cpp" />
     <ClCompile Include="src\ListaEnemigos.cpp" />
     <ClCompile Include="src\ListaObjetos.cpp" />
     <ClCompile Include="src\ListaPlataformas.cpp" />
@@ -38,20 +37,12 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MaqEstados.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
-    <ClCompile Include="src\Objeto.cpp" />
     <ClCompile Include="src\O_Espada.cpp" />
     <ClCompile Include="src\O_Gancho.cpp" />
     <ClCompile Include="src\Pared.cpp" />
-    <ClCompile Include="src\ParedPuerta.cpp" />
     <ClCompile Include="src\Personaje.cpp" />
-    <ClCompile Include="src\PlataformaSalto.cpp" />
-    <ClCompile Include="src\PlataformaVelocidad.cpp" />
     <ClCompile Include="src\Protagonista.cpp" />
-    <ClCompile Include="src\Purk.cpp" />
-    <ClCompile Include="src\Source.cpp" />
-    <ClCompile Include="src\Troll.cpp" />
     <ClCompile Include="src\Vector2D.cpp" />
-    <ClCompile Include="src\Veloz.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bonus.h" />

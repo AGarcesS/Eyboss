@@ -1,4 +1,3 @@
-
 #include "O_Espada.h"
 #include "Interaccion.h"
 #include "Global.h"
@@ -23,7 +22,6 @@ void O_Espada::Dibuja() {
 		else
 			sprite->flip(true, false);
 		sprite->draw();
-		//glTranslatef(-posicion.x, -posicion.y, 0);
 		glPopMatrix();
 	}
 	if ((Global::tiempo - tiempo0) / 40 > 0.5 || m_golpe)

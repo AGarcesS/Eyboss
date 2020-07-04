@@ -82,7 +82,6 @@ void O_Gancho::Ataca(Personaje& p) {
 	}
 	Agregar(dg);
 	Inicializa();
-//	ETSIDI::play("bin/sonidos/shoot.wav");
 	dg->SetF(true);
 	p.SetMovimiento(false);
 	p.SetVel(0, 0);

@@ -10,30 +10,20 @@ void Pared::SetColor(unsigned char r, unsigned char v, unsigned char a){
 	azul = a;
 }
 
-void Pared::SetPos(float x1, float y1, float x2, float y2/*, float f*/) {
+void Pared::SetPos(float x1, float y1, float x2, float y2) {
 	limite1.x = x1;
 	limite1.y = y1;
 	limite2.x = x2;
 	limite2.y = y2;
-	/*z = f;*/
 }
 
-//void Pared::SetK(float k) {
-//	this->k = k;
-//}
-
-//void Pared::SetTextura(const char* text) {
-//	textura = text;
-//}
-
-void Pared::Dibuja() {                                                       //Implementar texturas
+void Pared::Dibuja() {                                                       
 	glPushMatrix();
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture(textura).id);
 	glDisable(GL_LIGHTING);
 
-	//glTranslatef(0, 0, z); //Se dibuja en un plano un poco por atrás del resto de objetos
-	float k = 0.1;
+	float k = 0.1; //zoom de la textura para las plataformas
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
 	glTexCoord2d(k * limite1.x, k * limite2.y); glVertex2f(limite1.x, limite2.y);

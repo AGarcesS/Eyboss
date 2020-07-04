@@ -56,10 +56,9 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	glEnd();
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
-	glPopMatrix();
+	glPopMatrix();	
 
-	
-
+	//Añadir objetos disponibles por el protagonista
 	for (int i = 0; i < ListaObjetos::n_objetos; i++) {
 		if (l[i] != 0) {
 			if (l[i]->GetTipo() == Objeto::TIRACHINAS) {
@@ -81,9 +80,10 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 			if (l[i]->GetTipo() == Objeto::GANCHO) {
 				m5 = true;
 			}
-
 		}
 	}
+
+	//Cartel de objetos
 
 	if (m1 || m2 || m3 || m4 || m5) {
 		glPushMatrix();
@@ -105,6 +105,7 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 
 	glTranslatef(p.GetPos().x, p.GetPos().y, 1);
 
+	//Actualización de munición
 	if (m1) {
 		sstr_municion << Global::municion;
 		str_municion = sstr_municion.str();
@@ -138,6 +139,7 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 		tirachinas_rapido->draw();
 	}
 
+	//Espada
 	if (m4) {
 		ETSIDI::setTextColor(1, 1, 1);
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
@@ -145,6 +147,7 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 		espada->draw();
 	}
 
+	//Gancho
 	if (m5) {
 		ETSIDI::setTextColor(1, 1, 1);
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
@@ -152,6 +155,7 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 		gancho->draw();
 	}
 
+	//Tiempo
 	int minutos = Global::tiempo / (40 * 60); //Cada 25 ms se incrementa en uno, por lo que para milisegundos se divide entre 40
 	int segundos = (Global::tiempo / 40) - minutos * 60;
 
@@ -167,6 +171,7 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	ETSIDI::printxy(t_tiempo, -12, -8);
 	tiempo->draw();	
 
+	//Nivel
 	sstr_nivel << "Nivel " << Global::nivel;
 	str_nivel = sstr_nivel.str();
 	const char* t_nivel = str_nivel.c_str();
@@ -174,6 +179,7 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 	ETSIDI::printxy(t_nivel, 11, 10);
 
+	//Vida
 	switch (p.GetVida()) {
 
 	case 10:
@@ -233,6 +239,7 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	}
 	}
 
+	//Bajas de enemigos
 	sstr_bajas << Global::bajas;
 	str_bajas = sstr_bajas.str();
 	const char* t_bajas = str_bajas.c_str();
@@ -241,6 +248,7 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	ETSIDI::printxy(t_bajas, 10, -8);
 	bajas->draw();
 
+	//Objetivos del nivel
 	switch (Global::nivel) {
 	case 1:
 	{

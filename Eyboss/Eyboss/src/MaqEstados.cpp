@@ -184,7 +184,6 @@ void MaqEstados::Mueve() {
 			ETSIDI::stopMusica();
 			ETSIDI::play("bin/sonidos/victoria.wav");
 			estado = FIN;
-		}
-			
+		}			
 	}	
 }
