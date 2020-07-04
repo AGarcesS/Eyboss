@@ -205,7 +205,7 @@ bool Interaccion::Colision(Personaje& p1, Personaje& p2) {			//p1 enemigo, p2 pr
 
 	return 0;
 	/* NO DETECTA DESDE DONDE COLISIONÓ (IZQ O DER)
-	if (abs(p1.posicion.y - p2.posicion.y) < (p1.altura + p2.altura) / 2 && abs(p1.posicion.x - p2.posicion.x) < (p1.ancho + p2.ancho) / 2) {
+	if (abs(p1.posicion.y - p2.posicion.y) > (p1.altura + p2.altura) / 2 && abs(p1.posicion.x - p2.posicion.x) > (p1.ancho + p2.ancho) / 2) {
 		return true;
 	}
 
