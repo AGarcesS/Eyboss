@@ -4,8 +4,8 @@
 #include "glut.h"
 
 void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
-	std::stringstream sstr_tiempo, sstr_vida, sstr_bajas, sstr_municion, sstr_municionlenta, sstr_municionrapida, sstr_llave;
-	std::string str_tiempo, str_vida, str_bajas, str_municion, str_municionlenta, str_municionrapida, str_llave;
+	std::stringstream sstr_tiempo, sstr_vida, sstr_bajas, sstr_municion, sstr_municionlenta, sstr_municionrapida, sstr_llave, sstr_nivel;
+	std::string str_tiempo, str_vida, str_bajas, str_municion, str_municionlenta, str_municionrapida, str_llave, str_nivel;
 
 	bool m1 = false, m2 = false, m3 = false, m4 = false, m5 = false;	
 
@@ -40,6 +40,24 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	glEnable(GL_LIGHTING);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();	
+
+	glPushMatrix();
+	glTranslatef(p.GetPos().x, p.GetPos().y, 0.9);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("bin/texturas/wood1.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1, 1, 1);
+	glTexCoord2d(0, 1); glVertex2f(10.5, 11);
+	glTexCoord2d(1, 1); glVertex2f(13.5, 11);
+	glTexCoord2d(1, 0); glVertex2f(13.5, 9.5);
+	glTexCoord2d(0, 0); glVertex2f(10.5, 9.5);
+	glEnd();
+	glEnable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
+
+	
 
 	for (int i = 0; i < ListaObjetos::n_objetos; i++) {
 		if (l[i] != 0) {
@@ -147,6 +165,13 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 	ETSIDI::printxy(t_tiempo, -12, -8);
 	tiempo->draw();	
+
+	sstr_nivel << "Nivel " << Global::nivel;
+	str_nivel = sstr_nivel.str();
+	const char* t_nivel = str_nivel.c_str();
+	ETSIDI::setTextColor(1, 1, 1);
+	ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
+	ETSIDI::printxy(t_nivel, 11, 10);
 
 	switch (p.GetVida()) {
 
