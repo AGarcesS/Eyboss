@@ -232,7 +232,7 @@ bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
 	if ((p2.posicion.x - p1.posicion.x) > 0)
 		derecha = true;							// p2 a la derecha de p1
 
-	if (Distancia(p2.posicion, p1.posicion) < p1.dist_seguimiento) {
+	if ((p2.posicion - p1.posicion).modulo() < p1.dist_seguimiento) {
 
 		if (derecha)
 			p1.velocidad.x = p1.vel_seguimiento.x;
@@ -306,7 +306,7 @@ int Interaccion::Colision(DisparoGancho& dg, Pared pa, Personaje& nyes) {
 		dg.SetPosOr(nyes.GetPos().x, nyes.GetPos().y);
 		return 1;
 	}
-	else if (Distancia(dg.posicion, nyes.posicion) >= dg.longitud) {
+	else if ((dg.posicion - nyes.posicion).modulo() >= dg.longitud) {
 		dg.SetF(false);
 		if (nyes.GetOrientacion())
 			dg.SetVel(-5, -5);
