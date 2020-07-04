@@ -18,7 +18,7 @@ public:
 			purk->SetPos(px, py);
 			purk->SetVelIni(vix, viy);
 			l.Agregar(purk);
-			if (l1 != 0 && o != Objeto::OBJETO) {
+			if (l1 != 0 && o != Objeto::OBJETO) { //Si se pasa un objeto y una lista se permite a este enemigo usar el objeto
 				purk->SetAtaque(o);
 				objetos.Crear(o, *l1);
 			}

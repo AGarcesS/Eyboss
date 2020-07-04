@@ -28,7 +28,6 @@
     <ClCompile Include="src\DisparoGancho.cpp" />
     <ClCompile Include="src\FactoryEnemigos.cpp" />
     <ClCompile Include="src\FactoryObjetos.cpp" />
-    <ClCompile Include="src\Fondo.cpp" />
     <ClCompile Include="src\Global.cpp" />
     <ClCompile Include="src\Hada.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
@@ -73,7 +72,6 @@
     <ClInclude Include="src\FactoryEnemigos.h" />
     <ClInclude Include="src\FactoryObjetos.h" />
     <ClInclude Include="src\FactoryPlataforma.h" />
-    <ClInclude Include="src\Fondo.h" />
     <ClInclude Include="src\Global.h" />
     <ClInclude Include="src\Hada.h" />
     <ClInclude Include="src\Interaccion.h" />

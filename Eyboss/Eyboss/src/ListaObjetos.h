@@ -19,12 +19,12 @@ public:
 	void Eliminar(int index);
 	void Eliminar(Objeto* o);
 	void Dibuja();
-	void Ataca(Personaje& p);
-	void Colision(ListaPlataformas& p, Personaje* pe=NULL);
+	void Ataca(Personaje& p); //ataque de cada objeto
+	void Colision(ListaPlataformas& p, Personaje* pe = NULL); //información de personaje solo necesaria para gancho
 	void Colision(Personaje& p);
 	void Colision(ListaEnemigos& p);
 	void Mueve(float t);
-	void Seguir(Personaje& p);
+	void Seguir(Personaje& p); //capacidad de los objetos para seguir al personaje (espada)
 
 	Objeto* operator[] (int i);
 

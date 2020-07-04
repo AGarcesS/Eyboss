@@ -96,6 +96,8 @@ void Personaje::SetTextura(const char* t) {
 
 void Personaje::SetVida(int v) {
 	vida += v;
+	if (v < 0)
+		ETSIDI::play("bin/sonidos/damage.wav");
 }
 
 void Personaje::SetAtaque(int a) {

@@ -9,7 +9,7 @@
 
 class FactoryObjetos {
 public:
-	void Crear(int n, ListaObjetos& l) {
+	void Crear(int n, ListaObjetos& l) { //Crear objetos a partir del índice del bonus (int)
 		switch (n) {
 		case 1:
 		{
@@ -50,7 +50,7 @@ public:
 		}
 	}
 
-	void Crear(Objeto::objetos n, ListaObjetos& l) {
+	void Crear(Objeto::objetos n, ListaObjetos& l) { //Crear objetos a partir del tipo de objeto
 		switch (n) {
 		case Objeto::TIRACHINAS:
 		{

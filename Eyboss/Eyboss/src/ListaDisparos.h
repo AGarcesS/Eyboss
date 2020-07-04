@@ -109,7 +109,7 @@ public:
 	}
 
 	void Ataca(Personaje& p) {
-		if (p.GetTipo() == Personaje::PROTAGONISTA) {
+		if (p.GetTipo() == Personaje::PROTAGONISTA) { //Cuando ataca el protagonista se gasta munición
 			if (numero < GetMunicion()) {
 				SetMunicion(GetMunicion() - 1);
 				T* d = new T();
@@ -122,7 +122,7 @@ public:
 				Inicializa();
 			}
 		}
-		else {
+		else { //Los enemigos no tienen munición
 			T* d = new T();
 			d->SetPos(p.GetPos().x, p.GetPos().y);
 			if (p.GetVel().x > 0)

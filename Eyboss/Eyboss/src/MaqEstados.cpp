@@ -170,10 +170,6 @@ void MaqEstados::TeclaMantenida(unsigned char key) {
 void MaqEstados::Mueve() {
 	if (estado == JUEGO) {
 		mundo.Mueve();
-		/*if ((Global::tiempo / 40) > 30) {
-			estado = FIN;
-		}*/
-
 		if (Global::cambio_nivel) {
 			Global::cambio_nivel = false;
 			mundo.CargarNivel();
@@ -184,7 +180,11 @@ void MaqEstados::Mueve() {
 			ETSIDI::play("bin/sonidos/Muerte.wav");
 			estado = GAMEOVER;
 		}
-		if (Global::nivel>3)
+		if (Global::nivel > 3) {
 			estado = FIN;
+			ETSIDI::stopMusica();
+			ETSIDI::play("bin/sonidos/victoria.wav");
+		}
+			
 	}	
 }

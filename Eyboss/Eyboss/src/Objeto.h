@@ -13,7 +13,7 @@ protected:
 	float ancho;
 	float altura;
 	Vector2D posicion;
-	bool orientacion;		//marca de orientacion
+	bool orientacion; //marca de orientacion (espada)
 	float tiempo0;
 	bool m_tiempo;
 	ETSIDI::Sprite* sprite;
@@ -24,7 +24,7 @@ public:
 
 	objetos GetTipo() { return tipo; }
 
-	int index;
+	int index; //índice de correspondencia con bonus
 
 	virtual void Dibuja() {}
 	virtual void Inicializa() {}
