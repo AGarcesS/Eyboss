@@ -178,7 +178,7 @@ bool Interaccion::Colision(Bonus& b, Personaje& p) {
 }
 
 bool Interaccion::Colision(Personaje& p1, Personaje& p2) {			//p1 enemigo, p2 protagonista
-
+	/*
 	if (!p2.m_daño) {
 		if ((p1.posicion.x - p1.ancho / 2) > (p2.posicion.x + p2.ancho / 2))
 			return 0;
@@ -204,6 +204,26 @@ bool Interaccion::Colision(Personaje& p1, Personaje& p2) {			//p1 enemigo, p2 pr
 	}
 
 	return 0;
+	*/
+
+	if (!p2.m_daño) {
+		if (abs(p1.posicion.y - p2.posicion.y) < (p1.altura + p2.altura) / 2 && abs(p1.posicion.x - p2.posicion.x) < (p1.ancho + p2.ancho) / 2) {
+			p2.tiempo0 = Global::tiempo;
+			p2.m_daño = true;
+			p2.m_parpadeo = true;
+			return true;
+		}
+	}
+
+	if ((Global::tiempo - p2.tiempo0) / 40 > 2)
+	{
+		p2.tiempo0 = 0;
+		p2.m_daño = false;
+		p2.m_parpadeo = false;
+	}
+
+	return false;
+
 	/* NO DETECTA DESDE DONDE COLISIONÓ (IZQ O DER)
 	if (abs(p1.posicion.y - p2.posicion.y) > (p1.altura + p2.altura) / 2 && abs(p1.posicion.x - p2.posicion.x) > (p1.ancho + p2.ancho) / 2) {
 		return true;
