@@ -505,6 +505,8 @@ void Mundo::CargarNivel() {
 
 
 		//Enemigos, bonus
+		factory_b.Crear(Bonus::ESPADA, bonus, 12, 1);
+
 		factory_e.Crear(Personaje::TROLL, enemigos, 33, 1.25, 1, 0);
 		factory_b.Crear(Bonus::TIRACHINAS, bonus, 27, 1);
 		factory_b.Crear(Bonus::TIRACHINAS, bonus, 40, 1);
