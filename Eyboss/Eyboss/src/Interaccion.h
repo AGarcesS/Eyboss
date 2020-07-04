@@ -26,6 +26,5 @@ public:
 
 	static bool Colision(Personaje& p1, Personaje& p2);
 	static bool Cercania(Personaje& p1, Personaje& p2);
-	static bool CercaniaDisparo(Personaje& p1, Personaje& p2);
 	static bool NoCaer(Personaje& p, Pared& pa);
 };

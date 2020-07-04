@@ -271,13 +271,15 @@ bool Mundo::CargarNivel() {
 		factory_e.Crear(Personaje::PURK, enemigos, 0, 27.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
 		factory_e.Crear(Personaje::PURK, enemigos, 56, 35.5, 0, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
 		factory_e.Crear(Personaje::PURK, enemigos, 17, 2, 2, 5);
-		factory_e.Crear(Personaje::VELOZ, enemigos, 17, 21, 0, 0);
+		factory_e.Crear(Personaje::VELOZ, enemigos, 17, 21, 3, 0);
 		factory_e.Crear(Personaje::VELOZ, enemigos, 42, 32.5, 0, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 23, 22, -2, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 25, 22, 2, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 27, 22, -2, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 46, 25.5, 3, 0);
 		factory_e.Crear(Personaje::PURK, enemigos, 48, 28.5, 0, 0, Objeto::TIRACHINAS, &e_objetos);
+
+		factory_e.Crear(Personaje::HADA, enemigos, 17, 22, 2, 0);
 
 		//Caja		
 		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, -2.5f, 22.5f, 0.0f); // primer suelo
