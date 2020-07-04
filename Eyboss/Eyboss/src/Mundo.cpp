@@ -153,7 +153,7 @@ void Mundo::Inicializa()
 	y_ojo = protagonista.GetPos().y;
 	z_ojo = 30;
 
-	Global::nivel = 2;
+	Global::nivel = 0;
 	CargarNivel();	
 }
 
@@ -297,9 +297,6 @@ void Mundo::CargarNivel() {
 		factory_p.Crear(Pared::FONDO, plataformas, -34.0f, -12.0f, 94.0f, 60.0f, Global::nivel, -0.1);  // 16/9 de relacion (el fondo)
 		factory_p.Crear(Pared::PUERTA, plataformas, 56, 20, 59, 23);
 
-		factory_p.Crear(Pared::PUERTA, plataformas, 10, 2, 12, 4);
-		
-
 		//Plataformas
 		factory_p.Crear(Pared::NORMAL, plataformas, -2.0f, 2.5f, 1.0f, 3.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 4.0f, 5.5f, 7.0f, 6.0f);
@@ -337,7 +334,8 @@ void Mundo::CargarNivel() {
 		factory_p.Crear(Pared::NORMAL, plataformas, 40.0f, 31.0f, 56.0f, 31.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 55.0f, 27.0f, 58.0f, 27.5f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 45.0f, 27.0f, 49.0f, 27.5f);
-		factory_p.Crear(Pared::NORMAL, plataformas, 44.0f, 24.0f, 60.0f, 24.5f);		
+		factory_p.Crear(Pared::NORMAL, plataformas, 44.0f, 24.0f, 60.0f, 24.5f);	
+		
 
 		//Bonus
 		factory_b.Crear(Bonus::ESPADA, bonus, 19, 25.5);
@@ -349,12 +347,11 @@ void Mundo::CargarNivel() {
 		factory_b.Crear(Bonus::CORAZON, bonus, 5, 21);
 		factory_b.Crear(Bonus::CORAZON, bonus, 5, 36);
 		factory_b.Crear(Bonus::CORAZON, bonus, 37, 30);
-		factory_b.Crear(Bonus::CORAZON, bonus, 56, 21);
+		factory_b.Crear(Bonus::CORAZON, bonus, 53, 21);
 	}
 
 	if (Global::nivel == 2) {
 		ETSIDI::playMusica("bin/musica/Cancion1.mp3", true);
-
 		//Plataformas
 		factory_p.Crear(Pared::FONDO, plataformas, -43.0f, -50.0f, 223.0f, 100.0f, Global::nivel, -0.1);  // 16/9 de relacion (el fondo)
 
@@ -402,6 +399,7 @@ void Mundo::CargarNivel() {
 		factory_p.Crear(Pared::NORMAL, plataformas, 169.5f, 59.0f, 170.0f, 80.0f);
 
 		factory_p.Crear(Pared::NORMAL, plataformas, 0.0f, -40.5f, 190.0f, -40.0f);
+		factory_p.Crear(Pared::PUERTA, plataformas, 168, 55, 170, 57);
 
 
 
