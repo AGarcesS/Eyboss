@@ -275,7 +275,7 @@ bool Interaccion::NoCaer(Personaje& p, Pared& pa) {
 }
 
 bool Interaccion::Colision(O_Espada& e, Personaje& p) {
-
+	/*
 	if ((Global::tiempo - e.tiempo0) / 40 < 0.5 && Global::tiempo / 40 > 0.5) {
 		if ((p.posicion.x - p.ancho / 2) > (e.posicion.x + e.ancho / 2))
 			return 0;
@@ -290,6 +290,15 @@ bool Interaccion::Colision(O_Espada& e, Personaje& p) {
 	}
 
 	return 0;
+	*/
+
+	if ((Global::tiempo - e.tiempo0) / 40 < 0.5 && Global::tiempo / 40 > 0.5) {
+		if (abs(p.posicion.y - e.posicion.y) < (p.altura + e.altura) / 2 && abs(p.posicion.x - e.posicion.x) < (p.ancho + e.ancho) / 2) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 
