@@ -446,7 +446,7 @@ bool Mundo::CargarNivel() {
 		factory_e.Crear(Personaje::TROLL, enemigos, 2.0f, -30.0f, 2, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 1.0f, -30.0f, 2, 0);
 		//Trampa pared izq
-		factory_p.Crear(Pared::NORMAL, plataformas, -15.0f, -40.5f, 0.0f, -1.0f);
+		factory_p.Crear(Pared::NORMAL, plataformas, -15.0f, -40.5f, 0.0f, -1.0f); //Raro 1
 		//Trampa pared dch
 		factory_p.Crear(Pared::NORMAL, plataformas, 5.0f, -40.5f, 10.0f, -8.5f);
 
