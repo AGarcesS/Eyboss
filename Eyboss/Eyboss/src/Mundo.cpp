@@ -258,7 +258,7 @@ void Mundo::TeclaMantenida(unsigned char key) { //Si se deja de pulsar la tecla
 	}
 }
 
-bool Mundo::CargarNivel() {
+void Mundo::CargarNivel() {
 	Global::nivel++;
 	ETSIDI::stopMusica();
 	for (int i = 0; i < ListaObjetos::n_objetos; i++) {
@@ -539,9 +539,4 @@ bool Mundo::CargarNivel() {
 		factory_e.Crear(Personaje::HADA, enemigos, 167, -17.65, 1, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 198, -17.25, 1, 0);	
 	}
-
-	if (Global::nivel <= 3)
-		return true;
-	else
-		return false;
 }

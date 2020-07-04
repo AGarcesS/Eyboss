@@ -58,5 +58,5 @@ public:
 	void Mueve();
 	void Dibuja();		
 
-	bool CargarNivel();
+	void CargarNivel();
 };
