@@ -183,6 +183,8 @@ void MaqEstados::Mueve() {
 			ETSIDI::stopMusica();
 			ETSIDI::play("bin/sonidos/Muerte.wav");
 			estado = GAMEOVER;
-		}	
+		}
+		if (Global::nivel>3)
+			estado = FIN;
 	}	
 }

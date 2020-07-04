@@ -7,6 +7,7 @@
 #include "B_TirachinasLento.h"
 #include "B_TirachinasRapido.h"
 #include "Corazon.h"
+#include "Llave.h"
 
 class FactoryBonus {
 public:
@@ -55,6 +56,14 @@ public:
 		case Bonus::GANCHO:
 		{
 			B_Gancho* bonus = new B_Gancho();
+			l.Agregar(bonus);
+			bonus->Inicializa();
+			bonus->SetPos(px, py);
+			break;
+		}
+		case Bonus::LLAVE:
+		{
+			Llave* bonus = new Llave();
 			l.Agregar(bonus);
 			bonus->Inicializa();
 			bonus->SetPos(px, py);

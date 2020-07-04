@@ -429,6 +429,8 @@ bool Mundo::CargarNivel() {
 
 	if (Global::nivel == 3) {
 		ETSIDI::playMusica("bin/musica/Cancion2.mp3", true);
+
+		factory_p.Crear(Pared::PUERTA, plataformas, 198, -18.5, 200, -16.5);
 		//nv1
 		//pared izq
 		factory_p.Crear(Pared::NORMAL, plataformas, -35.0f, -2.5f, -1.0f, 15.0f);

@@ -5,7 +5,7 @@
 
 class Bonus {
 public:
-	enum bonus { BONUS = 0, TIRACHINAS, ESPADA, CORAZON, TIRACHINAS_LENTO, TIRACHINAS_RAPIDO, GANCHO };
+	enum bonus { BONUS = 0, TIRACHINAS, ESPADA, CORAZON, TIRACHINAS_LENTO, TIRACHINAS_RAPIDO, GANCHO, LLAVE };
 protected:	
 	bonus tipo;
 	float lado;

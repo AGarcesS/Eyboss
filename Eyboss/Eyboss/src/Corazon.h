@@ -5,7 +5,6 @@
 class Corazon : public Bonus {
 private:
 	int curacion;
-	ETSIDI::Sprite* corazon;
 public:
 	Corazon() :Bonus(0.8, "bin/texturas/clleno.png", "bin/sonidos/vida.wav", CORAZON), curacion(2) {}
 	virtual ~Corazon() {}

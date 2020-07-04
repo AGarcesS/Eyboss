@@ -42,6 +42,7 @@
     <ClCompile Include="src\ListaEnemigos.cpp" />
     <ClCompile Include="src\ListaObjetos.cpp" />
     <ClCompile Include="src\ListaPlataformas.cpp" />
+    <ClCompile Include="src\Llave.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MaqEstados.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
@@ -86,6 +87,7 @@
     <ClInclude Include="src\ListaEnemigos.h" />
     <ClInclude Include="src\ListaObjetos.h" />
     <ClInclude Include="src\ListaPlataformas.h" />
+    <ClInclude Include="src\Llave.h" />
     <ClInclude Include="src\MaqEstados.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Objeto.h" />
