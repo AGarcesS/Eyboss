@@ -10,7 +10,7 @@ public:
 //		textura = "bin/texturas/hada.png";
 		velocidad.x = 0;
 		velocidad.y = 0;
-		vel_seguimiento.x = -3.0f;
+		vel_seguimiento.x = 3.0f;
 		vel_seguimiento.y = 0;
 		aceleracion.x = 0.0f;
 		aceleracion.y = -9.8f;

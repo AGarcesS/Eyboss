@@ -123,6 +123,11 @@ void Mundo::Mueve()
 				protagonista.SetVida(-enemigos[i]->GetDaño());
 				break;
 			}
+			case Personaje::HADA:
+			{
+				protagonista.SetVida(-enemigos[i]->GetDaño());
+				break;
+			}
 			}
 		}
 	}
@@ -494,6 +499,43 @@ bool Mundo::CargarNivel() {
 
 		//plataforma muerte
 		factory_p.Crear(Pared::NORMAL, plataformas, 10.0f, -170.5f, 220.0f, -169.5f);
+
+
+
+		//Enemigos, bonus
+		factory_e.Crear(Personaje::TROLL, enemigos, 33, 1.25, 1, 0);
+		factory_b.Crear(Bonus::TIRACHINAS, bonus, 27, 1);
+		factory_b.Crear(Bonus::TIRACHINAS, bonus, 40, 1);
+
+		factory_e.Crear(Personaje::HADA, enemigos, 52, 27.85, 1, 0, Objeto::TIRACHINAS, &e_objetos);
+		factory_e.Crear(Personaje::TROLL, enemigos, 68, 28.25, -1, 0);
+		factory_b.Crear(Bonus::CORAZON, bonus, 58, 28);
+		factory_b.Crear(Bonus::CORAZON, bonus, 62, 28);
+
+		factory_b.Crear(Bonus::TIRACHINAS_LENTO, bonus, 57, -7.5);
+
+		factory_e.Crear(Personaje::PURK, enemigos, 48, -7.75, 1, 0);
+		factory_b.Crear(Bonus::CORAZON, bonus, 42.5, -7.5);
+
+		factory_e.Crear(Personaje::PURK, enemigos, 17.5, -7.75, 1, 0);
+
+		factory_e.Crear(Personaje::VELOZ, enemigos, 37, -15, 1, 0);
+		factory_e.Crear(Personaje::VELOZ, enemigos, 20, -15, 1, 0);
+		factory_b.Crear(Bonus::CORAZON, bonus, 12, -14.5);
+		factory_b.Crear(Bonus::TIRACHINAS_RAPIDO, bonus, 38, -14.5);
+
+		factory_b.Crear(Bonus::TIRACHINAS_RAPIDO, bonus, 47, -14.5);
+
+		factory_b.Crear(Bonus::CORAZON, bonus, 42, -25.5);
+		factory_b.Crear(Bonus::TIRACHINAS, bonus, 44, -25.5);
+		factory_b.Crear(Bonus::TIRACHINAS_LENTO, bonus, 68, -25.5);
+		factory_e.Crear(Personaje::PURK, enemigos, 45, -25.75, 1, 0);
+		factory_e.Crear(Personaje::PURK, enemigos, 50, -25.75, 1, 0);
+
+		factory_b.Crear(Bonus::CORAZON, bonus, 78.5, -17.5);
+
+		factory_e.Crear(Personaje::HADA, enemigos, 167, -17.65, 1, 0);
+		factory_e.Crear(Personaje::TROLL, enemigos, 198, -17.25, 1, 0);	
 	}
 
 	if (Global::nivel <= 3)
