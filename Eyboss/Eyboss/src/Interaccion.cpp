@@ -128,7 +128,7 @@ bool Interaccion::Colision(Personaje& p, Pared &pa) {
 
 		}
 		if (Global::nivel == 3) {
-			if (p.GetTipo() == Personaje::PROTAGONISTA && colision /*&& Global::llave == 3*/)
+			if (p.GetTipo() == Personaje::PROTAGONISTA && colision && Global::llave == 3)
 				Global::cambio_nivel = true;
 		}
 		

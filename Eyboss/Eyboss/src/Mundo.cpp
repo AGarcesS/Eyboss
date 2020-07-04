@@ -511,7 +511,7 @@ void Mundo::CargarNivel() {
 
 		factory_e.Crear(Personaje::HADA, enemigos, 52, 27.85, 1, 0, Objeto::TIRACHINAS, &e_objetos);
 		factory_e.Crear(Personaje::TROLL, enemigos, 68, 28.25, -1, 0);
-		factory_b.Crear(Bonus::CORAZON, bonus, 58, 28);
+		factory_b.Crear(Bonus::LLAVE, bonus, 58, 28);
 		factory_b.Crear(Bonus::CORAZON, bonus, 62, 28);
 
 		factory_b.Crear(Bonus::TIRACHINAS_LENTO, bonus, 57, -7.5);
@@ -523,13 +523,13 @@ void Mundo::CargarNivel() {
 
 		factory_e.Crear(Personaje::VELOZ, enemigos, 37, -15, 1, 0);
 		factory_e.Crear(Personaje::VELOZ, enemigos, 20, -15, 1, 0);
-		factory_b.Crear(Bonus::CORAZON, bonus, 12, -14.5);
+		factory_b.Crear(Bonus::LLAVE, bonus, 12, -14.5);
 		factory_b.Crear(Bonus::TIRACHINAS_RAPIDO, bonus, 38, -14.5);
 
 		factory_b.Crear(Bonus::TIRACHINAS_RAPIDO, bonus, 47, -14.5);
 
 		factory_b.Crear(Bonus::CORAZON, bonus, 42, -25.5);
-		factory_b.Crear(Bonus::TIRACHINAS, bonus, 44, -25.5);
+		factory_b.Crear(Bonus::LLAVE, bonus, 44, -25.5);
 		factory_b.Crear(Bonus::TIRACHINAS_LENTO, bonus, 68, -25.5);
 		factory_e.Crear(Personaje::PURK, enemigos, 45, -25.75, 1, 0);
 		factory_e.Crear(Personaje::PURK, enemigos, 50, -25.75, 1, 0);
