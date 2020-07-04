@@ -32,7 +32,7 @@ protected:
 	//gestión de tiempos
 	bool m_parpadeo; //marca de parpadeo
 	bool m_tiempo; //marca tiempo
-	float tiempo0; //tiemoo inicial
+	float tiempo0; //tiempo inicial
 
 	int señal_ataque; //marca para permitir el uso de objetos (solo enemigos)
 public:

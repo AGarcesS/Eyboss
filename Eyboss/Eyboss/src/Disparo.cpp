@@ -17,6 +17,10 @@ Vector2D Disparo::GetPos() {
 	return posicion;
 }
 
+Vector2D Disparo::GetVel() {
+	return velocidad;
+}
+
 void Disparo::SetPos(float ix, float iy) {
 	posicion.x = ix;
 	posicion.y = iy;

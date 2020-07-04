@@ -23,7 +23,7 @@ public:
 	void Inicializa();
 	void Dibuja();
 	void Audio();
-	virtual void Accion(Personaje& p) {}
+	virtual void Accion(Personaje& p) {} //acción relativa al personaje o al entorno al recoger un bonus
 
 	friend class Interaccion;
 };

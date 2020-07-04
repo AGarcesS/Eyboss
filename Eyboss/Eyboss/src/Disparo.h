@@ -4,10 +4,10 @@
 
 class Disparo {
 protected:	
-	float radio;
+	float radio; 
 	float longitud;
-	int damage;
-	float rapidez;
+	int damage; //daño que provoca el disparo
+	float rapidez; //velocidad del disparo
 	Vector2D origen;
 	Vector2D posicion;
 	Vector2D velocidad;
