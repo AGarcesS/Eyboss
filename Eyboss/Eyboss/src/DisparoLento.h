@@ -22,8 +22,5 @@ public:
 	}
 	virtual ~DisparoLento() {}
 
-	void Inicializa();
-
-
 	friend class Interaccion;
 };

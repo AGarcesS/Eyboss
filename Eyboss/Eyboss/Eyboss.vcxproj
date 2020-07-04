@@ -20,16 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Bonus.cpp" />
-    <ClCompile Include="src\B_Espada.cpp" />
-    <ClCompile Include="src\B_Gancho.cpp" />
     <ClCompile Include="src\B_Tirachinas.cpp" />
     <ClCompile Include="src\B_TirachinasLento.cpp" />
     <ClCompile Include="src\B_TirachinasRapido.cpp" />
     <ClCompile Include="src\Corazon.cpp" />
     <ClCompile Include="src\Disparo.cpp" />
     <ClCompile Include="src\DisparoGancho.cpp" />
-    <ClCompile Include="src\DisparoLento.cpp" />
-    <ClCompile Include="src\DisparoRapido.cpp" />
     <ClCompile Include="src\FactoryEnemigos.cpp" />
     <ClCompile Include="src\FactoryObjetos.cpp" />
     <ClCompile Include="src\Fondo.cpp" />

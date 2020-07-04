@@ -5,7 +5,7 @@
 class Disparo {
 protected:	
 	float radio; 
-	float longitud;
+	float longitud; //longitud del disparo (solo para disparo gancho)
 	int damage; //daño que provoca el disparo
 	float rapidez; //velocidad del disparo
 	Vector2D origen;
@@ -37,6 +37,7 @@ public:
 	float GetRapidez();
 	Vector2D GetPos();
 	Vector2D GetVel();
+
 	void SetPos(float ix, float iy);
 	void SetVel (float vx, float vy);
 

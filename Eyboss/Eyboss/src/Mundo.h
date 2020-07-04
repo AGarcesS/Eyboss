@@ -4,7 +4,6 @@
 #include "Vector2D.h"
 #include "Interfaz.h"
 #include "ListaEnemigos.h"
-#include "Purk.h"
 #include "Protagonista.h"
 #include "Personaje.h"
 #include "ListaPlataformas.h"
@@ -34,16 +33,15 @@ private:
 	ListaEnemigos enemigos;
 	ListaPlataformas plataformas;
 	ListaBonus bonus;
-	ListaObjetos objetos;
-	ListaObjetos e_objetos;
+	ListaObjetos objetos; //lista de objetos del protagonista
+	ListaObjetos e_objetos; //lista de objetos de los enemigos
 	FactoryObjetos factory;	
 	FactoryPlataforma factory_p;
 	FactoryEnemigos factory_e;
 	FactoryBonus factory_b;
-	float tiempo0;
+	float tiempo0; //tiempo inicial para gestionar el uso de objetos de los enemigos
 
-	int nivel;
-	int o_index[ListaObjetos::n_objetos];
+	int o_index[ListaObjetos::n_objetos]; //vector auxiliar para gestionar los objetos del protagonista
 
 public:
 	Mundo();

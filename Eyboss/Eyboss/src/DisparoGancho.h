@@ -5,10 +5,10 @@
 
 class DisparoGancho : public Disparo {
 private:
-    bool feuer;
-    Vector2D posorigen;
-    bool orientacion;
-    bool pared;
+    bool feuer; //marca de disparo
+    Vector2D posorigen; //origen del disparo
+    bool orientacion; //orientación del disparo
+    bool pared; //detecta la colisión con una plataforma
 public:
     DisparoGancho() {
         radio = 1;
@@ -21,20 +21,21 @@ public:
         pared = false;
         textura = "bin/texturas/gancho.png";
     }
-    virtual ~DisparoGancho() {}
-
+    virtual ~DisparoGancho() {}    
+    
+    bool GetF();
+    bool GetPared() { return pared; };
+    bool GetOrientacion() { return orientacion; };
+    Vector2D GetOr();
+    
+    void SetPared(bool f) { pared = f; };
+    void SetOrientacion(bool f) { orientacion = f; };
+    void SetPosOr(float ix, float iy);
+    bool Limite();
+    void SetF(bool f);    
 
     void Dibuja();
     void Mueve(float t);
-    void SetPosOr(float ix, float iy);
-    bool Limite();
-    void SetF(bool f);
-    bool GetF();
-    Vector2D GetOr();
-    void SetPared(bool f) { pared = f; };
-    bool GetPared() { return pared; };
-    void SetOrientacion(bool f) { orientacion = f; };
-    bool GetOrientacion() { return orientacion; };
 
     friend class Interaccion;
 };
