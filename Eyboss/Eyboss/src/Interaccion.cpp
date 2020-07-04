@@ -145,21 +145,6 @@ bool Interaccion::Colision(Disparo& d, Personaje& p) {
 	if (abs(d.posicion.x - p.posicion.x) < (d.radio * 1.5 + p.ancho) / 2 && abs(d.posicion.y - p.posicion.y) < (d.radio + p.ancho) / 2)
 		return true;
 	return false;
-	
-	/*if (d.posicion.x - p.posicion.x < (d.radio * 1.5 + p.ancho) / 2 && d.posicion.x - p.posicion.x > 0 && abs(d.posicion.y - p.posicion.y) < (d.radio + p.ancho) / 2)
-		return true;
-	if (d.posicion.x - p.posicion.x > -(d.radio * 1.5 + p.ancho) / 2 && d.posicion.x - p.posicion.x < 0 && abs(d.posicion.y - p.posicion.y) < (d.radio + p.ancho) / 2)
-		return true;
-	return false;*/
-
-	/*  CON PARED AUXILIAR
-	Pared pa;
-	pa.SetPos(p.posicion.x - p.ancho / 2, p.posicion.y + p.altura / 2, p.posicion.x + p.ancho / 2, p.posicion.y - p.altura / 2);
-	if (Colision(pa, d.posicion, d.radio + 0.5, d.radio))
-		return true;
-	else
-		return false;
-		*/
 }
 
 bool Interaccion::Colision(Bonus& b, Personaje& p) {
@@ -167,44 +152,10 @@ bool Interaccion::Colision(Bonus& b, Personaje& p) {
 	if (abs(b.posicion.x - p.posicion.x) < (b.lado + p.ancho) / 2 && abs(b.posicion.y - p.posicion.y) < (b.lado + p.ancho) / 2)
 		return true;
 	return false;
-
-/* CON PARED AUXILIAR
-	Pared aux;
-	aux.SetPos(p.posicion.x - p.ancho / 2, p.posicion.y + p.altura / 2, p.posicion.x + p.ancho / 2, p.posicion.y - p.altura / 2);
-	return Interaccion::Colision(aux, b.posicion, b.lado);
-	*/
 }
 
 bool Interaccion::Colision(Personaje& p1, Personaje& p2) {			//p1 enemigo, p2 protagonista
-/*
-	if (!p2.m_daño) {
-		if ((p1.posicion.x - p1.ancho / 2) > (p2.posicion.x + p2.ancho / 2))
-			return 0;
-		else if ((p1.posicion.x + p1.ancho / 2) < (p2.posicion.x - p2.ancho / 2))
-			return 0;
-		else if ((p1.posicion.y - p1.altura / 2) > (p2.posicion.y + p2.altura / 2))
-			return 0;
-		else if ((p1.posicion.y + p1.altura / 2) < (p2.posicion.y - p2.altura / 2))
-			return 0;
-		else
-		{
-			p2.tiempo0 = Global::tiempo;
-			p2.m_daño = true;
-			p2.m_parpadeo = true;
-			return 1;
-		}
-	}
-	if ((Global::tiempo - p2.tiempo0) / 40 > 2)
-	{
-		p2.tiempo0 = 0;
-		p2.m_daño = false;
-		p2.m_parpadeo = false;
-	}
 
-	return 0;
-	*/
-
-	//NO DETECTA DESDE DONDE COLISIONÓ (IZQ O DER)
 	if (!p2.m_daño) {
 		if (abs(p1.posicion.y - p2.posicion.y) < (p1.altura + p2.altura) / 2 && abs(p1.posicion.x - p2.posicion.x) < (p1.ancho + p2.ancho) / 2) {
 			p2.tiempo0 = Global::tiempo;
@@ -222,15 +173,14 @@ bool Interaccion::Colision(Personaje& p1, Personaje& p2) {			//p1 enemigo, p2 pr
 	}
 
 	return false;
-	
 }
 
-bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {
+bool Interaccion::Cercania(Personaje& p1, Personaje& p2) {			//p1 enemigo, p2 protagonista
 
 	bool derecha = false;
 
 	if ((p2.posicion.x - p1.posicion.x) > 0)
-		derecha = true;							// p2 a la derecha de p1
+		derecha = true;		// p2 a la derecha de p1
 
 	if ((p2.posicion - p1.posicion).modulo() < p1.dist_seguimiento) {
 
@@ -267,21 +217,7 @@ bool Interaccion::NoCaer(Personaje& p, Pared& pa) {
 }
 
 bool Interaccion::Colision(O_Espada& e, Personaje& p) {
-	/*
-	if ((Global::tiempo - e.tiempo0) / 40 < 0.5 && Global::tiempo / 40 > 0.5) {
-		if ((p.posicion.x - p.ancho / 2) > (e.posicion.x + e.ancho / 2))
-			return 0;
-		else if ((p.posicion.x + p.ancho / 2) < (e.posicion.x - e.ancho / 2))
-			return 0;
-		else if ((p.posicion.y - p.altura / 2) > (e.posicion.y + e.altura / 2))
-			return 0;
-		else if ((p.posicion.y + p.altura / 2) < (e.posicion.y - e.altura / 2))
-			return 0;
-		else
-			return 1;
-	}
-	return 0;
-	*/
+	
 	if ((Global::tiempo - e.tiempo0) / 40 < 0.5 && Global::tiempo / 40 > 0.5) {
 		if (abs(p.posicion.y - e.posicion.y) < (p.altura + e.altura) / 2 && abs(p.posicion.x - e.posicion.x) < (p.ancho + e.ancho) / 2) {
 			return true;
@@ -293,6 +229,7 @@ bool Interaccion::Colision(O_Espada& e, Personaje& p) {
 
 
 int Interaccion::Colision(DisparoGancho& dg, Pared pa, Personaje& nyes) {
+
 	if (Colision(pa, dg.posicion, 0.1))
 	{
 		dg.SetPared(true);
