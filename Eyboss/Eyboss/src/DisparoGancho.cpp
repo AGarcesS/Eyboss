@@ -22,7 +22,6 @@ void DisparoGancho::Dibuja() {
     glPopMatrix();
 }
 
-
 void DisparoGancho::SetPosOr(float ix, float iy) {
     posorigen.x = ix;
     posorigen.y = iy;

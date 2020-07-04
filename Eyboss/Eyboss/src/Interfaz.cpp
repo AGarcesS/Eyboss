@@ -9,6 +9,7 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 
 	bool m1 = false, m2 = false, m3 = false, m4 = false, m5 = false;	
 
+	//Carteles de la interfaz
 	glPushMatrix();
 	glTranslatef(p.GetPos().x, p.GetPos().y, 0.9);
 	glEnable(GL_TEXTURE_2D);

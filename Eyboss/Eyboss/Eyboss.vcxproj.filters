@@ -66,9 +66,6 @@
     <ClCompile Include="src\Corazon.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\FactoryObjetos.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="src\Global.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -90,9 +87,6 @@
     <ClCompile Include="src\PlataformaVelocidad.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\FactoryEnemigos.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="src\Troll.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -112,9 +106,6 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\DisparoGancho.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Hada.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\ParedPuerta.cpp">

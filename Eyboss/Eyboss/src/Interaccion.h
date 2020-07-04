@@ -17,7 +17,8 @@ public:
 
 	//Colisión con plataformas
 	static bool Colision(Personaje& p, Pared &pa);	
-	static bool Colision(Disparo &d, Pared &pa);	
+	static bool Colision(Disparo &d, Pared &pa);
+	static bool NoCaer(Personaje& p, Pared& pa); //Al detectar el final de la plataforma el personaje se da la vuelta (solo enemigos)
 
 	//Colisión de bonus
 	static bool Colision(Bonus& b, Personaje& p);
@@ -30,5 +31,5 @@ public:
 	//Interacción entre personajes
 	static bool Colision(Personaje& p1, Personaje& p2);
 	static bool Cercania(Personaje& p1, Personaje& p2);
-	static bool NoCaer(Personaje& p, Pared& pa);
+	
 };

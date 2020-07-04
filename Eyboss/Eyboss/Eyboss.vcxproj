@@ -26,10 +26,7 @@
     <ClCompile Include="src\Corazon.cpp" />
     <ClCompile Include="src\Disparo.cpp" />
     <ClCompile Include="src\DisparoGancho.cpp" />
-    <ClCompile Include="src\FactoryEnemigos.cpp" />
-    <ClCompile Include="src\FactoryObjetos.cpp" />
     <ClCompile Include="src\Global.cpp" />
-    <ClCompile Include="src\Hada.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\Interfaz.cpp" />
     <ClCompile Include="src\ListaBonus.cpp" />
