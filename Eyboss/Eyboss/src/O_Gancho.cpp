@@ -93,13 +93,13 @@ void O_Gancho::Colision(ListaPlataformas& l, Personaje* nyes) {
 	for (int i = 0; i < l.getNumero(); i++) {
 		for (int j = 0; j < numero;j++) {
 			col = Interaccion::Colision(*lista[j], *l[i], *nyes);
-			if (col = 2 && Interaccion::Distancia(nyes->GetPos(), lista[j]->GetPos()) < 1 && !lista[j]->GetF() && !lista[j]->GetPared()) {
+			if (col = 2 && (nyes->GetPos() - lista[j]->GetPos()).modulo() < 1 && !lista[j]->GetF() && !lista[j]->GetPared()) {
 				lista[j]->SetVel(0, 0);
 				nyes->SetMovimiento(true);
 				Eliminar(lista[j]);
 
 			}
-			if (col = 1 && Interaccion::Distancia(nyes->GetPos(), lista[j]->GetPos()) < 1 && !lista[j]->GetF() && lista[j]->GetPared()) {
+			if (col = 1 && (nyes->GetPos() - lista[j]->GetPos()).modulo() < 1 && !lista[j]->GetF() && lista[j]->GetPared()) {
 				nyes->SetMovimiento(true);
 				nyes->SetPos(lista[j]->GetPos().x, lista[j]->GetPos().y + 2.5);
 				nyes->SetVel(0, 0);

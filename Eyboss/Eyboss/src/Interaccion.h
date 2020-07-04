@@ -11,8 +11,6 @@ public:
 	Interaccion();
 	virtual ~Interaccion() {}
 
-	static float Distancia(Vector2D p1, Vector2D p2) { return (p1 - p2).modulo(); } //Distancia entre dos puntos
-
 	static bool Colision(Pared &pa, Vector2D pos, float r, float s = 0); //Colisión rectángulo, rectángulo (s para el ancho en caso de no ser igual a la altura)
 
 	//Colisión con plataformas
