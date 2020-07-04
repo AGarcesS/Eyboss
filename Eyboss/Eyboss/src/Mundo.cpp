@@ -279,7 +279,7 @@ void Mundo::CargarNivel() {
 		factory_e.Crear(Personaje::PURK, enemigos, 0, 27.5, 0, 0);
 		factory_e.Crear(Personaje::PURK, enemigos, 56, 35.5, 0, 0);
 		factory_e.Crear(Personaje::PURK, enemigos, 17, 2, 2, 5);
-		factory_e.Crear(Personaje::VELOZ, enemigos, 17, 21, 0, 0);
+		factory_e.Crear(Personaje::HADA, enemigos, 17, 21, -2, 0);
 		factory_e.Crear(Personaje::VELOZ, enemigos, 42, 32.5, 0, 0);
 		factory_e.Crear(Personaje::TROLL, enemigos, 23, 22, -2, 0, Objeto::TIRACHINAS_LENTO, &e_objetos);
 		factory_e.Crear(Personaje::TROLL, enemigos, 25, 22, 2, 0);
