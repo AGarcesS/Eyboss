@@ -10,21 +10,21 @@ void Pared::SetColor(unsigned char r, unsigned char v, unsigned char a){
 	azul = a;
 }
 
-void Pared::SetPos(float x1, float y1, float x2, float y2, float f) {
+void Pared::SetPos(float x1, float y1, float x2, float y2/*, float f*/) {
 	limite1.x = x1;
 	limite1.y = y1;
 	limite2.x = x2;
 	limite2.y = y2;
-	z = f;
+	/*z = f;*/
 }
 
-void Pared::SetK(float k) {
-	this->k = k;
-}
+//void Pared::SetK(float k) {
+//	this->k = k;
+//}
 
-void Pared::SetTextura(const char* text) {
-	textura = text;
-}
+//void Pared::SetTextura(const char* text) {
+//	textura = text;
+//}
 
 void Pared::Dibuja() {                                                       //Implementar texturas
 	glPushMatrix();
@@ -32,8 +32,8 @@ void Pared::Dibuja() {                                                       //I
 	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture(textura).id);
 	glDisable(GL_LIGHTING);
 
-	glTranslatef(0, 0, z); //Se dibuja en un plano un poco por atrás del resto de objetos
-
+	//glTranslatef(0, 0, z); //Se dibuja en un plano un poco por atrás del resto de objetos
+	float k = 0.1;
 	glBegin(GL_POLYGON);
 	glColor3f(1, 1, 1);
 	glTexCoord2d(k * limite1.x, k * limite2.y); glVertex2f(limite1.x, limite2.y);
@@ -46,13 +46,6 @@ void Pared::Dibuja() {                                                       //I
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 }
-
-//void Pared::Dibuja() {
-//	glDisable(GL_LIGHTING);
-//	glColor3ub(rojo, verde, azul);
-//	glRectd(limite1.x, limite1.y, limite2.x, limite2.y);	
-//	glEnable(GL_LIGHTING);
-//}
 
 float Pared::distanciap_r(Vector2D recta1, Vector2D recta2, Vector2D punto, Vector2D* dir) {
 	Vector2D u = punto - recta1;

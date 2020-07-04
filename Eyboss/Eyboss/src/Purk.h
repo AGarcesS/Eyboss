@@ -2,10 +2,8 @@
 #include "Personaje.h"
 
 class Purk :public Personaje {
-private:
-	static int bajas;
 public:
-	Purk() :Personaje(Personaje::PURK, 1.5f, 1.5f, false, false, false, 4.0f, "bin/texturas/purk.png", 4, 3, true, false, false, false, 0, false, 2, 7.0f) {
+	Purk() :Personaje(Personaje::PURK, 1.5f, 1.5f, false, false, false, 4.0f, "bin/texturas/purk.png", 4, 3, true, false, false, false, 0, 0, 2, 7.0f) {
 //		altura = 1.5f;
 //		ancho = altura;
 //		textura = "bin/texturas/purk.png";

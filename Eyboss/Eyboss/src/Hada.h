@@ -4,7 +4,7 @@
 class Hada :public Personaje {
 private:
 public:
-	Hada() :Personaje(Personaje::HADA, 1.7f, 1.7f, false, false, false, 4.0f, "bin/texturas/hada.png", 4, 4, true, false, false, false, 0, false, 2, 7.0f) {
+	Hada() :Personaje(Personaje::HADA, 1.7f, 1.7f, false, false, false, 4.0f, "bin/texturas/hada.png", 4, 4, true, false, false, false, 0, 0, 2, 7.0f) {
 //		altura = 1.7f;
 //		ancho = altura;
 //		textura = "bin/texturas/hada.png";

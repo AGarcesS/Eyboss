@@ -3,7 +3,7 @@
 
 class Veloz :public Personaje {
 public:
-	Veloz() :Personaje(Personaje::VELOZ, 1.0f, 1.0f, false, false, false, 6.0f, "bin/texturas/veloz.png", 1, 4, true, false, false, false, 0, false, 1, 7.0f) {
+	Veloz() :Personaje(Personaje::VELOZ, 1.0f, 1.0f, false, false, false, 6.0f, "bin/texturas/veloz.png", 1, 4, true, false, false, false, 0, 0, 1, 7.0f) {
 //		altura = 1.0f;
 //		ancho = altura;
 //		textura = "bin/texturas/veloz.png";

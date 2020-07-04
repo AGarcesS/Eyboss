@@ -3,7 +3,7 @@
 
 class Protagonista :public Personaje {
 public:
-	Protagonista():Personaje(Personaje::PROTAGONISTA, 1.8f, 1.8f, false, false, false, 8.0f, "bin/texturas/eris_der2.png", 10, 6, true, false, false, false, 0, false) {
+	Protagonista():Personaje(Personaje::PROTAGONISTA, 1.8f, 1.8f, false, false, false, 8.0f, "bin/texturas/eris_der2.png", 10, 6, true, false, false, false, 0) {
 //		altura = 1.8f;
 //		ancho = altura;
 		posicion.x = 0.0f;

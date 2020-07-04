@@ -3,7 +3,7 @@
 
 class Troll :public Personaje {
 public:
-	Troll() :Personaje(Personaje::TROLL, 2.5f, 2.5f, false, false, false, 8.0f, "bin/texturas/troll.png", 1.5f, 4, true, false, false, false, 0, false, 3, 7.0f) {
+	Troll() :Personaje(Personaje::TROLL, 2.5f, 2.5f, false, false, false, 8.0f, "bin/texturas/troll.png", 1.5f, 4, true, false, false, false, 0, 0, 3, 7.0f) {
 		//altura = 2.5f;
 		//ancho = altura;
 		//textura = "bin/texturas/troll.png";

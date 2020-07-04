@@ -294,7 +294,8 @@ void Mundo::CargarNivel() {
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 0.0f, 22.5f, 19.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 20.0f, 17.5f, 60.0f, 20.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 60.0f, 17.5f, 62.5f, 60.0f);
-		factory_p.Crear(Pared::FONDO, plataformas, -34.0f, -12.0f, 94.0f, 60.0f, Global::nivel, -0.1);  // 16/9 de relacion (el fondo)
+		//factory_p.Crear(Pared::FONDO, plataformas, -34.0f, -12.0f, 94.0f, 60.0f, Global::nivel, -0.1);  // 16/9 de relacion (el fondo)
+		//protagonista.SetPos(53,25);
 		factory_p.Crear(Pared::PUERTA, plataformas, 56, 20, 59, 23);
 
 		//Plataformas
@@ -353,7 +354,7 @@ void Mundo::CargarNivel() {
 	if (Global::nivel == 2) {
 		ETSIDI::playMusica("bin/musica/Cancion1.mp3", true);
 		//Plataformas
-		factory_p.Crear(Pared::FONDO, plataformas, -43.0f, -50.0f, 223.0f, 100.0f, Global::nivel, -0.1);  // 16/9 de relacion (el fondo)
+		//factory_p.Crear(Pared::FONDO, plataformas, -43.0f, -50.0f, 223.0f, 100.0f, Global::nivel, -0.1);  // 16/9 de relacion (el fondo)
 
 		factory_p.Crear(Pared::NORMAL, plataformas, -4.5f, -2.5f, 12.5f, 0.0f);
 		factory_p.Crear(Pared::NORMAL, plataformas, 10.0f, -2.5f, 12.5f, 3.0f);
@@ -400,8 +401,6 @@ void Mundo::CargarNivel() {
 
 		factory_p.Crear(Pared::NORMAL, plataformas, 0.0f, -40.5f, 190.0f, -40.0f);
 		factory_p.Crear(Pared::PUERTA, plataformas, 168, 55, 170, 57);
-
-
 
 
 		factory_e.Crear(Personaje::TROLL, enemigos, 52, 8.5, -2, 0);

@@ -225,6 +225,9 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 	}
 	case 2:
 	{
+		ETSIDI::setTextColor(1, 1, 1);
+		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
+		ETSIDI::printxy("Busca la puerta", 8, -9);
 		break;
 	}
 	case 3:
@@ -236,6 +239,7 @@ void Interfaz::ImprimeJuego(Protagonista& p, ListaObjetos& l) {
 		ETSIDI::setFont("bin/fuentes/fuente.ttf", 12);
 		ETSIDI::printxy(t_llave, 10, -9);
 		ETSIDI::printxy("/3", 11, -9);
+		ETSIDI::printxy("Busca la puerta", 8, -10);
 		llave->draw();
 		break;
 	}
