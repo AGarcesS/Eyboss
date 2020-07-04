@@ -148,7 +148,7 @@ void Mundo::Inicializa()
 	y_ojo = protagonista.GetPos().y;
 	z_ojo = 30;
 
-	Global::nivel = 0;
+	Global::nivel = 2;
 	CargarNivel();	
 }
 
@@ -424,7 +424,7 @@ bool Mundo::CargarNivel() {
 
 	if (Global::nivel == 3) {
 		ETSIDI::playMusica("bin/musica/Cancion2.mp3", true);
-
+		protagonista.SetPos(60, 28);
 		//nv1
 		//pared izq
 		factory_p.Crear(Pared::NORMAL, plataformas, -35.0f, -2.5f, -1.0f, 15.0f);
